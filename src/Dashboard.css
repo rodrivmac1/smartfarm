@@ -3,7 +3,7 @@
   }
   .dashboard-container {
     display: flex;
-  background-color: #1E1E1E; /* Color de fondo */
+  background-color: #1E1E1E; 
   }
   
   .sidebar {
@@ -29,7 +29,7 @@
     color: white;
   }
   
-  /* Estilo general para los botones */
+  
   .sidebar button {
     width: 100%;
     padding: 15px 0;
@@ -55,10 +55,10 @@
   }
   
   .sidebar .summary-btn:hover {
-    background-color: #207546; /* Color cuando se pasa el mouse */
+    background-color: #207546; 
   }
   
-  /* Estilos del contenido */
+  
   .content {
     padding: 20px;
     flex-grow: 1;

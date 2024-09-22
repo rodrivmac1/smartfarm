@@ -1,0 +1,19 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f1f1f; 
+    color: #aaa;
+    
+  }
+  
+  .footer-right a {
+    color: #888;
+    text-decoration: none;
+    margin-left: 20px;
+  }
+  
+  .footer-right a:hover {
+    text-decoration: underline;
+  }
+  

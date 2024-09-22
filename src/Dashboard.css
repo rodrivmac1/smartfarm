@@ -1,10 +1,10 @@
 * {
-  font-family: 'Poppins', sans-serif; 
+  font-family: 'Poppins', sans-serif;
 }
 
 .dashboard-container {
   display: flex;
-  background-color: #1E1E1E; 
+  background-color: #1E1E1E;
 }
 
 .sidebar {
@@ -44,17 +44,36 @@
 /* Efecto hover para todos los botones */
 .sidebar button:hover {
   background-color: #616161;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilos específicos para el botón de Summary */
 .sidebar .summary-btn {
-  background-color: #2E8B57; /* Color especial para el botón Summary */
+  background-color: #616161; /* Color inicial para el botón Summary */
 }
 
 /* Estilo del botón Summary al pasar el mouse */
 .sidebar .summary-btn:hover {
-  background-color: #207546; 
+  background-color: #207546; /* Verde oscuro en hover */
+}
+
+/* Estilos específicos para el botón de Add Sensor */
+.sidebar .add-sensor-btn {
+  background-color: #616161; /* Color inicial para Add Sensor */
+}
+
+/* Estilo del botón Add Sensor al pasar el mouse */
+.sidebar .add-sensor-btn:hover {
+  background-color: #207546; /* Verde oscuro en hover */
+}
+
+/* Estilos específicos para el botón de Profile */
+.sidebar .profile-btn {
+  background-color: #616161; /* Color inicial para Profile */
+}
+
+/* Estilo del botón Profile al pasar el mouse */
+.sidebar .profile-btn:hover {
+  background-color: #207546; /* Verde oscuro en hover */
 }
 
 /* Estilos para el contenido del botón */
@@ -62,38 +81,28 @@
   display: flex;
   align-items: center; /* Centra verticalmente */
   justify-content: flex-start; /* Alinea el contenido a la izquierda */
-  width: 100%; 
+  width: 100%; /* Asegura que ocupe todo el ancho del botón */
   padding-left: 25px; /* Separación del borde izquierdo */
 }
 
 /* Estilo de la imagen */
 .icon {
-  width: 35px; 
-  height: auto; 
+  width: 35px; /* Ajusta el tamaño según sea necesario */
+  height: auto; /* Mantiene la relación de aspecto */
   margin-right: 20px; /* Espacio entre la imagen y el texto */
-  background-color: rgb(255, 255, 255); 
-  border-radius: 12px; 
-  padding: 3px; /* Espacio alrededor de la imagen */
-  
+  background-color: rgb(255, 255, 255); /* Fondo blanco para la imagen */
+  border-radius: 12px; /* Bordes redondeados */
+  padding: 3px; /* Añade espacio alrededor de la imagen */
 }
 
-/* Parte superior*/
+/* Estilo para el botón activo (cuando se encuentre en la ruta correspondiente) */
+button.active {
+  background-color: #28a745; /* Verde cuando el botón esté activo */
+  color: white;
+}
 
+/* Estilo de la clase content (donde se carga el contenido de las rutas) */
 .content {
-  margin-top: 20px; 
-  padding-left: 25px;
+  padding: 20px;
+  flex-grow: 1;
 }
-
-.dashboard-text {
-  color: #7F7F7F; 
-  padding-left: 25px;
-  padding-top: 25px;
-}
-
-.summary-text {
-  color: white; 
-  margin-left: 10px; /* Espacio entre "Dashboard" y "/ Summary" **/
-}
-
-
-

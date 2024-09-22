@@ -1,34 +1,43 @@
+/* Estilos generales */
 * {
   font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  background-color: #1E1E1E;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Contenedor del dashboard */
 .dashboard-container {
   display: flex;
-  background-color: #1E1E1E;
+  height: 100vh; /* Hacer que el dashboard ocupe toda la altura de la pantalla */
 }
 
+/* Sidebar */
 .sidebar {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   padding: 16px;
-  gap: 28px;
   width: 240px;
-  height: 100vh;
   background: #454545;
   border-radius: 16px;
   color: white;
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .sidebar h2 {
-  margin: 0;
   color: white;
+  margin-bottom: 20px;
 }
 
+/* Botones de la sidebar */
 .sidebar button {
   width: 100%;
   padding: 15px 0;
@@ -39,6 +48,7 @@
   cursor: pointer;
   border-radius: 20px;
   transition: background-color 0.3s, box-shadow 0.3s;
+  margin-bottom: 10px; /* Añadir espacio entre los botones */
 }
 
 /* Efecto hover para todos los botones */
@@ -46,62 +56,43 @@
   background-color: #616161;
 }
 
-/* Estilos específicos para el botón de Summary */
-.sidebar .summary-btn {
-  background-color: #616161; /* Color inicial para el botón Summary */
-}
-
-/* Estilo del botón Summary al pasar el mouse */
-.sidebar .summary-btn:hover {
-  background-color: #207546; /* Verde oscuro en hover */
-}
-
-/* Estilos específicos para el botón de Add Sensor */
-.sidebar .add-sensor-btn {
-  background-color: #616161; /* Color inicial para Add Sensor */
-}
-
-/* Estilo del botón Add Sensor al pasar el mouse */
-.sidebar .add-sensor-btn:hover {
-  background-color: #207546; /* Verde oscuro en hover */
-}
-
-/* Estilos específicos para el botón de Profile */
-.sidebar .profile-btn {
-  background-color: #616161; /* Color inicial para Profile */
-}
-
-/* Estilo del botón Profile al pasar el mouse */
-.sidebar .profile-btn:hover {
-  background-color: #207546; /* Verde oscuro en hover */
-}
-
-/* Estilos para el contenido del botón */
-.button-content {
-  display: flex;
-  align-items: center; /* Centra verticalmente */
-  justify-content: flex-start; /* Alinea el contenido a la izquierda */
-  width: 100%; /* Asegura que ocupe todo el ancho del botón */
-  padding-left: 25px; /* Separación del borde izquierdo */
-}
-
-/* Estilo de la imagen */
+/* Estilos de los iconos en los botones */
 .icon {
-  width: 35px; /* Ajusta el tamaño según sea necesario */
-  height: auto; /* Mantiene la relación de aspecto */
-  margin-right: 20px; /* Espacio entre la imagen y el texto */
-  background-color: rgb(255, 255, 255); /* Fondo blanco para la imagen */
-  border-radius: 12px; /* Bordes redondeados */
-  padding: 3px; /* Añade espacio alrededor de la imagen */
+  width: 35px;
+  height: auto;
+  margin-right: 20px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  padding: 3px;
 }
 
-.sidebar button.active {
-  background-color: #28a745; /* Verde cuando el botón esté activo */
-  color: white;
-}
-
-/* Estilo de la clase content (donde se carga el contenido de las rutas) */
-.content {
+/* Contenedor principal */
+.main-content {
+  flex-grow: 1; /* El contenedor principal ocupa el espacio restante */
+  display: flex;
+  flex-direction: column;
   padding: 20px;
-  flex-grow: 1;
+  margin-left: 20px; /* Espacio a la izquierda de la sidebar */
+}
+
+/* Contenedor de los widgets */
+.widgets-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre las filas de widgets */
+}
+
+/* Fila de widgets */
+.widgets-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Espacio entre widgets */
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+  padding: 10px;
+  text-align: center;
+  color: white;
 }

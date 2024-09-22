@@ -95,8 +95,7 @@
   padding: 3px; /* Añade espacio alrededor de la imagen */
 }
 
-/* Estilo para el botón activo (cuando se encuentre en la ruta correspondiente) */
-button.active {
+.sidebar button.active {
   background-color: #28a745; /* Verde cuando el botón esté activo */
   color: white;
 }

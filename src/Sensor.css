@@ -1,0 +1,73 @@
+/* Aseguramos que el contenedor ocupe toda la página */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* El contenedor de los sensores ocupa el espacio restante */
+  .sensor-content {
+    flex: 1;
+    padding: 30px;
+    background-color: #1f1f1f;
+    color: white;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1000px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+  }
+  
+  .sensor-title {
+    font-size: 24px;
+    color: #00e6b8; /* Verde para el título */
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .sensor-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .sensor-table th, .sensor-table td {
+    padding: 20px;
+    border-bottom: 1px solid #333;
+  }
+  
+  /* Color gris para los títulos de las columnas */
+  .sensor-table th {
+    color: #888; /* Color gris claro para los títulos */
+    font-weight: normal;
+    text-align: left;
+  }
+  
+  .sensor-table td {
+    color: #fff; /* Color blanco para el texto de las celdas */
+  }
+  
+  .sensor-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  /* Colores para el estado de los sensores */
+  .status-ok {
+    color: #00ff00 !important; /* Verde brillante para OK */
+  }
+  
+  .status-not-available {
+    color: #ff0000 !important; /* Rojo brillante para NO AVAILABLE */
+  }
+  
+  /* Estilos para hacer que la tabla tenga filas alternas de diferente color */
+  .sensor-table tr:nth-child(odd) {
+    background-color: #2a2a2a;
+  }
+  
+  .sensor-table tr:nth-child(even) {
+    background-color: #1f1f1f;
+  }
+  

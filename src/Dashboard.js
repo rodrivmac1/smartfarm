@@ -32,7 +32,8 @@ function Dashboard() {
         </button>
       </div>
       <div className="content">
-        <h1>Content</h1>
+        <span className="dashboard-text">Content</span>
+        <span className="summary-text">/ Summary</span>
       </div>
     </div>
   );

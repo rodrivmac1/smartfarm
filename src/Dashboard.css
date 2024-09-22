@@ -62,23 +62,38 @@
   display: flex;
   align-items: center; /* Centra verticalmente */
   justify-content: flex-start; /* Alinea el contenido a la izquierda */
-  width: 100%; /* Asegura que ocupe todo el ancho del botón */
+  width: 100%; 
   padding-left: 25px; /* Separación del borde izquierdo */
 }
 
 /* Estilo de la imagen */
 .icon {
-  width: 35px; /* Ajusta el tamaño según sea necesario */
-  height: auto; /* Mantiene la relación de aspecto */
+  width: 35px; 
+  height: auto; 
   margin-right: 20px; /* Espacio entre la imagen y el texto */
-  background-color: rgb(255, 255, 255); /* Fondo negro para la imagen */
-  border-radius: 12px; /* Bordes redondeados */
-  padding: 3px; /* Añade espacio alrededor de la imagen */
+  background-color: rgb(255, 255, 255); 
+  border-radius: 12px; 
+  padding: 3px; /* Espacio alrededor de la imagen */
+  
 }
 
-
+/* Parte superior*/
 
 .content {
-  padding: 20px;
-  flex-grow: 1;
+  margin-top: 20px; 
+  padding-left: 25px;
 }
+
+.dashboard-text {
+  color: #7F7F7F; 
+  padding-left: 25px;
+  padding-top: 25px;
+}
+
+.summary-text {
+  color: white; 
+  margin-left: 10px; /* Espacio entre "Dashboard" y "/ Summary" **/
+}
+
+
+

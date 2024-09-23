@@ -1,14 +1,117 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('./assets/Fondo.jpg');  /* Imagen de fondo */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Agregar transparencia al fondo del contenedor */
+.login-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Transparencia ajustada */
+  z-index: 0;
+}
+
+/* Contenedor de la caja de login */
+.login-box {
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: left;
+  z-index: 1; /* Mantener la caja por encima del fondo */
+}
+
+/* Ajusta el contenido, manteniéndolo por encima del fondo */
+.login-container > * {
+  position: relative;
+  z-index: 1; /* Evita que el contenido sea afectado por la capa de transparencia */
+}
+
+
+/* Título de login */
+.login-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Grupo de entrada */
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.input-group input {
+  width: 93%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
 button {
-  background-color: #61dafb; 
+  background-color: #14AE5C; 
   color: white; 
   border: none; 
-  border-radius: 5px; 
+  border-radius: 20px; 
   padding: 10px 20px; 
   font-size: 16px; 
   cursor: pointer; 
   transition: background-color 0.3s; 
+  width: 100%; /* Botón más largo, ocupa el ancho completo del contenedor */
+  display: block; /* Botón en bloque para poder centrarlo */
+  margin: 20px auto; /* Centra el botón horizontalmente */
 }
 
 button:hover {
   background-color: #21a1f1; 
+}
+
+.login-btn:hover {
+  background-color: #bbb;
+}
+
+/* Opciones de login */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.help-link {
+  text-decoration: none;
+  color: #000;
+  font-size: 12px;
+}
+
+.help-link:hover {
+  text-decoration: underline;
+}
+
+.logo-container {
+  text-align: center; /* Centra el logotipo horizontalmente */
+  margin-bottom: 20px; /* Añade espacio debajo del logotipo */
+}
+
+.login-logo {
+  max-width: 100px; /* Ajusta el tamaño máximo del logotipo */
+  height: auto; /* Mantén la proporción del logotipo */
 }

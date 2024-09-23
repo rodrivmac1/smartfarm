@@ -20,7 +20,11 @@ body {
   margin-bottom: 20px;
   width: 100%;
 }
-
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 /* Sidebar */
 .sidebar {
   display: flex;
@@ -28,11 +32,12 @@ body {
   justify-content: flex-start;
   align-items: center;
   padding: 16px;
-  width: 240px;
+  width: 190px;
   background: #454545;
   border-radius: 16px;
   color: white;
   height: 100vh; /* Asegura que el sidebar ocupe toda la altura */
+  position: fixed;
 }
 
 .sidebar h2 {
@@ -100,7 +105,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  margin-left: 20px;
+  margin-left: 200px;
 }
 
 /* Contenedor de los widgets */

@@ -1,19 +1,17 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
-import backgroundImage from './assets/Fondo.jpg'; // Ajusta la ruta si es necesario
-//import logo from '../assets/logo.png'; 
 
 function Login() {
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
-    e.preventDefault(); // Evita la recarga de página al enviar el formulario
-    navigate('/dashboard'); // Navega al dashboard
+    e.preventDefault(); 
+    navigate('/dashboard'); 
   };
 
   return (
-    <div className="login-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div className="login-container">
       <div className="login-box">
         <h1 className="login-title">Login</h1>
         <form onSubmit={handleLogin}>
@@ -39,6 +37,3 @@ function Login() {
 }
 
 export default Login;
-
-
-

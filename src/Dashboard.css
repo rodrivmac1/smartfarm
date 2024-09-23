@@ -14,8 +14,11 @@ body {
 
 /* Contenedor del dashboard */
 .dashboard-container {
-  display: flex;
-  height: 100vh; /* Hacer que el dashboard ocupe toda la altura de la pantalla */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Para que las gráficas ocupen 2 columnas */
+  grid-gap: 20px; /* Espacio entre las gráficas */
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 /* Sidebar */
@@ -29,96 +32,107 @@ body {
   background: #454545;
   border-radius: 16px;
   color: white;
-  margin: 10px 0;
+  height: 100vh; /* Asegura que el sidebar ocupe toda la altura */
 }
 
 .sidebar h2 {
   color: white;
-  margin-bottom: 20px;
+  margin-bottom: 40px; /* Aumenta el espacio debajo del título */
+  text-align: center;
+  width: 100%;
 }
 
 /* Botones de la sidebar */
 .sidebar button {
-  width: 100%;
-  padding: 15px 0;
+  width: 100%; /* Asegura que los botones ocupen el ancho completo del sidebar */
+  padding: 15px;
   background-color: transparent;
   border: none;
   color: white;
   font-size: 16px;
   cursor: pointer;
   border-radius: 20px;
+  margin-bottom: 20px; /* Espacio entre los botones */
+  display: flex;
+  align-items: center; /* Alinea el ícono y el texto verticalmente */
+  justify-content: flex-start; /* Alinea el contenido a la izquierda */
   transition: background-color 0.3s, box-shadow 0.3s;
-  margin-bottom: 10px; /* Añadir espacio entre los botones */
 }
 
 /* Efecto hover para todos los botones */
 .sidebar button:hover {
-  background-color: #616161;
+  background-color: #2E8B57; /* Cambia el color a verde cuando se pasa el mouse */
 }
 
-/* Estilos de los iconos en los botones */
+/* Botón activo - la página actual se destaca en verde */
+.sidebar button.active {
+  background-color: #2E8B57;
+}
+
+/* Estilos de los íconos en los botones */
 .icon {
   width: 35px;
-  height: auto;
-  margin-right: 20px;
+  height: 35px;
+  margin-right: 15px;
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
-  padding: 3px;
+  padding: 5px;
 }
+
+/* Contenedor del contenido de los botones */
+.button-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%; /* Asegura que el contenido del botón ocupe todo el ancho */
+}
+
+
+/* Botón activo - la página actual se destaca en verde */
+.sidebar button.active {
+  background-color: #2E8B57; /* Cambia el color a verde para la página activa */
+}
+
 
 /* Contenedor principal */
 .main-content {
-  flex-grow: 1; /* El contenedor principal ocupa el espacio restante */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   padding: 20px;
-  margin-left: 20px; /* Espacio a la izquierda de la sidebar */
+  margin-left: 20px;
 }
 
 /* Contenedor de los widgets */
 .widgets-container {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Espacio entre las filas de widgets */
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
 /* Fila de widgets */
 .widgets-row {
   display: flex;
   justify-content: space-between;
-  gap: 20px; /* Espacio entre widgets */
+  gap: 20px;
+  width: 100%;
 }
 
-/* Footer */
-footer {
-  margin-top: auto;
-  padding: 10px;
-  text-align: center;
-  color: white;
-}
-
-/* Estilo de la clase content (donde se carga el contenido de las rutas) */
-.content {
-  padding: 20px;
-  flex-grow: 1;
+/* Contenedor de los gráficos */
+.chart-container {
+  flex: 1;
+  min-width: 45%; /* Asegura que el contenedor del gráfico no se encoja demasiado */
+  margin: 10px;
 }
 
 .chart-wrapper {
   width: 100%;
-  max-width: 800px; 
-  height: 400px; 
-  background-color: #1E1E1E; 
-  padding: 20px; 
-  border-radius: 16px; 
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); 
-  margin-bottom: 20px; 
-  overflow: hidden; 
-}
-.grid-2x2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  grid-template-rows: repeat(2, 1fr); 
-  gap: 20px; 
-  justify-items: center; 
-  align-items: center; 
+  height: 400px; /* Asegurar una altura consistente */
+  background-color: #1E1E1E;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  margin-bottom: 20px;
+  overflow: hidden;
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import './Dashboard.css'; // Ya que no tienes un archivo layout.css
-import Header from './header';
+import './Dashboard.css'; // Mantén la referencia a Dashboard.css
 import Footer from './footer';
+import Header from './header';
 import Vector from './images/Vector.png';
 import boton from './images/boton.png';
 import usuario from './images/usuario.png';
@@ -17,100 +17,45 @@ const Layout = () => {
   return (
     <div className="dashboard-container" style={{ display: 'flex', height: '100vh' }}>
       {/* Sidebar común */}
-      <div
-        className="sidebar"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-start',
-          alignItems: 'flex-start',
-          padding: '16px',
-          width: '240px',
-          backgroundColor: '#454545',
-          borderRadius: '16px',
-          color: 'white',
-        }}
-      >
-        <h2 style={{ marginBottom: '20px', textAlign: 'left' }}>SmartFarm</h2>
+      <div className="sidebar">
+        <h2>SmartFarm</h2>
 
         {/* Botón de resumen */}
         <button
-          className={`summary-btn ${isActive('/dashboard') ? 'active' : ''}`}
+          className={`summary-btn ${isActive('/dashboard') ? 'active' : ''}`} // Añadir clase "active" cuando sea la ruta activa
           onClick={() => navigate('/dashboard')}
-          style={{
-            width: '100%',
-            padding: '15px 0',
-            backgroundColor: 'transparent',
-            border: 'none',
-            color: 'white',
-            fontSize: '16px',
-            cursor: 'pointer',
-            borderRadius: '20px',
-            marginBottom: '10px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-          }}
         >
-          <div className="button-content" style={{ display: 'flex', alignItems: 'center', paddingLeft: '10px' }}>
-            <img src={Vector} alt="Icon" className="icon" style={{ width: '35px', marginRight: '15px', backgroundColor: 'white', borderRadius: '12px', padding: '5px' }} />
+          <div className="button-content">
+            <img src={Vector} alt="Icon" className="icon" />
             Summary
           </div>
         </button>
 
         {/* Botón de agregar sensor */}
         <button
-          className={`add-sensor-btn ${isActive('/add-sensor') ? 'active' : ''}`}
+          className={`add-sensor-btn ${isActive('/add-sensor') ? 'active' : ''}`} // Añadir clase "active" cuando sea la ruta activa
           onClick={() => navigate('/add-sensor')}
-          style={{
-            width: '100%',
-            padding: '15px 0',
-            backgroundColor: 'transparent',
-            border: 'none',
-            color: 'white',
-            fontSize: '16px',
-            cursor: 'pointer',
-            borderRadius: '20px',
-            marginBottom: '10px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-          }}
         >
-          <div className="button-content" style={{ display: 'flex', alignItems: 'center', paddingLeft: '10px' }}>
-            <img src={boton} alt="Add Sensor" className="icon" style={{ width: '35px', marginRight: '15px', backgroundColor: 'white', borderRadius: '12px', padding: '5px' }} />
+          <div className="button-content">
+            <img src={boton} alt="Add Sensor" className="icon" />
             Add Sensor
           </div>
         </button>
 
         {/* Botón de perfil */}
         <button
-          className={`profile-btn ${isActive('/profile') ? 'active' : ''}`}
+          className={`profile-btn ${isActive('/profile') ? 'active' : ''}`} // Añadir clase "active" cuando sea la ruta activa
           onClick={() => navigate('/profile')}
-          style={{
-            width: '100%',
-            padding: '15px 0',
-            backgroundColor: 'transparent',
-            border: 'none',
-            color: 'white',
-            fontSize: '16px',
-            cursor: 'pointer',
-            borderRadius: '20px',
-            marginBottom: '10px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-          }}
         >
-          <div className="button-content" style={{ display: 'flex', alignItems: 'center', paddingLeft: '10px' }}>
-            <img src={usuario} alt="Profile" className="icon" style={{ width: '35px', marginRight: '15px', backgroundColor: 'white', borderRadius: '12px', padding: '5px' }} />
+          <div className="button-content">
+            <img src={usuario} alt="Profile" className="icon" />
             Profile
           </div>
         </button>
       </div>
 
       {/* Main content */}
-      <div className="main-content" style={{ flexGrow: 1, padding: '20px', marginLeft: '20px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+      <div className="main-content">
         <Header />
         <Outlet />
         <Footer />

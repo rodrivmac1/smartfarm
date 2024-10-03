@@ -10,6 +10,11 @@ function Login() {
     navigate('/dashboard'); 
   };
 
+  const handleCreateAccount = (e) => {
+    e.preventDefault();
+    navigate('/crearcuenta');
+  };
+
   return (
     <div className="login-container">
       <div className="login-box">
@@ -29,6 +34,9 @@ function Login() {
               <input type="checkbox" /> Remember me
             </label>
             <a href="/" className="help-link">Need help?</a>
+          </div>
+          <div className="create-account">
+            <a href="/crearcuenta" onClick={handleCreateAccount} className="create-account-link">Crear cuenta</a>
           </div>
         </form>
       </div>

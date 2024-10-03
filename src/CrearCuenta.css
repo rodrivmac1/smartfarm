@@ -1,0 +1,117 @@
+.crearcuenta-body { 
+  background-color: #1a1a1a; /* Color de fondo gris oscuro */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.crearcuenta-app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.crearcuenta-content {
+  flex: 1;
+  padding: 40px;
+}
+
+.crearcuenta-profile-container {
+  width: 800px;
+  background-color: #2a2a2a; /* Color ligeramente más claro que el fondo */
+  color: white;
+  padding: 40px;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.crearcuenta-profile-header {
+    display: flex;
+    flex-direction: column; /* Cambia a columna para centrar */
+    align-items: center; /* Centra horizontalmente */
+    margin-bottom: 10px;
+  }  
+
+.crearcuenta-profile-details h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.crearcuenta-profile-details p {
+  margin: 0;
+  font-size: 16px;
+  color: #aaa;
+}
+
+.crearcuenta-profile-info {
+  margin-top: 30px;
+}
+
+.crearcuenta-info-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #555;
+}
+
+.crearcuenta-info-field label {
+  font-size: 14px;
+  color: #888;
+  width: 150px;
+}
+
+.crearcuenta-info-field input {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  background-color: #2f2f2f;
+  border: none;
+  color: white;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.crearcuenta-info-field input:focus {
+  outline: none;
+  border-bottom: 1px solid #00b74a;
+}
+
+.crearcuenta-save-button {
+  width: 150px;
+  padding: 10px;
+  background-color: #00b74a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.crearcuenta-save-button:hover {
+  background-color: #008c37;
+}
+
+.crearcuenta-save-button-text {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/*Estilo para imagen de profile*/
+.profile-image-label {
+    cursor: pointer; /* Cambia el cursor al pasar sobre el label */
+  }
+  
+  .crearcuenta-profile-picture {
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    transition: transform 0.2s; /* Efecto de transformación */
+  }
+  
+  .crearcuenta-profile-picture:hover {
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+  }
+  

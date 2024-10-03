@@ -5,6 +5,7 @@ import Login from './Login';
 import Profile from './Profile';
 import Sensor from './Sensor';
 import Layout from './layout'; // Importamos el layout
+import CrearCuenta from './CrearCuenta';
 
 function App() {
   return (
@@ -12,12 +13,13 @@ function App() {
       <Routes>
         {/* Ruta para la página de login */}
         <Route path="/" element={<Login />} />
-
+        <Route path="/crearcuenta" element={<CrearCuenta />} />
         {/* Rutas que usan el layout con el menú */}
         <Route element={<Layout />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/add-sensor" element={<Sensor />} />
+          
         </Route>
       </Routes>
     </Router>

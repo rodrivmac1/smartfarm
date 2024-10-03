@@ -106,6 +106,7 @@ button:hover {
   text-decoration: underline;
 }
 
+
 /* Logo de login */
 .logo-container {
   text-align: center; /* Centra el logotipo horizontalmente */
@@ -115,4 +116,22 @@ button:hover {
 .login-logo {
   max-width: 100px; /* Ajusta el tamaño máximo del logotipo */
   height: auto; /* Mantén la proporción del logotipo */
+}
+
+/* Crear cuenta*/
+.create-account {
+  margin-top: 12px; /* Espacio entre "Need help?" y "Crear cuenta" */
+  text-align: center;
+}
+
+.create-account-link {
+  color: #000; /* Color azul para el enlace */
+  font-size: 12px;
+  text-decoration: none; /* Sin subrayado por defecto */
+  cursor: pointer;
+}
+
+.create-account-link:hover {
+  text-decoration: underline; /* Subrayado al pasar el ratón */
+  color: #000; /* Color más oscuro en hover */
 }

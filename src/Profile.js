@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import "./Profile.css"; // Estilos generales
 
 const Profile = () => {
-  // Definimos los valores de estado iniciales para cada campo
   const [name, setName] = useState("Edmundo Linares");
+  const [username, setUsername] = useState("EdmundoLZ"); // Nuevo estado para el usuario
+  const [password, setPassword] = useState("1234567"); // Nuevo estado para la contraseña
+  const [userType, setUserType] = useState("User"); // Nuevo estado para el tipo de usuario
   const [email, setEmail] = useState("edmundo_zapatero10@gmail.com");
   const [mobile, setMobile] = useState("248 - 125 - 9698");
-  const [location, setLocation] = useState("Puebla");
 
-  // Función para manejar el guardado (por ahora, solo un log de los valores)
   const handleSave = () => {
-    console.log("Saved Profile Info:", { name, email, mobile, location });
+    console.log("Saved Profile Info:", { name, username, password, userType, email, mobile });
     alert("Profile saved!");
   };
 
@@ -29,8 +29,9 @@ const Profile = () => {
       </div>
 
       <div className="profile-info">
+        {/* Campo de nombre */}
         <div className="info-field">
-          <label>Name</label>
+          <label>Full name</label>
           <input
             type="text"
             value={name}
@@ -38,6 +39,43 @@ const Profile = () => {
           />
         </div>
 
+        {/* Campo de usuario */}
+        <div className="info-field">
+          <label>Username</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter your username"
+          />
+        </div>
+
+        {/* Campo de contraseña */}
+        <div className="info-field">
+        <label>Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password" // Placeholder para contraseña
+          />
+        </div>
+
+        {/* Lista desplegable de tipo de usuario */}
+        <div className="info-field">
+          <label>User Type</label>
+          <select
+            value={userType}
+            onChange={(e) => setUserType(e.target.value)}
+            className="dropdown" // Clase añadida para estilo del select
+          >
+            <option value="User">User</option>
+            <option value="Super Administrator">Super Administrator</option>
+            <option value="Administrator">Administrator</option>
+          </select>
+        </div>
+
+        {/* Campo de correo electrónico */}
         <div className="info-field">
           <label>Email account</label>
           <input
@@ -47,21 +85,13 @@ const Profile = () => {
           />
         </div>
 
+        {/* Campo de número de móvil */}
         <div className="info-field">
           <label>Mobile number</label>
           <input
             type="text"
             value={mobile}
             onChange={(e) => setMobile(e.target.value)}
-          />
-        </div>
-
-        <div className="info-field">
-          <label>Location</label>
-          <input
-            type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
           />
         </div>
       </div>

@@ -36,7 +36,7 @@ function Login() {
             <a href="/" className="help-link">Need help?</a>
           </div>
           <div className="create-account">
-            <a href="/crearcuenta" onClick={handleCreateAccount} className="create-account-link">Crear cuenta</a>
+            <a href="/crearcuenta" onClick={handleCreateAccount} className="create-account-link">Create account</a>
           </div>
         </form>
       </div>

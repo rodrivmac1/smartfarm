@@ -4,43 +4,23 @@ import defaultUserImage from "./images/user.png"; // Importa la imagen por defec
 
 const CrearCuenta = () => {
   const [name, setName] = useState(""); // Inicializa vacío
+  const [username, setUsername] = useState(""); // Nuevo estado para usuario
+  const [password, setPassword] = useState(""); // Nuevo estado para contraseña
   const [email, setEmail] = useState(""); // Inicializa vacío
   const [mobile, setMobile] = useState(""); // Inicializa vacío
-  const [location, setLocation] = useState(""); // Inicializa vacío
-  const [profileImage, setProfileImage] = useState(defaultUserImage); // Imagen por defecto
 
   const handleSave = () => {
-    console.log("Saved Profile Info:", { name, email, mobile, location });
+    console.log("Saved Profile Info:", { name, username, password, email, mobile });
     alert("Profile saved!");
-  };
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProfileImage(reader.result); // Carga la nueva imagen
-      };
-      reader.readAsDataURL(file); // Convierte la imagen a URL
-    }
   };
 
   return (
     <div className="crearcuenta-profile-container crearcuenta-content">
       <div className="crearcuenta-profile-header white-background">
-        <label htmlFor="upload-image" className="profile-image-label">
-          <img
-            src={profileImage} // Usa la imagen importada aquí
-            alt="Profile"
-            className="crearcuenta-profile-picture"
-          />
-        </label>
-        <input
-          type="file"
-          id="upload-image"
-          accept="image/*"
-          onChange={handleImageChange}
-          style={{ display: "none" }} // Oculta el input de tipo file
+        <img
+          src={defaultUserImage} // Usa la imagen por defecto
+          alt="Profile"
+          className="crearcuenta-profile-picture"
         />
         <div className="crearcuenta-profile-details">
           <h2>{name}</h2>
@@ -50,12 +30,32 @@ const CrearCuenta = () => {
 
       <div className="crearcuenta-profile-info">
         <div className="crearcuenta-info-field">
-          <label>Name</label>
+          <label>Full name</label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Enter your name" // Placeholder en lugar de contenido
+            placeholder="Enter your full name" // Placeholder en lugar de contenido
+          />
+        </div>
+
+        <div className="crearcuenta-info-field">
+          <label>Username</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter your username" // Placeholder para el nombre de usuario
+          />
+        </div>
+
+        <div className="crearcuenta-info-field">
+          <label>Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password" // Placeholder para la contraseña
           />
         </div>
 
@@ -79,15 +79,6 @@ const CrearCuenta = () => {
           />
         </div>
 
-        <div className="crearcuenta-info-field">
-          <label>Location</label>
-          <input
-            type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            placeholder="Enter your location" // Placeholder en lugar de contenido
-          />
-        </div>
       </div>
 
       <button className="crearcuenta-save-button" onClick={handleSave}>

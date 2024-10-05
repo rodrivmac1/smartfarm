@@ -67,7 +67,7 @@ body {
   color: #888;
   width: 150px;
 }
-
+.info-field select,
 .info-field input {
   width: 100%;
   max-width: 300px;
@@ -104,3 +104,10 @@ body {
   text-transform: uppercase;
   font-weight: bold;
 }
+
+
+.info-field select:focus {
+  outline: none;
+  border-bottom: 1px solid #00b74a;
+}
+

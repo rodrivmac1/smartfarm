@@ -73,13 +73,36 @@
   
   .button-row {
     display: flex;
-    justify-content: flex-start; /* Alinea los botones a la izquierda */
-    gap: 20px; /* Añade espacio entre los botones */
-    margin-bottom: 20px; /* Separación debajo de los botones */
+    justify-content: center;
+    gap: 20px; 
+    margin-bottom: 20px;
   }
   
-  .content-section {
-    margin-top: 20px;
+  .button-content {
+    text-align: center;
   }
   
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
   
+  .save-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .save-button:hover {
+    background-color: #45a049;
+  }

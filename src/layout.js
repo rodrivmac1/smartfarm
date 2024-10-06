@@ -38,7 +38,7 @@ const Layout = () => {
         >
           <div className="button-content">
             <img src={boton} alt="Add Sensor" className="icon" />
-            Add Sensor
+            Sensors
           </div>
         </button>
 

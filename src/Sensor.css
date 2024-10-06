@@ -71,3 +71,15 @@
     background-color: #1f1f1f;
   }
   
+  .button-row {
+    display: flex;
+    justify-content: flex-start; /* Alinea los botones a la izquierda */
+    gap: 20px; /* Añade espacio entre los botones */
+    margin-bottom: 20px; /* Separación debajo de los botones */
+  }
+  
+  .content-section {
+    margin-top: 20px;
+  }
+  
+  

@@ -44,8 +44,8 @@ const Layout = () => {
 
         {/* Botón de perfil */}
         <button
-          className={`profile-btn ${isActive('/profile') ? 'active' : ''}`} // Añadir clase "active" cuando sea la ruta activa
-          onClick={() => navigate('/profile')}
+          className={`profile-btn ${isActive('/profile-view') ? 'active' : ''}`} // Añadir clase "active" cuando sea la ruta activa
+          onClick={() => navigate('/profile-view')}  // Navegar a la vista ProfileView
         >
           <div className="button-content">
             <img src={usuario} alt="Profile" className="icon" />

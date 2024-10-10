@@ -177,28 +177,28 @@ const Sensor = () => {
           className={`create-btn ${activeSection === 'create' ? 'active' : ''}`}
           onClick={() => setActiveSection('create')}
         >
-          <div className="button-content">CREATE Sensor</div>
+          <div className="button-content">Add Sensor</div>
         </button>
 
         <button
           className={`summary-btn ${activeSection === 'summary' ? 'active' : ''}`}
           onClick={() => setActiveSection('summary')}
         >
-          <div className="button-content">READ Sensors</div>
+          <div className="button-content">Sensors Summary</div>
         </button>
 
         <button
           className={`update-btn ${activeSection === 'update' ? 'active' : ''}`}
           onClick={() => setActiveSection('update')}
         >
-          <div className="button-content">UPDATE Sensors</div>
+          <div className="button-content">Modify Sensors Status</div>
         </button>
 
         <button
           className={`delete-btn ${activeSection === 'delete' ? 'active' : ''}`}
           onClick={() => setActiveSection('delete')}
         >
-          <div className="button-content">DELETE Sensors</div>
+          <div className="button-content">Delete Sensors</div>
         </button>
       </div>
 

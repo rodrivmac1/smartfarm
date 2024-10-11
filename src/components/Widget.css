@@ -1,75 +1,77 @@
-
 .widget {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 16px;
-    padding: 20px;
-    width: 368px; /* Ancho fijo */
-    height: 132px; /* Altura fija */
-    margin: 20px;
-    color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  .widget:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  .widget-content {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center; /* Alinear todos los elementos verticalmente */
-  }
-  
-  .widget-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .widget-title {
-    font-size: 16px; /* Poppins 16 */
-    font-weight: normal; /* Sin negrita */
-  }
-  
-  .widget-value {
-    font-size: 32px; /* Poppins 32 semibold */
-    font-weight: 600;
-    margin-top: 5px; /* Alinearlo más cerca del cambio */
-  }
-  
-  .widget-icon-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; /* Alinea los elementos a la derecha */
-    justify-content: space-between;
-    gap: 10px; /* Ajusta el espacio entre el ícono y el cambio */
-  }
-  
-  .widget-icon-frame {
-    width: 44px;
-    height: 36px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra en el marco */
-    background-color: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente */
-  }
-  
-  .widget-icon {
-    width: 24px;
-    height: 24px;
-    filter: brightness(0) invert(1); /* Icono blanco */
-  }
-  
-  .widget-change {
-    font-size: 18px; /* Poppins 18 */
-    color: white; /* Siempre blanco */
-    text-align: right;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 16px;
+  padding: 20px;
+  width: 100%; /* Ocuparán todo el ancho del contenedor */
+  min-width: 250px; /* Tamaño mínimo para asegurarse de que no se encojan demasiado */
+  height: auto; /* Ajustar la altura automáticamente */
+  margin: 10px; /* Reducir el margen entre widgets */
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease; /* Transiciones para varios efectos */
+  font-family: 'Poppins', sans-serif;
+  background-color: #333; /* Puedes ajustar el color de fondo */
+}
+
+.widget:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Aumenta la sombra al hacer hover */
+  background-color: #3a3a3a; /* Cambia ligeramente el color de fondo al hacer hover */
+  transform: scale(1.02); /* Escala el widget un poco para hacerlo más grande */
+}
+
+.widget-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center; /* Alinear todos los elementos verticalmente */
+}
+
+.widget-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.widget-title {
+  font-size: 16px; /* Poppins 16 */
+  font-weight: normal; /* Sin negrita */
+}
+
+.widget-value {
+  font-size: 32px; /* Poppins 32 semibold */
+  font-weight: 600;
+  margin-top: 5px; /* Alinearlo más cerca del cambio */
+}
+
+.widget-icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Alinea los elementos a la derecha */
+  justify-content: space-between;
+  gap: 10px; /* Ajusta el espacio entre el ícono y el cambio */
+}
+
+.widget-icon-frame {
+  width: 44px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra en el marco */
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente */
+}
+
+.widget-icon {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1); /* Icono blanco */
+}
+
+.widget-change {
+  font-size: 18px; /* Poppins 18 */
+  color: white; /* Siempre blanco */
+  text-align: right;
+}

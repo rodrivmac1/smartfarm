@@ -67,7 +67,7 @@ body {
   color: #888;
   width: 150px;
 }
-.info-field select,
+
 .info-field input {
   width: 100%;
   max-width: 300px;
@@ -84,10 +84,11 @@ body {
   border-bottom: 1px solid #00b74a;
 }
 
-.save-button {
+/* Botón estilo de ProfileView (edit-button) */
+button {
   width: 150px;
   padding: 10px;
-  background-color: #00b74a;
+  background-color: #00b74a; /* Verde claro */
   color: white;
   border: none;
   border-radius: 5px;
@@ -96,18 +97,59 @@ body {
   margin-top: 20px;
 }
 
-.save-button:hover {
-  background-color: #008c37;
+button:hover {
+  background-color: #008c37; /* Verde oscuro */
 }
 
-.save-button-text {
+button .edit-button-text {
   text-transform: uppercase;
   font-weight: bold;
 }
 
-
-.info-field select:focus {
-  outline: none;
-  border-bottom: 1px solid #00b74a;
+/* Botón para "Delete Profile" con estilo rojo */
+.delete-button {
+  width: 150px;
+  padding: 10px;
+  background-color: #ff4d4d; /* Rojo para delete */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
 }
 
+.delete-button:hover {
+  background-color: #cc0000; /* Rojo más oscuro para hover */
+}
+
+/* Campo de contraseña */
+.password-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #555;
+}
+
+.password-field input {
+  width: 100%;
+  max-width: 200px;
+  padding: 10px;
+  background-color: #2f2f2f;
+  border: none;
+  color: white;
+  font-size: 16px;
+  margin-left: 300px;
+}
+
+.toggle-password {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 10px; /* Reduce el tamaño de la fuente para que el icono sea más pequeño */
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 3px; /* Reduce el área del botón */
+}

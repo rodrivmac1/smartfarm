@@ -1,0 +1,35 @@
+/* Loading.css */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    position: absolute; /* Para superponer el gráfico de carga sobre cualquier otro contenido */
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0); /* Fondo transparente */
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    flex-direction: column;
+  }
+  
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 6px solid rgba(255, 255, 255, 0.3); /* Ajustar el color */
+    border-top: 6px solid #2E8B57; /* Cambia el color del borde superior al verde del proyecto */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: white; /* Texto blanco */
+  }
+  

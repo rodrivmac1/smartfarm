@@ -1,17 +1,18 @@
 import React, { useState } from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group"; // Importamos CSSTransition y TransitionGroup
 import "./Sensor.css";
 import "./Dashboard.css"; // Importamos el estilo de los botones desde Dashboard.css
 
 const Sensor = () => {
   // Datos de los sensores conectados
-  const sensors = [
+  const [sensors, setSensors] = useState([
     { port: "Port 1", sensor: "Humidity", status: "CONNECTED" },
     { port: "Port 2", sensor: "Temperature", status: "CONNECTED" },
     { port: "Port 3", sensor: "Soil Moisture", status: "DISCONNECTED" },
     { port: "Port 4", sensor: "Solar Light", status: "CONNECTED" },
     { port: "Port 5", sensor: "pH Level", status: "CONNECTED" },
     { port: "Port 6", sensor: "-", status: "NOT AVAILABLE" },
-  ];
+  ]);
 
   // Tipos de sensores para la lista desplegable en la vista CREATE
   const sensorTypes = ["Humidity", "Temperature", "Soil Moisture", "Solar Light", "pH Level"];
@@ -46,12 +47,20 @@ const Sensor = () => {
     });
   };
 
-  // Renderiza las diferentes secciones CREATE, UPDATE y READ
+  // Manejar eliminación de sensores en DELETE
+  const handleDeleteSensor = (port) => {
+    const updatedSensors = sensors.map((sensor) =>
+      sensor.port === port ? { ...sensor, sensor: "-", status: "NOT AVAILABLE" } : sensor
+    );
+    setSensors(updatedSensors);
+  };
+
+  // Renderiza las diferentes secciones CREATE, UPDATE, READ y DELETE
   const renderContent = () => {
     switch (activeSection) {
       case 'summary':
         return (
-          <div>
+          <div key="summary">
             <h2 className="sensor-title">Sensors Connected</h2>
             <table className="sensor-table">
               <thead>
@@ -84,7 +93,7 @@ const Sensor = () => {
       case 'create':
         const availablePorts = sensors.filter(sensor => sensor.sensor === "-");
         return (
-          <div>
+          <div key="create">
             <h2 className="sensor-title">Assign Sensor to Available Ports</h2>
             <table className="sensor-table">
               <thead>
@@ -114,7 +123,6 @@ const Sensor = () => {
                 ))}
               </tbody>
             </table>
-            {/* Botón para guardar los cambios */}
             <button className="save-button" onClick={() => console.log('Selected Sensors:', selectedSensors)}>
               Save Changes
             </button>
@@ -122,7 +130,7 @@ const Sensor = () => {
         );
       case 'update':
         return (
-          <div>
+          <div key="update">
             <h2 className="sensor-title">Update Sensor Status</h2>
             <table className="sensor-table">
               <thead>
@@ -156,10 +164,50 @@ const Sensor = () => {
                 ))}
               </tbody>
             </table>
-            {/* Botón para guardar los cambios */}
             <button
               className="save-button"
               onClick={() => console.log("Updated Sensor Statuses:", sensorStatuses)}
+            >
+              Save Changes
+            </button>
+          </div>
+        );
+      case 'delete':
+        return (
+          <div key="delete">
+            <h2 className="sensor-title">Delete Sensors</h2>
+            <table className="sensor-table">
+              <thead>
+                <tr>
+                  <th>Sensor</th>
+                  <th>Port</th>
+                  <th>Delete</th> {/* Cambia el encabezado a Delete */}
+                </tr>
+              </thead>
+              <tbody>
+                {sensors.map((sensor, index) => (
+                  <tr key={index}>
+                    <td>{sensor.sensor}</td>
+                    <td>{sensor.port}</td>
+                    <td>
+                      {sensor.status === "NOT AVAILABLE" ? (
+                        sensor.status
+                      ) : (
+                        <button
+                          className="delete-button1"
+                          onClick={() => handleDeleteSensor(sensor.port)}
+                        >
+                          🗑
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <button
+              className="save-button"
+              onClick={() => console.log("Sensors after delete:", sensors)}
             >
               Save Changes
             </button>
@@ -202,7 +250,15 @@ const Sensor = () => {
         </button>
       </div>
 
-      <div className="content-section">{renderContent()}</div>
+      <TransitionGroup className="content-section">
+        <CSSTransition
+          key={activeSection} // clave para identificar la sección
+          timeout={300}
+          classNames="fade"
+        >
+          {renderContent()}
+        </CSSTransition>
+      </TransitionGroup>
     </div>
   );
 };

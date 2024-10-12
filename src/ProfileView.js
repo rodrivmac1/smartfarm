@@ -9,7 +9,8 @@ const ProfileView = () => {
   const name = "Edmundo Linares";
   const email = "edmundo_zapatero10@gmail.com";
   const mobile = "248 - 125 - 9698";
-  const location = "Puebla";
+  const username = "edmundo10"; // Nuevo campo de username
+  const userType = "User"; // Nuevo campo de tipo de usuario
 
   // Función para manejar el clic en el botón de "Edit"
   const handleEditClick = () => {
@@ -33,23 +34,30 @@ const ProfileView = () => {
       <div className="profile-info">
         <div className="info-field">
           <label>Name</label>
-          <p>{name}</p> {/* Cambiado el input por p */}
+          <p>{name}</p>
+        </div>
+
+        <div className="info-field">
+          <label>Username</label>
+          <p>{username}</p> {/* Campo de username agregado */}
+        </div>
+
+        <div className="info-field">
+          <label>User type</label>
+          <p>{userType}</p> {/* Campo de tipo de usuario agregado */}
         </div>
 
         <div className="info-field">
           <label>Email account</label>
-          <p>{email}</p> {/* Cambiado el input por p */}
+          <p>{email}</p>
         </div>
 
         <div className="info-field">
           <label>Mobile number</label>
-          <p>{mobile}</p> {/* Cambiado el input por p */}
+          <p>{mobile}</p>
         </div>
 
-        <div className="info-field">
-          <label>Location</label>
-          <p>{location}</p> {/* Cambiado el input por p */}
-        </div>
+        
 
         <div className="info-field password-field">
           <label>Password</label>

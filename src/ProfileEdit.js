@@ -11,7 +11,8 @@ const Profile = () => {
   const [name, setName] = useState("Edmundo Linares");
   const [email, setEmail] = useState("edmundo_zapatero10@gmail.com");
   const [mobile, setMobile] = useState("248 - 125 - 9698");
-  const [location, setLocation] = useState("Puebla");
+  const [username, setUsername] = useState("edmundo10"); // Nuevo campo de username
+  const [userType, setUserType] = useState("User"); // Nuevo campo de tipo de usuario
   const [password, setPassword] = useState("mypassword123"); // Nueva contraseña
   const [showPassword, setShowPassword] = useState(false); // Estado para mostrar u ocultar la contraseña
 
@@ -21,7 +22,7 @@ const Profile = () => {
   // Función para manejar el guardado y redirigir a la vista de ProfileView
   const handleSave = () => {
     // Lógica para guardar los cambios (simulado con console.log)
-    console.log("Saved Profile Info:", { name, email, mobile, location, password });
+    console.log("Saved Profile Info:", { name, email, mobile, username, userType, password });
     
     // Mostrar el mensaje de "Profile saved!" y redirigir a ProfileView
     alert("Profile saved!");
@@ -75,6 +76,37 @@ const Profile = () => {
         </div>
 
         <div className="info-field">
+          <label>Username</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+
+        <div className="info-field">
+          <label>User Type</label>
+          <select
+            value={userType}
+            onChange={(e) => setUserType(e.target.value)}
+            style={{
+              width: '100%',
+              maxWidth: '300px',
+              padding: '10px',
+              backgroundColor: '#2f2f2f',
+              border: 'none',
+              color: 'white',
+              fontSize: '16px',
+              marginLeft: '10px',
+            }}
+          >
+            <option value="User">User</option>
+            <option value="Administrator">Administrator</option>
+            <option value="Super Administrator">Super Administrator</option>
+          </select>
+        </div>
+
+        <div className="info-field">
           <label>Email account</label>
           <input
             type="email"
@@ -89,15 +121,6 @@ const Profile = () => {
             type="text"
             value={mobile}
             onChange={(e) => setMobile(e.target.value)}
-          />
-        </div>
-
-        <div className="info-field">
-          <label>Location</label>
-          <input
-            type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
           />
         </div>
 

@@ -1,0 +1,26 @@
+/* transitions.css */
+
+/* Clase que se aplica cuando un componente está entrando */
+.fade-enter {
+    opacity: 0;
+    transform: translateY(10px); /* Comienza con el componente un poco desplazado hacia abajo */
+  }
+  
+  .fade-enter-active {
+    opacity: 1;
+    transform: translateY(0); /* Regresa a su posición normal */
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out; /* Duración y suavidad de la transición */
+  }
+  
+  /* Clase que se aplica cuando un componente está saliendo */
+  .fade-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .fade-exit-active {
+    opacity: 0;
+    transform: translateY(-10px); /* Se desplaza hacia arriba mientras desaparece */
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+  }
+  

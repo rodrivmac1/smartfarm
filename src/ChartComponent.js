@@ -7,10 +7,10 @@ Chart.register(...registerables);
 
 const ChartComponent = () => {
     const data = {
-        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
+        labels: ['January', 'February', 'March', 'April', 'May'],
         datasets: [
             {
-                label: 'Temperatura del Sensor (°C)',
+                label: 'Sensor Temperature (°C)',
                 data: [22, 19, 23, 25, 21],
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
@@ -61,7 +61,7 @@ const ChartComponent = () => {
             x: {
                 title: {
                     display: true,
-                    text: 'Meses',
+                    text: 'Months',
                     color: 'white', 
                     font: {
                         family: 'Poppins',
@@ -77,7 +77,7 @@ const ChartComponent = () => {
             y: {
                 title: {
                     display: true,
-                    text: 'Temperatura (°C)',
+                    text: 'Temperature (°C)',
                     color: 'white', 
                     font: {
                         family: 'Poppins',

@@ -11,11 +11,12 @@ const Header = () => {
       case "/dashboard":
         return "Dashboard";
       case "/add-sensor":
-        return "Sensores";
-      case "/profile":
+        return "Sensors";
+      case "/profile-view": // Ruta para ProfileView
+      case "/profile-edit": // Ruta para ProfileEdit
         return "Profile";
       default:
-        return "Página Desconocida"; // En caso de que la ruta no coincida
+        return "Unknown Page"; // En caso de que la ruta no coincida
     }
   };
 

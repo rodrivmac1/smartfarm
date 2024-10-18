@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom"; // Importar useNavigate para la 
 import "./ProfileEdit.css"; // Estilos generales
 import VentanaConfirmacion from './VentanaConfirmacion'; // Importamos el modal
 import "./VentanaConfirmacion.css";
+import { useTranslation } from 'react-i18next';
 
-const Profile = () => {
+const ProfileEdit = () => {
   const navigate = useNavigate(); // Hook para navegar de regreso a ProfileView
+  const { t } = useTranslation(); 
 
   // Definimos los valores de estado iniciales para cada campo
   const [name, setName] = useState("Edmundo Linares");
@@ -25,7 +27,7 @@ const Profile = () => {
     console.log("Saved Profile Info:", { name, email, mobile, username, userType, password });
     
     // Mostrar el mensaje de "Profile saved!" y redirigir a ProfileView
-    alert("Profile saved!");
+    alert(t('ProfileEdit.profileSaved'));
     navigate("/profile-view"); // Redirigir a la vista de ProfileView
   };
 
@@ -41,7 +43,7 @@ const Profile = () => {
 
   // Función para confirmar la eliminación del perfil
   const handleConfirmDelete = () => {
-    alert("Profile deleted");
+    alert(t('ProfileEdit.profileDeleted')); 
     setModalVisible(false);
     // Aquí puedes agregar la lógica de eliminación del perfil
   };
@@ -67,7 +69,7 @@ const Profile = () => {
 
       <div className="profile-info">
         <div className="info-field">
-          <label>Name</label>
+          <label>{t('ProfileEdit.name')}</label>
           <input
             type="text"
             value={name}
@@ -76,7 +78,7 @@ const Profile = () => {
         </div>
 
         <div className="info-field">
-          <label>Username</label>
+          <label>{t('ProfileEdit.username')}</label>
           <input
             type="text"
             value={username}
@@ -85,7 +87,7 @@ const Profile = () => {
         </div>
 
         <div className="info-field">
-          <label>User Type</label>
+          <label>{t('ProfileEdit.userType')}</label> 
           <select
             value={userType}
             onChange={(e) => setUserType(e.target.value)}
@@ -100,14 +102,14 @@ const Profile = () => {
               marginLeft: '10px',
             }}
           >
-            <option value="User">User</option>
-            <option value="Administrator">Administrator</option>
-            <option value="Super Administrator">Super Administrator</option>
+            <option value="User">{t('ProfileEdit.user')}</option>
+            <option value="Administrator">{t('ProfileEdit.administrator')}</option> 
+            <option value="Super Administrator">{t('ProfileEdit.superAdministrator')}</option>
           </select>
         </div>
 
         <div className="info-field">
-          <label>Email account</label>
+          <label>{t('ProfileEdit.emailAccount')}</label> 
           <input
             type="email"
             value={email}
@@ -116,7 +118,7 @@ const Profile = () => {
         </div>
 
         <div className="info-field">
-          <label>Mobile number</label>
+          <label>{t('ProfileEdit.mobileNumber')}</label> 
           <input
             type="text"
             value={mobile}
@@ -126,25 +128,25 @@ const Profile = () => {
 
         {/* Nuevo campo de contraseña */}
         <div className="info-field password-field">
-          <label>Password</label>
+          <label>{t('ProfileEdit.password')}</label>
           <input
             type={showPassword ? "text" : "password"} // Cambia el tipo de input según el estado
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <button className="toggle-password" onClick={toggleShowPassword}>
-            {showPassword ? "HIDE" : "SHOW"} {/* Icono para alternar la visibilidad */}
+            {showPassword ? t('ProfileEdit.hide') : t('ProfileEdit.show')}
           </button>
         </div>
       </div>
 
       <button className="save-button" onClick={handleSave}>
-        <span className="save-button-text">Save Changes</span>
+        <span className="save-button-text">{t('ProfileEdit.saveChanges')}</span> 
       </button>
 
       {/* Nuevo botón para eliminar el perfil */}
       <button className="delete-button" onClick={handleDeleteClick}>
-        DELETE PROFILE
+        {t('ProfileEdit.deleteProfile')} 
       </button>
 
       {/* Modal de confirmación */}
@@ -157,4 +159,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileEdit;

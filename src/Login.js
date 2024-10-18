@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import './Login.css';
-import Loading from './Loading'; // Importar el componente de pantalla de carga
+import Loading from './Loading';
 
 function Login() {
+  const { t } = useTranslation(); 
   const [loading, setLoading] = useState(false); // Estado para controlar la pantalla de carga
   const navigate = useNavigate();
 
@@ -29,25 +31,29 @@ function Login() {
         <Loading /> // Mostrar pantalla de carga si está en estado de carga
       ) : (
         <div className="login-box">
-          <h1 className="login-title">Login</h1>
+          <h1 className="login-title">{t('Login.login')}</h1>
           <form onSubmit={handleLogin}>
             <div className="input-group">
-              <label>Email or phone number</label>
-              <input type="text" placeholder="Enter your email or phone" />
+              <label>{t('Login.emailPhoneNumber')}</label>
+              <input type="text" placeholder={t('Login.enterEmailPhone')} />
             </div>
             <div className="input-group">
-              <label>Password</label>
-              <input type="password" placeholder="Enter your password" />
+              <label>{t('Login.password')}</label>
+              <input type="password" placeholder={t('Login.enterPassword')} />
             </div>
-            <button className="login-btn" type="submit">Sign in</button>
+            <button className="login-btn" type="submit">
+              {t('Login.signIn')}
+            </button>
             <div className="login-options">
               <label>
-                <input type="checkbox" /> Remember me
+                <input type="checkbox" /> {t('Login.rememberMe')}
               </label>
-              <a href="/" className="help-link">Need help?</a>
+              <a href="/" className="help-link">{t('Login.needHelp')}</a>
             </div>
             <div className="create-account">
-              <a href="/crearcuenta" onClick={handleCreateAccount} className="create-account-link">Create account</a>
+              <a href="/crearcuenta" onClick={handleCreateAccount} className="create-account-link">
+                {t('Login.createAccount')}
+              </a>
             </div>
           </form>
         </div>

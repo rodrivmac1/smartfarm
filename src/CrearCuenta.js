@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import "./CrearCuenta.css"; // Estilos generales
 import defaultUserImage from "./images/user.png"; // Importa la imagen por defecto
 
 const CrearCuenta = () => {
+  const { t } = useTranslation();
   const [name, setName] = useState(""); // Inicializa vacío
   const [username, setUsername] = useState(""); // Nuevo estado para usuario
   const [password, setPassword] = useState(""); // Nuevo estado para contraseña
@@ -11,7 +13,7 @@ const CrearCuenta = () => {
 
   const handleSave = () => {
     console.log("Saved Profile Info:", { name, username, password, email, mobile });
-    alert("Profile saved!");
+    alert(t('Crearcuenta.profileSaved')); // Mensaje de confirmación traducido
   };
 
   return (
@@ -30,59 +32,58 @@ const CrearCuenta = () => {
 
       <div className="crearcuenta-profile-info">
         <div className="crearcuenta-info-field">
-          <label>Full name</label>
+          <label>{t('Crearcuenta.fullName')}</label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Enter your full name" // Placeholder en lugar de contenido
+            placeholder={t('Crearcuenta.enterFullName')} 
           />
         </div>
 
         <div className="crearcuenta-info-field">
-          <label>Username</label>
+          <label>{t('Crearcuenta.username')}</label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter your username" // Placeholder para el nombre de usuario
+            placeholder={t('Crearcuenta.enterUsername')} 
           />
         </div>
 
         <div className="crearcuenta-info-field">
-          <label>Password</label>
+          <label>{t('Crearcuenta.password')}</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password" // Placeholder para la contraseña
+            placeholder={t('Crearcuenta.enterPassword')} 
           />
         </div>
 
         <div className="crearcuenta-info-field">
-          <label>Email account</label>
+          <label>{t('Crearcuenta.emailAccount')}</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email" // Placeholder en lugar de contenido
+            placeholder={t('Crearcuenta.enterEmail')}
           />
         </div>
 
         <div className="crearcuenta-info-field">
-          <label>Mobile number</label>
+          <label>{t('Crearcuenta.mobileNumber')}</label>
           <input
             type="text"
             value={mobile}
             onChange={(e) => setMobile(e.target.value)}
-            placeholder="Enter your mobile number" // Placeholder en lugar de contenido
+            placeholder={t('Crearcuenta.enterMobileNumber')} 
           />
         </div>
-
       </div>
 
       <button className="crearcuenta-save-button" onClick={handleSave}>
-        <span className="crearcuenta-save-button-text">Save</span>
+        <span className="crearcuenta-save-button-text">{t('Crearcuenta.save')}</span>
       </button>
     </div>
   );

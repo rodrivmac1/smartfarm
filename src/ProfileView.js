@@ -1,9 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Importar useNavigate para la navegación
 import "./ProfileEdit.css"; // Utiliza el mismo CSS de ProfileEdit para mantener el diseño
+import { useTranslation } from 'react-i18next';
 
 const ProfileView = () => {
   const navigate = useNavigate(); // Hook para la navegación
+  const { t } = useTranslation(); 
 
   // Valores de estado definidos directamente
   const name = "Edmundo Linares";
@@ -33,41 +35,39 @@ const ProfileView = () => {
 
       <div className="profile-info">
         <div className="info-field">
-          <label>Name</label>
+          <label>{t('ProfileView.name')}</label>
           <p>{name}</p>
         </div>
 
         <div className="info-field">
-          <label>Username</label>
+          <label>{t('ProfileView.username')}</label> 
           <p>{username}</p> {/* Campo de username agregado */}
         </div>
 
         <div className="info-field">
-          <label>User type</label>
+          <label>{t('ProfileView.userType')}</label> 
           <p>{userType}</p> {/* Campo de tipo de usuario agregado */}
         </div>
 
         <div className="info-field">
-          <label>Email account</label>
+          <label>{t('ProfileView.emailAccount')}</label> 
           <p>{email}</p>
         </div>
 
         <div className="info-field">
-          <label>Mobile number</label>
+          <label>{t('ProfileView.mobileNumber')}</label>
           <p>{mobile}</p>
         </div>
 
-        
-
         <div className="info-field password-field">
-          <label>Password</label>
+          <label>{t('ProfileView.password')}</label>
           <p>********</p> {/* Mostrar la contraseña oculta */}
         </div>
       </div>
 
       {/* Botón Edit para ir a la vista de edición */}
       <button className="edit-button" onClick={handleEditClick}>
-        Edit
+        {t('ProfileView.edit')} 
       </button>
     </div>
   );

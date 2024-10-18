@@ -6,10 +6,12 @@ import Header from './header';
 import Vector from './images/Vector.png';
 import boton from './images/boton.png';
 import usuario from './images/usuario.png';
+import { useTranslation } from 'react-i18next';
 
 const Layout = () => {
   const navigate = useNavigate();
   const location = useLocation(); // Obtener la ruta actual
+  const { t } = useTranslation(); 
 
   // Función para verificar si la ruta actual coincide
   const isActive = (path) => location.pathname === path;
@@ -18,7 +20,7 @@ const Layout = () => {
     <div className="dashboard-container" style={{ display: 'flex', height: '100vh' }}>
       {/* Sidebar común */}
       <div className="sidebar">
-        <h2>SmartFarm</h2>
+        <h2>{t('Layout.smartFarm')}</h2>
 
         {/* Botón de resumen */}
         <button
@@ -27,7 +29,7 @@ const Layout = () => {
         >
           <div className="button-content">
             <img src={Vector} alt="Icon" className="icon" />
-            Summary
+            {t('Layout.summary')} 
           </div>
         </button>
 
@@ -38,7 +40,7 @@ const Layout = () => {
         >
           <div className="button-content">
             <img src={boton} alt="Add Sensor" className="icon" />
-            Sensors
+            {t('Layout.sensors')}
           </div>
         </button>
 
@@ -49,7 +51,7 @@ const Layout = () => {
         >
           <div className="button-content">
             <img src={usuario} alt="Profile" className="icon" />
-            Profile
+            {t('Layout.profile')}
           </div>
         </button>
       </div>

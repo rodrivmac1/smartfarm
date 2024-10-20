@@ -1,102 +1,149 @@
 body {
-    background-color: #1a1a1a; /* Color de fondo gris oscuro */
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .app {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .content {
-    flex: 1;
-    padding: 40px;
-  }
-  
+  background-color: #1a1a1a; /* Color de fondo gris oscuro */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  padding: 40px;
+}
+
+.profile-container {
+  width: 800px;
+  background-color: #2a2a2a; /* Color ligeramente más claro que el fondo */
+  color: white;
+  padding: 40px;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 768px) {
   .profile-container {
-    width: 800px;
-    background-color: #2a2a2a; /* Color ligeramente más claro que el fondo */
-    color: white;
-    padding: 40px;
-    margin: 20px auto;
-    border-radius: 10px;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 20px; /* Reduce el padding para dispositivos móviles */
   }
-  
+
   .profile-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+    flex-direction: column; /* Alinear la imagen y los detalles en columna */
+    text-align: center; /* Centrar el contenido */
   }
-  
+
   .profile-picture {
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    margin-right: 15px;
+    margin-right: 0;
+    margin-bottom: 10px; /* Añadir espacio debajo de la imagen */
+    width: 100px; /* Ajustar el tamaño de la imagen en pantallas pequeñas */
+    height: 100px; /* Mantener las proporciones */
   }
-  
+
   .profile-details h2 {
-    margin: 0;
-    font-size: 22px;
+    font-size: 20px; /* Ajustar el tamaño de la fuente para móviles */
   }
-  
+
   .profile-details p {
-    margin: 0;
-    font-size: 16px;
-    color: #aaa;
+    font-size: 14px; /* Reducir el tamaño del texto en pantallas pequeñas */
   }
-  
-  .profile-info {
-    margin-top: 30px;
-  }
-  
+
   .info-field {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #555;
+    flex-direction: column; /* Colocar las etiquetas y textos uno encima del otro */
+    align-items: flex-start; /* Alinear el contenido a la izquierda */
   }
-  
+
   .info-field label {
-    font-size: 14px;
-    color: #888;
-    width: 150px;
+    width: 100%; /* Las etiquetas ocuparán el ancho completo */
+    margin-bottom: 10px; /* Añadir espacio debajo de las etiquetas */
   }
-  
+
   .info-field p {
-    width: 100%;
-    max-width: 300px;
-    padding: 10px;
-    background-color: #2f2f2f;
-    color: white;
-    font-size: 16px;
-    margin-left: 10px;
-    border-radius: 5px;
+    width: 100%; /* Los textos ocuparán todo el ancho disponible */
+    margin-left: 0; /* Eliminar el margen izquierdo */
   }
-  
+
   .edit-button {
-    width: 150px;
-    padding: 10px;
-    background-color: #00b74a;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
+    width: 100%; /* Asegurar que el botón ocupe todo el ancho disponible */
+    text-align: center; /* Centrar el texto del botón */
   }
-  
-  .edit-button:hover {
-    background-color: #008c37;
-  }
-  
-  .edit-button-text {
-    text-transform: uppercase;
-    font-weight: bold;
-  }
-  
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-right: 15px;
+}
+
+.profile-details h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.profile-details p {
+  margin: 0;
+  font-size: 16px;
+  color: #aaa;
+}
+
+.profile-info {
+  margin-top: 30px;
+}
+
+.info-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #555;
+}
+
+.info-field label {
+  font-size: 14px;
+  color: #888;
+  width: 150px;
+}
+
+.info-field p {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  background-color: #2f2f2f;
+  color: white;
+  font-size: 16px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.edit-button {
+  width: 150px;
+  padding: 10px;
+  background-color: #00b74a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.edit-button:hover {
+  background-color: #008c37;
+}
+
+.edit-button-text {
+  text-transform: uppercase;
+  font-weight: bold;
+}

@@ -25,6 +25,63 @@ body {
   border-radius: 10px;
 }
 
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 768px) {
+  .profile-container {
+    width: 100%; /* Ocupa el 100% del ancho disponible en pantallas pequeñas */
+    padding: 20px; /* Reducir el padding para dispositivos móviles */
+  }
+
+  .profile-header {
+    flex-direction: column; /* Alinear la imagen y los detalles en columna */
+    text-align: center; /* Centrar el contenido */
+  }
+
+  .profile-picture {
+    margin-right: 0;
+    margin-bottom: 10px; /* Añadir espacio debajo de la imagen */
+    width: 100px; /* Ajustar el tamaño de la imagen en pantallas pequeñas */
+    height: 100px; /* Mantener las proporciones */
+  }
+
+  .profile-details h2 {
+    font-size: 20px; /* Ajustar el tamaño de la fuente para móviles */
+  }
+
+  .profile-details p {
+    font-size: 14px; /* Reducir el tamaño del texto en pantallas pequeñas */
+  }
+
+  .info-field {
+    flex-direction: column; /* Colocar las etiquetas y campos uno encima del otro */
+    align-items: flex-start; /* Alinear el contenido a la izquierda */
+  }
+
+  .info-field label {
+    width: 100%; /* Ajustar las etiquetas al 100% del contenedor */
+    margin-bottom: 10px; /* Añadir espacio debajo de las etiquetas */
+  }
+
+  .info-field input {
+    width: 100%; /* Asegurar que los inputs ocupen todo el ancho disponible */
+    margin-left: 0; /* Eliminar el margen izquierdo en pantallas pequeñas */
+  }
+
+  .password-field {
+    flex-direction: column; /* Alinear el campo de contraseña y el botón de mostrar en columna */
+    align-items: flex-start; /* Alinear el contenido a la izquierda */
+  }
+
+  .password-field input {
+    margin-left: 0; /* Eliminar el margen para pantallas pequeñas */
+    width: 100%; /* Asegurar que el campo de contraseña ocupe todo el ancho disponible */
+  }
+
+  .toggle-password {
+    margin-left: 0;
+  }
+}
+
 .profile-header {
   display: flex;
   align-items: center;
@@ -84,6 +141,38 @@ body {
   border-bottom: 1px solid #00b74a;
 }
 
+/* Campo de contraseña */
+.password-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Alinear verticalmente al centro */
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #555;
+}
+
+.password-field input {
+  width: 100%; /* Ajustar al 100% del espacio disponible */
+  max-width: 300px; /* Mantener el mismo ancho máximo que los otros inputs */
+  padding: 10px;
+  background-color: #2f2f2f;
+  border: none;
+  color: white;
+  font-size: 16px;
+  margin-left: 10px; /* Espacio coherente con otros inputs */
+}
+
+/* Botón para mostrar/ocultar contraseña */
+.toggle-password {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 10px; /* Tamaño reducido del icono */
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 3px;
+}
+
 /* Botón estilo de ProfileView (edit-button) */
 button {
   width: 150px;
@@ -121,35 +210,4 @@ button .edit-button-text {
 
 .delete-button:hover {
   background-color: #cc0000; /* Rojo más oscuro para hover */
-}
-
-/* Campo de contraseña */
-.password-field {
-  display: flex;
-  justify-content: space-between;
-  align-items: left;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #555;
-}
-
-.password-field input {
-  width: 100%;
-  max-width: 200px;
-  padding: 10px;
-  background-color: #2f2f2f;
-  border: none;
-  color: white;
-  font-size: 16px;
-  margin-left: 300px;
-}
-
-.toggle-password {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 10px; /* Reduce el tamaño de la fuente para que el icono sea más pequeño */
-  cursor: pointer;
-  margin-left: 10px;
-  padding: 3px; /* Reduce el área del botón */
 }

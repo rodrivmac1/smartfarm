@@ -25,12 +25,13 @@
   border-radius: 10px;
 }
 
+/* Cambiar a columna y centrar */
 .crearcuenta-profile-header {
-    display: flex;
-    flex-direction: column; /* Cambia a columna para centrar */
-    align-items: center; /* Centra horizontalmente */
-    margin-bottom: 10px;
-  }  
+  display: flex;
+  flex-direction: column; /* Cambia a columna para centrar */
+  align-items: center; /* Centra horizontalmente */
+  margin-bottom: 10px;
+}
 
 .crearcuenta-profile-details h2 {
   margin: 0;
@@ -100,14 +101,79 @@
 }
 
 /*Estilo para imagen de profile*/
+.crearcuenta-profile-picture {
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;
+  transition: transform 0.2s; /* Efecto de transformación */
+}
+
+.crearcuenta-profile-picture:hover {
+  transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .crearcuenta-profile-container {
+    width: 90%; /* Reducir el ancho en pantallas pequeñas */
+    padding: 20px; /* Reducir el padding */
+  }
+
+  .crearcuenta-profile-header {
+    margin-bottom: 15px; /* Aumentar el espacio inferior */
+  }
+
+  .crearcuenta-profile-details h2 {
+    font-size: 20px; /* Ajustar el tamaño del texto */
+  }
+
+  .crearcuenta-info-field {
+    flex-direction: column; /* Cambiar la disposición a columna */
+    align-items: flex-start; /* Alinear los elementos a la izquierda */
+  }
+
+  .crearcuenta-info-field label {
+    width: 100%; /* Ocupa todo el ancho */
+    margin-bottom: 5px; /* Añadir espacio debajo del label */
+  }
+
+  .crearcuenta-info-field input {
+    width: 100%; /* Ajustar para que ocupe el 100% */
+    max-width: 100%; /* Sin límite en el ancho máximo */
+    margin-left: 0; /* Eliminar el margen izquierdo */
+  }
+
+  .crearcuenta-save-button {
+    width: 100%; /* Botón más ancho en pantallas pequeñas */
+  }
+
   .crearcuenta-profile-picture {
-    border-radius: 50%;
-    width: 130px;
-    height: 130px;
-    transition: transform 0.2s; /* Efecto de transformación */
+    width: 100px; /* Ajustar el tamaño de la imagen en pantallas pequeñas */
+    height: 100px;
   }
-  
-  .crearcuenta-profile-picture:hover {
-    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+}
+
+@media (max-width: 480px) {
+  .crearcuenta-profile-container {
+    width: 95%; /* Aumenta la adaptabilidad para pantallas extra pequeñas */
+    padding: 10px; /* Reduce más el padding */
   }
-  
+
+  .crearcuenta-profile-details h2 {
+    font-size: 18px; /* Reducir aún más el tamaño del texto */
+  }
+
+  .crearcuenta-info-field input {
+    padding: 8px; /* Reducir el padding de los inputs */
+  }
+
+  .crearcuenta-save-button {
+    width: 100%; /* Asegurar que el botón sea del ancho completo */
+    padding: 8px; /* Ajustar el tamaño del padding */
+  }
+
+  .crearcuenta-profile-picture {
+    width: 80px; /* Reducir más el tamaño de la imagen */
+    height: 80px;
+  }
+}

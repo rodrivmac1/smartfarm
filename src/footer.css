@@ -1,19 +1,45 @@
 .footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1f1f1f; 
-    color: #aaa;
-    
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f1f1f;
+  color: #aaa;
+  padding: 10px 20px; /* Añadir padding para darle espacio en dispositivos móviles */
+  flex-wrap: wrap; /* Permitir que los elementos se reacomoden en varias filas si es necesario */
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Alinear enlaces a la derecha en pantallas grandes */
+}
+
+.footer-right a {
+  color: #888;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.footer-right a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column; /* Cambiar los elementos a columna en lugar de fila */
+    align-items: center; /* Centrar los elementos */
+    text-align: center; /* Alinear el texto en el centro */
+    padding: 20px 10px; /* Ajustar el padding para más espacio */
+  }
+
+  .footer-right {
+    justify-content: center; /* Alinear los enlaces al centro */
+    margin-top: 10px; /* Añadir espacio entre los enlaces y el contenido anterior */
   }
 
   .footer-right a {
-    color: #888;
-    text-decoration: none;
-    margin-left: 20px;
+    margin-left: 10px; /* Reducir el espacio entre los enlaces */
+    margin-right: 10px; /* Añadir espacio entre los enlaces para pantallas pequeñas */
   }
-  
-  .footer-right a:hover {
-    text-decoration: underline;
-  }
-  
+}

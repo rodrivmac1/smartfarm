@@ -1,3 +1,4 @@
+/* Contenedor principal del login */
 .login-container {
   display: flex;
   justify-content: center;
@@ -106,7 +107,6 @@ button:hover {
   text-decoration: underline;
 }
 
-
 /* Logo de login */
 .logo-container {
   text-align: center; /* Centra el logotipo horizontalmente */
@@ -134,4 +134,63 @@ button:hover {
 .create-account-link:hover {
   text-decoration: underline; /* Subrayado al pasar el ratón */
   color: #000; /* Color más oscuro en hover */
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .login-box {
+    width: 90%; /* Reduce el ancho del contenedor en pantallas pequeñas */
+    padding: 1.5rem; /* Reduce el padding */
+  }
+
+  .login-title {
+    font-size: 20px; /* Ajusta el tamaño del título para pantallas pequeñas */
+  }
+
+  .input-group input {
+    padding: 8px; /* Reduce el padding del input */
+  }
+
+  button {
+    padding: 8px 15px; /* Ajusta el tamaño del botón */
+    font-size: 14px; /* Disminuye el tamaño de la fuente */
+  }
+
+  .login-options {
+    flex-direction: column; /* Coloca las opciones de login en columna */
+    text-align: center;
+  }
+
+  .login-options a {
+    margin-top: 10px; /* Añade espacio entre las opciones */
+  }
+
+  .login-logo {
+    max-width: 80px; /* Reduce el tamaño del logotipo en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .login-box {
+    width: 95%; /* Aumenta la adaptabilidad para pantallas extra pequeñas */
+    padding: 1rem; /* Reduce más el padding */
+  }
+
+  .login-title {
+    font-size: 18px; /* Reduce más el tamaño del título */
+  }
+
+  .input-group input {
+    padding: 6px; /* Ajusta aún más el padding del input */
+  }
+
+  button {
+    padding: 6px 10px; /* Ajusta más el tamaño del botón */
+    font-size: 12px; /* Reduce el tamaño de la fuente */
+  }
+
+  .login-options {
+    text-align: center;
+    flex-direction: column; /* Asegura que las opciones se vean bien en pantallas pequeñas */
+  }
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Importar useNavigate para redirigir
 import "./CrearCuenta.css"; // Estilos generales
 import defaultUserImage from "./images/user.png"; // Importa la imagen por defecto
 
@@ -9,9 +10,14 @@ const CrearCuenta = () => {
   const [email, setEmail] = useState(""); // Inicializa vacío
   const [mobile, setMobile] = useState(""); // Inicializa vacío
 
+  const navigate = useNavigate(); // Hook para redirigir al usuario
+
   const handleSave = () => {
     console.log("Saved Profile Info:", { name, username, password, email, mobile });
     alert("Profile saved!");
+
+    // Redirigir al usuario a la página de login
+    navigate("/"); // Cambia a la ruta de login ("/")
   };
 
   return (
@@ -35,7 +41,7 @@ const CrearCuenta = () => {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Enter your full name" // Placeholder en lugar de contenido
+            placeholder="Enter your full name"
           />
         </div>
 
@@ -45,7 +51,7 @@ const CrearCuenta = () => {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter your username" // Placeholder para el nombre de usuario
+            placeholder="Enter your username"
           />
         </div>
 
@@ -55,7 +61,7 @@ const CrearCuenta = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password" // Placeholder para la contraseña
+            placeholder="Enter your password"
           />
         </div>
 
@@ -65,7 +71,7 @@ const CrearCuenta = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email" // Placeholder en lugar de contenido
+            placeholder="Enter your email"
           />
         </div>
 
@@ -75,10 +81,9 @@ const CrearCuenta = () => {
             type="text"
             value={mobile}
             onChange={(e) => setMobile(e.target.value)}
-            placeholder="Enter your mobile number" // Placeholder en lugar de contenido
+            placeholder="Enter your mobile number"
           />
         </div>
-
       </div>
 
       <button className="crearcuenta-save-button" onClick={handleSave}>

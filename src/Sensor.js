@@ -8,14 +8,16 @@ const Sensor = () => {
   const { t } = useTranslation(); 
 
   // Datos de los sensores conectados
-  const [sensors, setSensors] = useState([
-    { port: "Port 1", sensor: "Humidity", status: "CONNECTED" },
-    { port: "Port 2", sensor: "Temperature", status: "CONNECTED" },
-    { port: "Port 3", sensor: "Soil Moisture", status: "DISCONNECTED" },
-    { port: "Port 4", sensor: "Solar Light", status: "CONNECTED" },
-    { port: "Port 5", sensor: "pH Level", status: "CONNECTED" },
-    { port: "Port 6", sensor: "-", status: "NOT AVAILABLE" },
-  ]);
+// Cambiar el estado de los sensores
+const [sensors, setSensors] = useState([
+  { port: t('Sensor.port1'), sensor: t('Sensor.humidity'), status: t('Sensor.connected') },
+  { port: t('Sensor.port2'), sensor: t('Sensor.temperature'), status: t('Sensor.connected') },
+  { port: t('Sensor.port3'), sensor: t('Sensor.soilMoisture'), status: t('Sensor.disconnected') },
+  { port: t('Sensor.port4'), sensor: t('Sensor.solarLight'), status: t('Sensor.connected') },
+  { port: t('Sensor.port5'), sensor: t('Sensor.phLevel'), status: t('Sensor.connected') },
+  { port: t('Sensor.port6'), sensor: "-", status: t('Sensor.notAvailable') }
+]);
+
 
   // Tipos de sensores para la lista desplegable en la vista CREATE
   const sensorTypes = [

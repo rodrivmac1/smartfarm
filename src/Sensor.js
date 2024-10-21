@@ -2,30 +2,28 @@ import React, { useState } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group"; // Importamos CSSTransition y TransitionGroup
 import { useTranslation } from 'react-i18next';
 import "./Sensor.css";
-import "./Dashboard.css"; // Importamos el estilo de los botones desde Dashboard.css
+import "./Dashboard.css"; 
 
 const Sensor = () => {
   const { t } = useTranslation(); 
 
-  // Datos de los sensores conectados
-// Cambiar el estado de los sensores
-const [sensors, setSensors] = useState([
-  { port: t('Sensor.port1'), sensor: t('Sensor.humidity'), status: t('Sensor.connected') },
-  { port: t('Sensor.port2'), sensor: t('Sensor.temperature'), status: t('Sensor.connected') },
-  { port: t('Sensor.port3'), sensor: t('Sensor.soilMoisture'), status: t('Sensor.disconnected') },
-  { port: t('Sensor.port4'), sensor: t('Sensor.solarLight'), status: t('Sensor.connected') },
-  { port: t('Sensor.port5'), sensor: t('Sensor.phLevel'), status: t('Sensor.connected') },
-  { port: t('Sensor.port6'), sensor: "-", status: t('Sensor.notAvailable') }
-]);
-
+  
+  const [sensors, setSensors] = useState([
+    { port: 'Sensor.port1', sensor: 'Sensor.humidity', status: 'Sensor.connected' },
+    { port: 'Sensor.port2', sensor: 'Sensor.temperature', status: 'Sensor.connected' },
+    { port: 'Sensor.port3', sensor: 'Sensor.soilMoisture', status: 'Sensor.disconnected' },
+    { port: 'Sensor.port4', sensor: 'Sensor.solarLight', status: 'Sensor.connected' },
+    { port: 'Sensor.port5', sensor: 'Sensor.phLevel', status: 'Sensor.connected' },
+    { port: 'Sensor.port6', sensor: '-', status: 'Sensor.notAvailable' }
+  ]);
 
   // Tipos de sensores para la lista desplegable en la vista CREATE
   const sensorTypes = [
-    t('Sensor.humidity'),
-    t('Sensor.temperature'),
-    t('Sensor.soilMoisture'),
-    t('Sensor.solarLight'),
-    t('Sensor.phLevel')
+    'Sensor.humidity',
+    'Sensor.temperature',
+    'Sensor.soilMoisture',
+    'Sensor.solarLight',
+    'Sensor.phLevel'
   ];
 
   // Estado para controlar qué contenido se muestra al hacer clic en un botón
@@ -61,7 +59,7 @@ const [sensors, setSensors] = useState([
   // Manejar eliminación de sensores en DELETE
   const handleDeleteSensor = (port) => {
     const updatedSensors = sensors.map((sensor) =>
-      sensor.port === port ? { ...sensor, sensor: "-", status: "NOT AVAILABLE" } : sensor
+      sensor.port === port ? { ...sensor, sensor: "-", status: "Sensor.notAvailable" } : sensor
     );
     setSensors(updatedSensors);
   };
@@ -84,16 +82,16 @@ const [sensors, setSensors] = useState([
               <tbody>
                 {sensors.map((sensor, index) => (
                   <tr key={index}>
-                    <td>{sensor.sensor}</td>
-                    <td>{sensor.port}</td>
+                    <td>{sensor.sensor !== '-' ? t(sensor.sensor) : '-'}</td>
+                    <td>{t(sensor.port)}</td>
                     <td
                       className={
-                        sensor.status === "CONNECTED"
-                          ? "status-ok"
-                          : "status-not-available"
+                        sensor.status === 'Sensor.connected'
+                          ? 'status-ok'
+                          : 'status-not-available'
                       }
                     >
-                      {sensor.status}
+                      {t(sensor.status)}
                     </td>
                   </tr>
                 ))}
@@ -116,7 +114,7 @@ const [sensors, setSensors] = useState([
               <tbody>
                 {availablePorts.map((sensor, index) => (
                   <tr key={index}>
-                    <td>{sensor.port}</td>
+                    <td>{t(sensor.port)}</td>
                     <td>
                       <select
                         onChange={(e) => handleSensorChange(sensor.port, e.target.value)}
@@ -125,7 +123,7 @@ const [sensors, setSensors] = useState([
                         <option value="" disabled>{t('Sensor.selectSensor')}</option>
                         {sensorTypes.map((type, idx) => (
                           <option key={idx} value={type}>
-                            {type}
+                            {t(type)}
                           </option>
                         ))}
                       </select>
@@ -154,11 +152,11 @@ const [sensors, setSensors] = useState([
               <tbody>
                 {sensors.map((sensor, index) => (
                   <tr key={index}>
-                    <td>{sensor.sensor}</td>
-                    <td>{sensor.port}</td>
+                    <td>{sensor.sensor !== '-' ? t(sensor.sensor) : '-'}</td>
+                    <td>{t(sensor.port)}</td>
                     <td>
-                      {sensor.status === "NOT AVAILABLE" ? (
-                        sensor.status
+                      {sensor.status === "Sensor.notAvailable" ? (
+                        t(sensor.status)
                       ) : (
                         <select
                           value={sensorStatuses[sensor.port]}
@@ -166,8 +164,8 @@ const [sensors, setSensors] = useState([
                             handleStatusChange(sensor.port, e.target.value)
                           }
                         >
-                          <option value="CONNECTED">{t('Sensor.connected')}</option>
-                          <option value="DISCONNECTED">{t('Sensor.disconnected')}</option>
+                          <option value="Sensor.connected">{t('Sensor.connected')}</option>
+                          <option value="Sensor.disconnected">{t('Sensor.disconnected')}</option>
                         </select>
                       )}
                     </td>
@@ -198,11 +196,11 @@ const [sensors, setSensors] = useState([
               <tbody>
                 {sensors.map((sensor, index) => (
                   <tr key={index}>
-                    <td>{sensor.sensor}</td>
-                    <td>{sensor.port}</td>
+                    <td>{sensor.sensor !== '-' ? t(sensor.sensor) : '-'}</td>
+                    <td>{t(sensor.port)}</td>
                     <td>
-                      {sensor.status === "NOT AVAILABLE" ? (
-                        sensor.status
+                      {sensor.status === "Sensor.notAvailable" ? (
+                        t(sensor.status)
                       ) : (
                         <button
                           className="delete-button1"

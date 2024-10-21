@@ -1,54 +1,50 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Importar useNavigate para la navegación
-import "./ProfileEdit.css"; // Estilos generales
-import VentanaConfirmacion from './VentanaConfirmacion'; // Importamos el modal
-import "./VentanaConfirmacion.css";
+import "./ProfileEdit.css"; // Asegúrate de tener los estilos necesarios
 
 const Profile = () => {
-  const navigate = useNavigate(); // Hook para navegar de regreso a ProfileView
+  // Estado inicial con los valores del perfil
+  const [profileData, setProfileData] = useState({
+    name: "user",
+    username: "user",
+    credential: "user",
+    contact: "2222222222",
+    language: "ENGLISH",
+    system: "dark", // Inicialmente dark
+    role: {
+      id: 1,
+      name: "SUPERADMIN",
+    },
+    email: "example@mail.com",
+  });
 
-  // Definimos los valores de estado iniciales para cada campo
-  const [name, setName] = useState("Edmundo Linares");
-  const [email, setEmail] = useState("edmundo_zapatero10@gmail.com");
-  const [mobile, setMobile] = useState("248 - 125 - 9698");
-  const [username, setUsername] = useState("edmundo10"); // Nuevo campo de username
-  const [userType, setUserType] = useState("User"); // Nuevo campo de tipo de usuario
-  const [password, setPassword] = useState("mypassword123"); // Nueva contraseña
-  const [showPassword, setShowPassword] = useState(false); // Estado para mostrar u ocultar la contraseña
-
-  // Estado para controlar la visibilidad del modal
-  const [isModalVisible, setModalVisible] = useState(false);
-
-  // Función para manejar el guardado y redirigir a la vista de ProfileView
-  const handleSave = () => {
-    // Lógica para guardar los cambios (simulado con console.log)
-    console.log("Saved Profile Info:", { name, email, mobile, username, userType, password });
-    
-    // Mostrar el mensaje de "Profile saved!" y redirigir a ProfileView
-    alert("Profile saved!");
-    navigate("/profile-view"); // Redirigir a la vista de ProfileView
-  };
+  // Estado para mostrar u ocultar la contraseña
+  const [showCredential, setShowCredential] = useState(false);
 
   // Función para alternar la visibilidad de la contraseña
-  const toggleShowPassword = () => {
-    setShowPassword(!showPassword);
+  const toggleShowCredential = () => {
+    setShowCredential(!showCredential);
   };
 
-  // Función para manejar el clic en "Eliminar perfil"
-  const handleDeleteClick = () => {
-    setModalVisible(true);
+  // Función para manejar cambios en los inputs
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setProfileData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
-  // Función para confirmar la eliminación del perfil
-  const handleConfirmDelete = () => {
-    alert("Profile deleted");
-    setModalVisible(false);
-    // Aquí puedes agregar la lógica de eliminación del perfil
+  // Función para manejar cambios en el campo del rol (User/Admin/Superadmin)
+  const handleRoleChange = (e) => {
+    setProfileData((prevState) => ({
+      ...prevState,
+      role: { ...prevState.role, name: e.target.value },
+    }));
   };
 
-  // Función para cancelar la eliminación
-  const handleCancelDelete = () => {
-    setModalVisible(false);
+  // Función para manejar el guardado de los datos
+  const handleSave = () => {
+    alert("Profile saved successfully!");
   };
 
   return (
@@ -60,8 +56,8 @@ const Profile = () => {
           className="profile-picture"
         />
         <div className="profile-details">
-          <h2>{name}</h2>
-          <p>{email}</p>
+          <h2>{profileData.name}</h2>
+          <p>{profileData.email}</p>
         </div>
       </div>
 
@@ -70,8 +66,9 @@ const Profile = () => {
           <label>Name</label>
           <input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            name="name"
+            value={profileData.name}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -79,80 +76,86 @@ const Profile = () => {
           <label>Username</label>
           <input
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            name="username"
+            value={profileData.username}
+            onChange={handleInputChange}
           />
         </div>
 
         <div className="info-field">
-          <label>User Type</label>
+          <label>Credential</label>
+          <input
+            type={showCredential ? "text" : "password"}
+            name="credential"
+            value={profileData.credential}
+            onChange={handleInputChange}
+          />
+          <button className="toggle-password" onClick={toggleShowCredential}>
+            {showCredential ? "HIDE" : "SHOW"}
+          </button>
+        </div>
+
+        <div className="info-field">
+          <label>Contact</label>
+          <input
+            type="text"
+            name="contact"
+            value={profileData.contact}
+            onChange={handleInputChange}
+          />
+        </div>
+
+        <div className="info-field">
+          <label>Language</label>
           <select
-            value={userType}
-            onChange={(e) => setUserType(e.target.value)}
-            style={{
-              width: '100%',
-              maxWidth: '300px',
-              padding: '10px',
-              backgroundColor: '#2f2f2f',
-              border: 'none',
-              color: 'white',
-              fontSize: '16px',
-              marginLeft: '10px',
-            }}
+            name="language"
+            value={profileData.language}
+            onChange={handleInputChange}
           >
-            <option value="User">User</option>
-            <option value="Administrator">Administrator</option>
-            <option value="Super Administrator">Super Administrator</option>
+            <option value="ENGLISH">English</option>
+            <option value="SPANISH">Spanish</option>
           </select>
         </div>
 
         <div className="info-field">
-          <label>Email account</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <label>System</label>
+          <select
+            name="system"
+            value={profileData.system}
+            onChange={handleInputChange}
+          >
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+          </select>
         </div>
 
         <div className="info-field">
-          <label>Mobile number</label>
-          <input
-            type="text"
-            value={mobile}
-            onChange={(e) => setMobile(e.target.value)}
-          />
+          <label>Role</label>
+          <select
+            name="role"
+            value={profileData.role.name}
+            onChange={handleRoleChange}
+          >
+            <option value="USER">User</option>
+            <option value="ADMIN">Admin</option>
+            <option value="SUPERADMIN">Super Admin</option>
+          </select>
         </div>
 
-        {/* Nuevo campo de contraseña */}
-        <div className="info-field password-field">
-          <label>Password</label>
+        <div className="info-field">
+          <label>Email</label>
           <input
-            type={showPassword ? "text" : "password"} // Cambia el tipo de input según el estado
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            type="email"
+            name="email"
+            value={profileData.email}
+            onChange={handleInputChange}
           />
-          <button className="toggle-password" onClick={toggleShowPassword}>
-            {showPassword ? "HIDE" : "SHOW"} {/* Icono para alternar la visibilidad */}
-          </button>
         </div>
       </div>
 
       <button className="save-button" onClick={handleSave}>
-        <span className="save-button-text">Save Changes</span>
+        Save Changes
       </button>
-
-      {/* Nuevo botón para eliminar el perfil */}
-      <button className="delete-button" onClick={handleDeleteClick}>
-        DELETE PROFILE
-      </button>
-
-      {/* Modal de confirmación */}
-      <VentanaConfirmacion
-        show={isModalVisible}
-        onConfirm={handleConfirmDelete}
-        onCancel={handleCancelDelete}
-      />
     </div>
   );
 };

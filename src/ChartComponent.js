@@ -1,17 +1,16 @@
-// ChartComponent.js
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);
 
-const ChartComponent = () => {
-    const data = {
-        labels: ['January', 'February', 'March', 'April', 'May'],
+const ChartComponent = ({ data, labels, label }) => {
+    const chartData = {
+        labels: labels, // Fechas dinámicas
         datasets: [
             {
-                label: 'Sensor Temperature (°C)',
-                data: [22, 19, 23, 25, 21],
+                label: label || 'Sensor Data',
+                data: data, // Datos dinámicos
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderWidth: 2,
@@ -41,7 +40,7 @@ const ChartComponent = () => {
                             label += ': ';
                         }
                         if (context.parsed.y !== null) {
-                            label += context.parsed.y + ' °C';
+                            label += context.parsed.y;
                         }
                         return label;
                     }
@@ -61,7 +60,7 @@ const ChartComponent = () => {
             x: {
                 title: {
                     display: true,
-                    text: 'Months',
+                    text: 'Dates',
                     color: 'white', 
                     font: {
                         family: 'Poppins',
@@ -77,7 +76,7 @@ const ChartComponent = () => {
             y: {
                 title: {
                     display: true,
-                    text: 'Temperature (°C)',
+                    text: 'Value',
                     color: 'white', 
                     font: {
                         family: 'Poppins',
@@ -95,7 +94,7 @@ const ChartComponent = () => {
 
     return (
         <div className="chart-wrapper">
-            <Line data={data} options={options} />
+            <Line data={chartData} options={options} />
         </div>
     );
 };

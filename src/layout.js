@@ -6,6 +6,7 @@ import Header from './header';
 import Vector from './images/dashboard.svg';
 import boton from './images/add.svg';
 import usuario from './images/profile.svg';
+import logOut from './images/out.svg';
 
 const Layout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado para controlar la visibilidad de la barra lateral
@@ -18,6 +19,13 @@ const Layout = () => {
   // Función para alternar la visibilidad de la barra lateral
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  // Función para manejar el logout
+  const handleLogout = () => {
+    // Aquí puedes agregar la lógica para limpiar el estado de autenticación, eliminar tokens, etc.
+    localStorage.removeItem('token'); // Por ejemplo, eliminamos el token de autenticación
+    navigate('/login'); // Redirigir a la página de inicio de sesión
   };
 
   return (
@@ -59,6 +67,17 @@ const Layout = () => {
           <div className="button-content">
             <img src={usuario} alt="Profile" className="icon" />
             Profile
+          </div>
+        </button>
+
+        {/* Botón de Logout */}
+        <button
+          className="logout-btn" // Clase específica para el botón de logout
+          onClick={() => navigate('')}
+        >
+          <div className="button-content">
+            <img src={logOut} alt="Logout" className="icon" />
+            Logout
           </div>
         </button>
       </div>

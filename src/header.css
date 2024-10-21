@@ -16,3 +16,51 @@
   cursor: pointer;
   color: #aaa;
 }
+.notification-icon {
+  position: relative;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 8px;
+  font-size: 12px;
+}
+.notification-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  background-color: #333;
+  color: white;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  width: 200px;
+}
+
+.notification-dropdown h4 {
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+}
+
+.notification-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-dropdown li {
+  margin: 10px 0;
+}
+
+.notification-dropdown p {
+  margin: 0;
+}

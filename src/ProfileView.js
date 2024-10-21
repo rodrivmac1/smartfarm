@@ -1,21 +1,61 @@
-import React from "react";
-import { useNavigate } from "react-router-dom"; // Importar useNavigate para la navegación
-import "./ProfileEdit.css"; // Utiliza el mismo CSS de ProfileEdit para mantener el diseño
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./ProfileEdit.css";
 
 const ProfileView = () => {
-  const navigate = useNavigate(); // Hook para la navegación
+  const navigate = useNavigate();
+  const [profileData, setProfileData] = useState({
+    name: "",
+    email: "",
+    contact: "",
+  });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Valores de estado definidos directamente
-  const name = "Edmundo Linares";
-  const email = "edmundo_zapatero10@gmail.com";
-  const mobile = "248 - 125 - 9698";
-  const username = "edmundo10"; // Nuevo campo de username
-  const userType = "User"; // Nuevo campo de tipo de usuario
+  // Función para obtener los datos del perfil desde la API
+  const fetchProfileData = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/users/profile", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
 
-  // Función para manejar el clic en el botón de "Edit"
-  const handleEditClick = () => {
-    navigate("/profile-edit"); // Redirige a la vista de edición
+      if (response.ok) {
+        const data = await response.json();
+
+        // Asegúrate de que los campos necesarios están presentes en la respuesta
+        setProfileData({
+          name: data.name || "User",
+          email: data.email || "example@mail.com",
+          contact: data.contact || "2222222222",
+        });
+        setLoading(false);
+      } else {
+        setError("Error fetching profile data");
+        setLoading(false);
+      }
+    } catch (err) {
+      setError("Error fetching profile data");
+      setLoading(false);
+    }
   };
+
+  useEffect(() => {
+    fetchProfileData();
+  }, []);
+
+  const handleEditClick = () => {
+    navigate("/profile-edit");
+  };
+
+  if (loading) {
+    return <div>Loading profile...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className="profile-container content">
@@ -26,46 +66,28 @@ const ProfileView = () => {
           className="profile-picture"
         />
         <div className="profile-details">
-          <h2>{name}</h2>
-          <p>{email}</p>
+          <h2>{profileData.name}</h2>
+          <p>{profileData.email}</p>
         </div>
       </div>
 
       <div className="profile-info">
         <div className="info-field">
           <label>Name</label>
-          <p>{name}</p>
-        </div>
-
-        <div className="info-field">
-          <label>Username</label>
-          <p>{username}</p> {/* Campo de username agregado */}
-        </div>
-
-        <div className="info-field">
-          <label>User type</label>
-          <p>{userType}</p> {/* Campo de tipo de usuario agregado */}
+          <p>{profileData.name}</p>
         </div>
 
         <div className="info-field">
           <label>Email account</label>
-          <p>{email}</p>
+          <p>{profileData.email}</p>
         </div>
 
         <div className="info-field">
           <label>Mobile number</label>
-          <p>{mobile}</p>
-        </div>
-
-        
-
-        <div className="info-field password-field">
-          <label>Password</label>
-          <p>********</p> {/* Mostrar la contraseña oculta */}
+          <p>{profileData.contact}</p>
         </div>
       </div>
 
-      {/* Botón Edit para ir a la vista de edición */}
       <button className="edit-button" onClick={handleEditClick}>
         Edit
       </button>

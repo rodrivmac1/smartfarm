@@ -1,0 +1,128 @@
+{
+    "Login": {
+      "login": "Login",
+      "emailPhoneNumber": "Email",
+      "enterEmailPhone": "Enter your email",
+      "password": "Password",
+      "enterPassword": "Enter your password",
+      "signIn": "Sign in",
+      "rememberMe": "Remember me",
+      "needHelp": "Need help?",
+      "createAccount": "Create account"
+    },
+    "Crearcuenta": {
+      "fullName": "Full name",
+      "enterFullName": "Enter your full name",
+      "username": "Username",
+      "enterUsername": "Enter your username",
+      "password": "Password",
+      "enterPassword": "Enter your password",
+      "emailAccount": "Email account",
+      "enterEmail": "Enter your email",
+      "mobileNumber": "Mobile number",
+      "enterMobileNumber": "Enter your mobile number",
+      "save": "Save",
+      "profileSaved": "Profile saved"
+    },
+    "Loading": {
+      "loading": "Loading"
+    },
+    "ChartComponent": {
+      "january": "January",
+      "february": "February",
+      "march": "March",
+      "april": "April",
+      "may": "May",
+      "sensorTemperature": "Sensor temperature (°C)",
+      "months": "Months",
+      "temperature": "Temperature (°C)"
+    },
+    "Dashboard": {
+      "activeSensors": "Active Sensors: 5",
+      "temperature": "Temperature: 19.3°C (+0.7)",
+      "airHumidity": "Air Humidity: 43% (-4.7)",
+      "soilMoisture": "Soil Moisture: 63% (+7.9)",
+      "solarLight": "Solar Light: LOW",
+      "phLevel": "PH Level: 6.5 (+7.9)"
+    },
+    "Footer": {
+      "about": "About",
+      "support": "Support",
+      "contactUs": "Contact Us"
+    },
+    "Header": {
+      "dashboardRoute": "Dashboards / Dashboard",
+      "addSensorRoute": "Dashboards / Sensors",
+      "profileRoute": "Dashboards / Profile",
+      "unknownPageRoute": "Dashboards / Unknown Page"
+    },
+    "Layout": {
+      "smartFarm": "SmartFarm",
+      "summary": "Summary",
+      "sensors": "Sensors",
+      "profile": "Profile"
+    },
+    "ProfileEdit": {
+      "name": "Name",
+      "username": "Username",
+      "userType": "User Type",
+      "user": "User",
+      "administrator": "Administrator",
+      "superAdministrator": "Super administrator",
+      "emailAccount": "Email account",
+      "mobileNumber": "Mobile number",
+      "password": "Password",
+      "show": "SHOW",
+      "hide": "HIDE",
+      "saveChanges": "Save Changes",
+      "deleteProfile": "DELETE PROFILE",
+      "profileSaved": "Profile saved"
+    },
+    "ProfileView": {
+      "name": "Name",
+      "username": "Username",
+      "userType": "User Type",
+      "user": "User",
+      "emailAccount": "Email account",
+      "mobileNumber": "Mobile number",
+      "password": "Password",
+      "edit": "Edit"
+    },
+    "Sensor": {
+      "addSensor": "Add sensor",
+      "assignSensor": "Assign sensor to available ports",
+      "port": "Port",
+      "sensorType": "Sensor Type",
+      "port1": "Port 1",
+      "port2": "Port 2",
+      "port3": "Port 3",
+      "port4": "Port 4",
+      "port5": "Port 5",
+      "port6": "Port 6",
+      "selectSensor": "Select sensor",
+      "humidity": "Humidity",
+      "temperature": "Temperature",
+      "soilMoisture": "Soil moisture",
+      "solarLight": "Solar light",
+      "phLevel": "pH level",
+      "saveChanges": "Save changes",
+      "sensorsSummary": "Sensors summary",
+      "sensorsConnected": "Sensors connected",
+      "sensor": "Sensor",
+      "working": "Working",
+      "connected": "Connected",
+      "disconnected": "Disconnected",
+      "modifySensorStatus": "Modify sensor status",
+      "updateSensorStatus": "Update sensor status",
+      "status": "Status",
+      "notAvailable": "Not available",
+      "deleteSensors": "Delete sensors",
+      "delete": "Delete"
+    },
+    "VentanaConfirmacion": {
+      "confirmDeleteProfile": "Are you sure you want to delete this profile?",
+      "yes": "Yes",
+      "no": "No"
+    }
+  }
+  

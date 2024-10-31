@@ -1,61 +1,69 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./ProfileEdit.css";
+import { useTranslation } from 'react-i18next';
+import "./ProfileEdit.css"; 
+import VentanaConfirmacion from './VentanaConfirmacion'; // Importar el modal de confirmación
+import "./VentanaConfirmacion.css";
 
-const ProfileView = () => {
-  const navigate = useNavigate();
+const Profile = () => {
+  const navigate = useNavigate(); // Hook para la navegación
+  const { t } = useTranslation();
+  // Estado inicial con los valores del perfil
   const [profileData, setProfileData] = useState({
-    name: "",
-    email: "",
-    contact: "",
+    name: "user",
+    username: "user",
+    credential: "user",
+    contact: "2222222222",
+    language: "ENGLISH",
+    system: "dark", // Inicialmente dark
+    role: {
+      id: 1,
+      name: "SUPERADMIN",
+    },
+    email: "example@mail.com",
   });
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  // Función para obtener los datos del perfil desde la API
-  const fetchProfileData = async () => {
-    try {
-      const response = await fetch("http://localhost:8080/api/users/profile", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+  const [showCredential, setShowCredential] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(false);
 
-      if (response.ok) {
-        const data = await response.json();
-
-        // Asegúrate de que los campos necesarios están presentes en la respuesta
-        setProfileData({
-          name: data.name || "User",
-          email: data.email || "example@mail.com",
-          contact: data.contact || "2222222222",
-        });
-        setLoading(false);
-      } else {
-        setError("Error fetching profile data");
-        setLoading(false);
-      }
-    } catch (err) {
-      setError("Error fetching profile data");
-      setLoading(false);
-    }
+  const toggleShowCredential = () => {
+    setShowCredential(!showCredential);
   };
 
-  useEffect(() => {
-    fetchProfileData();
-  }, []);
-
-  const handleEditClick = () => {
-    navigate("/profile-edit");
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setProfileData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
-  if (loading) {
-    return <div>Loading profile...</div>;
-  }
+  const handleRoleChange = (e) => {
+    setProfileData((prevState) => ({
+      ...prevState,
+      role: { ...prevState.role, name: e.target.value },
+    }));
+  };
 
-  if (error) {
-    return <div>{error}</div>;
-  }
+  const handleSave = () => {
+    alert(t('ProfileEdit.profileSaved'));
+    console.log("Profile saved:", profileData);
+    navigate("/profile-view");
+  };
+
+  const handleDeleteClick = () => {
+    setModalVisible(true);
+  };
+
+  const handleConfirmDelete = () => {
+    alert(t('ProfileEdit.profileDeleted'));
+    setModalVisible(false);
+    // Lógica de eliminación del perfil
+  };
+
+  const handleCancelDelete = () => {
+    setModalVisible(false);
+  };
 
   return (
     <div className="profile-container content">
@@ -73,26 +81,111 @@ const ProfileView = () => {
 
       <div className="profile-info">
         <div className="info-field">
-          <label>Name</label>
-          <p>{profileData.name}</p>
+          <label>{t('ProfileEdit.name')}</label>
+          <input
+            type="text"
+            name="name"
+            value={profileData.name}
+            onChange={handleInputChange}
+          />
         </div>
 
         <div className="info-field">
-          <label>Email account</label>
-          <p>{profileData.email}</p>
+          <label>{t('ProfileEdit.username')}</label>
+          <input
+            type="text"
+            name="username"
+            value={profileData.username}
+            onChange={handleInputChange}
+          />
         </div>
 
         <div className="info-field">
-          <label>Mobile number</label>
-          <p>{profileData.contact}</p>
+          <label>{t('ProfileEdit.credential')}</label>
+          <input
+            type={showCredential ? "text" : "password"}
+            name="credential"
+            value={profileData.credential}
+            onChange={handleInputChange}
+          />
+          <button className="toggle-password" onClick={toggleShowCredential}>
+            {showCredential ? t('ProfileEdit.hide') : t('ProfileEdit.show')}
+          </button>
+        </div>
+
+        <div className="info-field">
+          <label>{t('ProfileEdit.contact')}</label>
+          <input
+            type="text"
+            name="contact"
+            value={profileData.contact}
+            onChange={handleInputChange}
+          />
+        </div>
+
+        <div className="info-field">
+          <label>{t('ProfileEdit.language')}</label>
+          <select
+            name="language"
+            value={profileData.language}
+            onChange={handleInputChange}
+          >
+            <option value="ENGLISH">{t('ProfileEdit.english')}</option>
+            <option value="SPANISH">{t('ProfileEdit.spanish')}</option>
+          </select>
+        </div>
+
+        <div className="info-field">
+          <label>{t('ProfileEdit.system')}</label>
+          <select
+            name="system"
+            value={profileData.system}
+            onChange={handleInputChange}
+          >
+            <option value="dark">{t('ProfileEdit.dark')}</option>
+            <option value="light">{t('ProfileEdit.light')}</option>
+          </select>
+        </div>
+
+        <div className="info-field">
+          <label>{t('ProfileEdit.role')}</label>
+          <select
+            name="role"
+            value={profileData.role.name}
+            onChange={handleRoleChange}
+          >
+            <option value="USER">{t('ProfileEdit.user')}</option>
+            <option value="ADMIN">{t('ProfileEdit.administrator')}</option>
+            <option value="SUPERADMIN">{t('ProfileEdit.superAdministrator')}</option>
+          </select>
+        </div>
+
+        <div className="info-field">
+          <label>{t('ProfileEdit.emailAccount')}</label>
+          <input
+            type="email"
+            name="email"
+            value={profileData.email}
+            onChange={handleInputChange}
+          />
         </div>
       </div>
 
-      <button className="edit-button" onClick={handleEditClick}>
-        Edit
+      <button className="save-button" onClick={handleSave}>
+        {t('ProfileEdit.saveChanges')}
       </button>
+
+      <button className="delete-button" onClick={handleDeleteClick}>
+        {t('ProfileEdit.deleteProfile')}
+      </button>
+
+      <VentanaConfirmacion
+        show={isModalVisible}
+        onConfirm={handleConfirmDelete}
+        onCancel={handleCancelDelete}
+      />
     </div>
   );
 };
 
-export default ProfileView;
+export default Profile;

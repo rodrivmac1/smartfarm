@@ -43,10 +43,10 @@ const Sensor = () => {
         setError('Error fetching sensors');
       }
     } catch (error) {
-      consoleerror('Error fetching sensors:', error);
+      console.error('Error fetching sensors:', error);
       setError('Error fetching sensors');
   };
-
+  };
   useEffect(() => {
     fetchSensors();
   }, [token]);
@@ -348,6 +348,5 @@ const Sensor = () => {
       </TransitionGroup>
     </div>
   );
-};
 };
 export default Sensor;

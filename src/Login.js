@@ -67,34 +67,34 @@ function Login() {
           <h1 className="login-title">Login</h1>
           <form onSubmit={handleLogin}>
             <div className="input-group">
-              <label>Nombre de Usuario</label>
+              <label>username</label>
               <input
                 type="text"
-                placeholder="Ingresa tu nombre de usuario"
+                placeholder="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)} 
                 required
               />
             </div>
             <div className="input-group">
-              <label>Contraseña</label>
+              <label>password</label>
               <input
                 type="password"
-                placeholder="Ingresa tu contraseña"
+                placeholder="password"
                 value={credential}
                 onChange={(e) => setCredential(e.target.value)}  
                 required
               />
             </div>
-            <button className="login-btn" type="submit">Iniciar Sesión</button>
+            <button className="login-btn" type="submit">Login</button>
             <div className="login-options">
               <label>
-                <input type="checkbox" /> Recuérdame
+                <input type="checkbox" /> Remember me
               </label>
-              <a href="/" className="help-link">¿Necesitas ayuda?</a>
+              <a href="/" className="help-link">¿Need help?</a>
             </div>
             <div className="create-account">
-              <a href="/crearcuenta" onClick={handleCreateAccount} className="create-account-link">Crear cuenta</a>
+              <a href="/crearcuenta" onClick={handleCreateAccount} className="create-account-link">Create account</a>
             </div>
           </form>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import "./ProfileEdit.css"; 
@@ -8,6 +8,7 @@ import "./VentanaConfirmacion.css";
 const Profile = () => {
   const navigate = useNavigate(); // Hook para la navegación
   const { t } = useTranslation();
+
   // Estado inicial con los valores del perfil
   const [profileData, setProfileData] = useState({
     name: "user",
@@ -15,7 +16,7 @@ const Profile = () => {
     credential: "user",
     contact: "2222222222",
     language: "ENGLISH",
-    system: "dark", // Inicialmente dark
+    system: "dark",
     role: {
       id: 1,
       name: "SUPERADMIN",
@@ -25,6 +26,8 @@ const Profile = () => {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [showCredential, setShowCredential] = useState(false); // Estado para mostrar/ocultar contraseña
 
   // Obtén el token y userId del almacenamiento local
   const token = localStorage.getItem("token");
@@ -50,8 +53,13 @@ const Profile = () => {
 
         setProfileData({
           name: data.name || "",
-          email: data.email || "",
+          username: data.username || "",
+          credential: data.credential || "",
           contact: data.contact || "",
+          language: data.language || "ENGLISH",
+          system: data.system || "dark",
+          role: data.role || { id: 1, name: "SUPERADMIN" },
+          email: data.email || "",
         });
         setLoading(false);
       } else {
@@ -62,6 +70,23 @@ const Profile = () => {
       setError("Error fetching profile data");
       setLoading(false);
     }
+  };
+
+  useEffect(() => {
+    fetchProfileData();
+  }, []);
+
+  // Función para manejar cambios en los inputs
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setProfileData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const toggleShowCredential = () => {
+    setShowCredential(!showCredential);
   };
 
   const handleRoleChange = (e) => {
@@ -90,6 +115,14 @@ const Profile = () => {
   const handleCancelDelete = () => {
     setModalVisible(false);
   };
+
+  if (loading) {
+    return <div>Loading profile...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className="profile-container content">

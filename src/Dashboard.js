@@ -11,13 +11,13 @@ function Dashboard() {
   const [availableDates, setAvailableDates] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
   const [error, setError] = useState(null);
+  const [activeSensorCount, setActiveSensorCount] = useState(0); // Estado para contar los sensores activos
 
   const token = localStorage.getItem('token');
 
   useEffect(() => {
     const fetchDailyStatsData = async () => {
       try {
-
         const response = await fetch('http://3.14.69.183:8080/api/stats/daily-stats', {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -42,7 +42,6 @@ function Dashboard() {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-
         });
 
         if (response.ok) {
@@ -52,7 +51,6 @@ function Dashboard() {
           // Extraer y establecer las fechas únicas disponibles
           const dates = [...new Set(data.map(item => item.date.split("T")[0]))];
           setAvailableDates(dates);
-
         } else {
           setError('Error fetching sensor stats data');
         }
@@ -62,10 +60,33 @@ function Dashboard() {
       }
     };
 
+    // Fetch active sensors count
+    const fetchActiveSensors = async () => {
+      try {
+        const response = await fetch('http://3.14.69.183:8080/api/sensors', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          // Filtrar sensores con status: true
+          const activeSensors = data.filter(sensor => sensor.status === true);
+          setActiveSensorCount(activeSensors.length); // Actualizar el conteo de sensores activos
+        } else {
+          setError('Error fetching sensors');
+        }
+      } catch (error) {
+        console.error('Error fetching sensors:', error);
+        setError('Error fetching sensors');
+      }
+    };
+
     fetchDailyStatsData();
     fetchSensorStatsData();
+    fetchActiveSensors();
   }, [token]);
-
 
   // Filtrar los datos para los widgets según la fecha seleccionada
   const filteredData = selectedDate 
@@ -121,7 +142,7 @@ function Dashboard() {
 
       {/* Fila de 3 Widgets con datos dinámicos */}
       <div className="dashboard-grid">
-        <Widget title={t('Dashboard.activeSensors')} value="5" change="0" isPositive={true} unit="" color="#454545" />
+        <Widget title={t('Dashboard.activeSensors')} value={activeSensorCount} change="0" isPositive={true} unit="" color="#454545" />
         <Widget title={t('Dashboard.temperature')} value={getStatByType("Temperature")} change="0" isPositive={true} unit="°C" color="#2E8B57" />
         <Widget title={t('Dashboard.airHumidity')} value={getStatByType("Air Humidity")} change="0" isPositive={true} unit="%" color="#454545" />
       </div>

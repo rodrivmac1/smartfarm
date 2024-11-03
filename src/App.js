@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group'; // Importar componentes de transición
+import './i18n';
 import Dashboard from './Dashboard';
 import Login from './Login';
 import ProfileView from './ProfileView';

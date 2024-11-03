@@ -17,7 +17,7 @@ const Sensor = () => {
 
   const fetchSensors = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/sensors', {
+      const response = await fetch('http://3.14.69.183:8080/api/sensors', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -50,7 +50,7 @@ const Sensor = () => {
     if (!confirmDelete) return; // Si el usuario cancela, no hacemos nada
 
     try {
-      const response = await fetch(`http://localhost:8080/api/sensors/delete/${sensorId}`, {
+      const response = await fetch(`http://3.14.69.183:8080/api/sensors/delete/${sensorId}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -79,7 +79,7 @@ const Sensor = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:8080/api/sensors/add', {
+      const response = await fetch('http://3.14.69.183:8080/api/sensors/add', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,

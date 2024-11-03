@@ -122,7 +122,7 @@ const Sensor = () => {
       // Actualiza el estado en el servidor
       for (const sensorId in sensorStatuses) {
         const status = sensorStatuses[sensorId];
-        const response = await fetch(`http://localhost:8080/api/sensors/${sensorId}`, {
+        const response = await fetch(`http://3.14.69.183:8080/api/sensors/${sensorId}`, {
           method: 'PUT',
           headers: {
             Authorization: `Bearer ${token}`,

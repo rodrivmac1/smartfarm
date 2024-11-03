@@ -15,7 +15,7 @@ const ProfileView = () => {
   // Función para obtener los datos del perfil desde la API
   const fetchProfileData = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/users/profile", {
+      const response = await fetch("http://3.14.69.183:8080/api/users/profile", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

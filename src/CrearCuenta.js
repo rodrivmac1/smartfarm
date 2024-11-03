@@ -16,8 +16,8 @@ const CrearCuenta = () => {
     console.log("Saved Profile Info:", { name, username, password, email, mobile });
     alert("Profile saved!");
 
-    // Redirigir al usuario a la página de login
-    navigate("/"); // Cambia a la ruta de login ("/")
+    
+    navigate("/Login.js"); 
   };
 
   return (

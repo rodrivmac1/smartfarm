@@ -15,7 +15,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchDailyStatsData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/stats/daily-stats', {
+        const response = await fetch('http://3.14.69.183:8080/api/stats/daily-stats', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -35,7 +35,7 @@ function Dashboard() {
 
     const fetchSensorStatsData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/stats', {
+        const response = await fetch('http://3.14.69.183:8080/api/stats', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

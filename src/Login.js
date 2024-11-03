@@ -33,7 +33,7 @@ function Login() {
         if (token) {
           localStorage.setItem('token', token); // Guardar el token en localStorage
 
-          //oSlicitud para obtener el userId usando el token
+          // Solicitud para obtener el userId usando el token
           const userResponse = await fetch('http://3.14.69.183:8080/api/users', {
             headers: {
               'Authorization': `Bearer ${token}`, // Usar el token para autenticar
@@ -59,9 +59,9 @@ function Login() {
         }
       } else {
         // Manejar diferentes estados de error según el código de respuesta
-        if (response.status === 401) {
+        if (loginResponse.status === 401) {
           alert(t('Login.incorrectCredentials'));
-        } else if (response.status === 400) {
+        } else if (loginResponse.status === 400) {
           alert(t('Login.invalidRequest'));
         } else {
           alert(t('Login.unexpectedError'));

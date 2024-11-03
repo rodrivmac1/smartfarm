@@ -67,7 +67,7 @@ const CrearCuenta = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter your full name"
-            required // Campo obligatorio
+            required 
           />
         </div>
 
@@ -78,7 +78,7 @@ const CrearCuenta = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Enter your username"
-            required // Campo obligatorio
+            required
           />
         </div>
 
@@ -90,7 +90,7 @@ const CrearCuenta = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
             minLength="8" 
-            required // Campo obligatorio
+            required 
           />
         </div>
 
@@ -101,7 +101,7 @@ const CrearCuenta = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
-            required // Campo obligatorio
+            required 
           />
         </div>
 
@@ -113,7 +113,7 @@ const CrearCuenta = () => {
             onChange={(e) => setMobile(e.target.value)}
             placeholder="Enter your mobile number"
             maxLength="12" 
-            required // Campo obligatorio
+            required 
           />
         </div>
 

@@ -1,24 +1,63 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ProfileEdit.css"; // Asegúrate de tener los estilos necesarios
 
-const Profile = () => {
-  // Estado inicial con los valores del perfil
+const ProfileEdit = () => {
   const [profileData, setProfileData] = useState({
-    name: "user",
-    username: "user",
-    credential: "user",
-    contact: "2222222222",
+    name: "",
+    username: "",
+    credential: "",
+    contact: "",
     language: "ENGLISH",
-    system: "dark", // Inicialmente dark
+    system: "dark",
     role: {
       id: 1,
-      name: "SUPERADMIN",
+      name: "USER",
     },
-    email: "example@mail.com",
+    email: "",
   });
 
-  // Estado para mostrar u ocultar la contraseña
   const [showCredential, setShowCredential] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const userId = localStorage.getItem("userId");
+  const token = localStorage.getItem("token");
+
+  // Función para obtener los datos actuales del usuario
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch(`http://3.14.69.183:8080/api/users/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setProfileData({
+          name: data.name || "",
+          username: data.username || "",
+          credential: data.credential || "",
+          contact: data.contact || "",
+          language: data.language || "ENGLISH",
+          system: data.system || "dark",
+          role: data.role || { id: 1, name: "USER" },
+          email: data.email || "",
+        });
+        setLoading(false);
+      } else {
+        setError("Error al obtener los datos del perfil.");
+        setLoading(false);
+      }
+    } catch (error) {
+      setError("Error al obtener los datos del perfil.");
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
 
   // Función para alternar la visibilidad de la contraseña
   const toggleShowCredential = () => {
@@ -43,9 +82,41 @@ const Profile = () => {
   };
 
   // Función para manejar el guardado de los datos
-  const handleSave = () => {
-    alert("Profile saved successfully!");
+  const handleSave = async () => {
+    try {
+      const response = await fetch("http://3.14.69.183:8080/api/users/update", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          id: userId,
+          name: profileData.name,
+          username: profileData.username,
+          credential: profileData.credential,
+          contact: profileData.contact,
+          email: profileData.email,
+        }),
+      });
+
+      if (response.ok) {
+        alert("Profile saved successfully!");
+      } else {
+        alert("Error al guardar los cambios.");
+      }
+    } catch (error) {
+      alert("Error al guardar los cambios.");
+    }
   };
+
+  if (loading) {
+    return <div>Loading profile...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className="profile-container content">
@@ -106,43 +177,6 @@ const Profile = () => {
         </div>
 
         <div className="info-field">
-          <label>Language</label>
-          <select
-            name="language"
-            value={profileData.language}
-            onChange={handleInputChange}
-          >
-            <option value="ENGLISH">English</option>
-            <option value="SPANISH">Spanish</option>
-          </select>
-        </div>
-
-        <div className="info-field">
-          <label>System</label>
-          <select
-            name="system"
-            value={profileData.system}
-            onChange={handleInputChange}
-          >
-            <option value="dark">Dark</option>
-            <option value="light">Light</option>
-          </select>
-        </div>
-
-        <div className="info-field">
-          <label>Role</label>
-          <select
-            name="role"
-            value={profileData.role.name}
-            onChange={handleRoleChange}
-          >
-            <option value="USER">User</option>
-            <option value="ADMIN">Admin</option>
-            <option value="SUPERADMIN">Super Admin</option>
-          </select>
-        </div>
-
-        <div className="info-field">
           <label>Email</label>
           <input
             type="email"
@@ -160,4 +194,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileEdit;

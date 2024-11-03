@@ -12,23 +12,32 @@ const ProfileView = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Obtén el token y userId del almacenamiento local
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("userId");
+
   // Función para obtener los datos del perfil desde la API
   const fetchProfileData = async () => {
+    if (!userId || !token) {
+      setError("User ID o token no encontrado. Por favor, inicia sesión.");
+      setLoading(false);
+      return;
+    }
+
     try {
-      const response = await fetch("http://3.14.69.183:8080/api/users/profile", {
+      const response = await fetch(`http://3.14.69.183:8080/api/users/${userId}`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
       if (response.ok) {
         const data = await response.json();
 
-        // Asegúrate de que los campos necesarios están presentes en la respuesta
         setProfileData({
-          name: data.name || "User",
-          email: data.email || "example@mail.com",
-          contact: data.contact || "2222222222",
+          name: data.name || "",
+          email: data.email || "",
+          contact: data.contact || "",
         });
         setLoading(false);
       } else {

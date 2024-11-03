@@ -1,0 +1,146 @@
+/* Estilo para la vista de Backup */
+.backup-view {
+    background-color: #1E1E1E;
+    color: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    max-width: 600px;
+    margin: 20px auto;
+}
+  
+.backup-view h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+  
+.backup-view p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+  
+/* Botón de realizar copia de seguridad con ancho ajustado */
+.backup-button {
+    padding: 8px 16px;
+    background-color: #2E8B57;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 20px;
+}
+  
+.backup-button:hover {
+    background-color: #228B47;
+}
+  
+.backup-button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+  
+/* Lista de copias de seguridad */
+.backup-view h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+  
+.backup-view ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.backup-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+}
+  
+/* Estilo para la fecha de cada copia de seguridad */
+.backup-item span {
+    font-size: 14px;
+}
+  
+/* Botón de restaurar copia de seguridad con ancho ajustado */
+.restore-button {
+    padding: 5px 10px;
+    background-color: #2E8B57;
+    border: none;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+  
+.restore-button:hover {
+    background-color: #228B47;
+}
+  
+.restore-button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+  
+/* Indicador de carga */
+.loading-indicator {
+    font-size: 14px;
+    color: #ccc;
+    text-align: center;
+    margin-top: 10px;
+}
+  
+/* Botón de mostrar más copias de seguridad */
+.show-more-button {
+    background: none;
+    border: none;
+    color: #2E8B57;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+    display: block;
+}
+  
+.show-more-button:hover {
+    color: #228B47;
+}
+  
+/* Animación de entrada y salida suave para las copias de seguridad */
+.fade-enter {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(-10px);
+}
+  
+.fade-enter-active {
+    opacity: 1;
+    max-height: 100px;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: opacity 500ms ease, max-height 500ms ease, transform 500ms ease;
+}
+  
+.fade-exit {
+    opacity: 1;
+    max-height: 100px;
+    overflow: hidden;
+    transform: translateY(0);
+}
+  
+.fade-exit-active {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(-10px);
+    transition: opacity 500ms ease, max-height 500ms ease, transform 500ms ease;
+}

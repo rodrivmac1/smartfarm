@@ -7,6 +7,7 @@ import Vector from './images/dashboard.svg';
 import boton from './images/add.svg';
 import usuario from './images/profile.svg';
 import logOut from './images/out.svg';
+import backup from './images/backup.svg';
 
 const Layout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado para controlar la visibilidad de la barra lateral
@@ -69,6 +70,18 @@ const Layout = () => {
             Profile
           </div>
         </button>
+
+        {/* Botón de Backup */}
+        <button
+          className={`backup-btn ${isActive('/Backup') ? 'active' : ''}`} // Añadir clase "active" cuando sea la ruta activa
+          onClick={() => navigate('/Backup')}  // Navegar a la vista BackupView
+        >
+          <div className="button-content">
+            <img src={backup} alt="Backup" className="icon" />
+            Backup
+          </div>
+        </button>
+
 
         {/* Botón de Logout */}
         <button

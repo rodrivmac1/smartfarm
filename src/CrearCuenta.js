@@ -1,21 +1,24 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
-import "./CrearCuenta.css"; 
-import defaultUserImage from "./images/user.png"; 
+import { useNavigate } from "react-router-dom"; // Importar useNavigate para redirigir
+import { useTranslation } from "react-i18next";
+import "./CrearCuenta.css"; // Estilos generales
+import defaultUserImage from "./images/user.png"; // Importa la imagen por defecto
 
 const CrearCuenta = () => {
-  const [name, setName] = useState(""); 
-  const [username, setUsername] = useState(""); 
-  const [password, setPassword] = useState(""); 
-  const [email, setEmail] = useState(""); 
-  const [mobile, setMobile] = useState(""); 
+  const { t } = useTranslation();
+  const [name, setName] = useState(""); // Inicializa vacío
+  const [username, setUsername] = useState(""); // Nuevo estado para usuario
+  const [password, setPassword] = useState(""); // Nuevo estado para contraseña
+  const [email, setEmail] = useState(""); // Inicializa vacío
+  const [mobile, setMobile] = useState(""); // Inicializa vacío
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleSave = async (e) => {
     e.preventDefault(); // Evita el envío por defecto del formulario
 
     console.log("Saved Profile Info:", { name, username, password, email, mobile });
+    alert("Profile created successfully!"); // Mensaje de confirmación sin traducción
 
     try {
       const response = await fetch("http://3.14.69.183:8080/api/users/signup", {
@@ -26,7 +29,7 @@ const CrearCuenta = () => {
         body: JSON.stringify({
           name: name,
           username: username,
-          credential: password, 
+          credential: password,
           contact: mobile,
           email: email,
         }),
@@ -34,7 +37,7 @@ const CrearCuenta = () => {
 
       if (response.ok) {
         alert("Profile created successfully!");
-        navigate("./Login"); 
+        navigate("./Login");
       } else {
         const errorData = await response.json();
         alert(`Error creating profile: ${errorData.message || "Unexpected error"}`);
@@ -49,7 +52,7 @@ const CrearCuenta = () => {
     <div className="crearcuenta-profile-container crearcuenta-content">
       <div className="crearcuenta-profile-header white-background">
         <img
-          src={defaultUserImage} 
+          src={defaultUserImage}
           alt="Profile"
           className="crearcuenta-profile-picture"
         />
@@ -61,64 +64,64 @@ const CrearCuenta = () => {
 
       <form className="crearcuenta-profile-info" onSubmit={handleSave}>
         <div className="crearcuenta-info-field">
-          <label>Full name</label>
+          <label>{t('Crearcuenta.fullName')}</label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Enter your full name"
-            required 
+            placeholder={t('Crearcuenta.enterFullName')}
+            required // Campo obligatorio
           />
         </div>
 
         <div className="crearcuenta-info-field">
-          <label>Username</label>
+          <label>{t('Crearcuenta.username')}</label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter your username"
-            required
+            placeholder={t('Crearcuenta.enterUsername')}
+            required // Campo obligatorio
           />
         </div>
 
         <div className="crearcuenta-info-field">
-          <label>Password</label>
+          <label>{t('Crearcuenta.password')}</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-            minLength="8" 
-            required 
+            placeholder={t('Crearcuenta.enterPassword')}
+            minLength="8"
+            required // Campo obligatorio
           />
         </div>
 
         <div className="crearcuenta-info-field">
-          <label>Email account</label>
+          <label>{t('Crearcuenta.emailAccount')}</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            required 
+            placeholder={t('Crearcuenta.enterEmail')}
+            required // Campo obligatorio
           />
         </div>
 
         <div className="crearcuenta-info-field">
-          <label>Mobile number</label>
+          <label>{t('Crearcuenta.mobileNumber')}</label>
           <input
             type="text"
             value={mobile}
             onChange={(e) => setMobile(e.target.value)}
-            placeholder="Enter your mobile number"
-            maxLength="12" 
-            required 
+            placeholder={t('Crearcuenta.enterMobileNumber')}
+            maxLength="12"
+            required // Campo obligatorio
           />
         </div>
 
         <button type="submit" className="crearcuenta-save-button">
-          <span className="crearcuenta-save-button-text">Save</span>
+          <span className="crearcuenta-save-button-text">{t('Crearcuenta.save')}</span>
         </button>
       </form>
     </div>

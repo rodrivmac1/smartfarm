@@ -1,0 +1,135 @@
+{
+    "Login": {
+      "login": "Iniciar sesión",
+      "emailPhoneNumber": "Correo electrónico",
+      "enterEmailPhone": "Ingresa tu correo electrónico",
+      "password": "Contraseña",
+      "enterPassword": "Ingresa tu contraseña",
+      "signIn": "Iniciar sesión",
+      "rememberMe": "Recuérdame",
+      "needHelp": "¿Necesitas ayuda?",
+      "createAccount": "Crear cuenta"
+    },
+    "Crearcuenta": {
+      "fullName": "Nombre completo",
+      "enterFullName": "Ingresa tu nombre completo",
+      "username": "Nombre de usuario",
+      "enterUsername": "Ingresa tu nombre de usuario",
+      "password": "Contraseña",
+      "enterPassword": "Ingresa tu contraseña",
+      "emailAccount": "Cuenta de correo electrónico",
+      "enterEmail": "Ingresa tu correo electrónico",
+      "mobileNumber": "Número de teléfono",
+      "enterMobileNumber": "Ingresa tu número de teléfono",
+      "save": "Guardar",
+      "profileSaved": "Perfil guardado"
+    },
+    "Loading": {
+      "loading": "Cargando"
+    },
+    "ChartComponent": {
+      "january": "Enero",
+      "february": "Febrero",
+      "march": "Marzo",
+      "april": "Abril",
+      "may": "Mayo",
+      "sensorTemperature": "Temperatura del sensor (°C)",
+      "months": "Meses",
+      "temperature": "Temperatura (°C)"
+    },
+    "Dashboard": {
+      "activeSensors": "Sensores activos: 5",
+      "temperature": "Temperatura: 19.3°C (+0.7)",
+      "airHumidity": "Humedad del aire: 43% (-4.7)",
+      "soilMoisture": "Humedad del suelo: 63% (+7.9)",
+      "solarLight": "Luz solar: BAJA",
+      "phLevel": "Nivel de pH: 6.5 (+7.9)"
+    },
+    "Footer": {
+      "about": "Acerca de",
+      "support": "Soporte",
+      "contactUs": "Contáctanos"
+    },
+    "Header": {
+      "dashboardRoute": "Paneles / Panel",
+      "addSensorRoute": "Paneles / Sensores",
+      "profileRoute": "Paneles / Perfil",
+      "unknownPageRoute": "Paneles / Página desconocida"
+    },
+    "Layout": {
+      "smartFarm": "SmartFarm",
+      "summary": "Resumen",
+      "sensors": "Sensores",
+      "profile": "Perfil"
+    },
+    "ProfileEdit": {
+      "name": "Nombre",
+      "username": "Nombre de usuario",
+      "role": "Tipo de usuario",
+      "user": "Usuario",
+      "administrator": "Administrador",
+      "superAdministrator": "Super administrador",
+      "emailAccount": "Cuenta de correo electrónico",
+      "contact": "Número de teléfono",
+      "credential": "Contraseña",
+      "show": "MOSTRAR",
+      "hide": "OCULTAR",
+      "saveChanges": "Guardar cambios",
+      "deleteProfile": "ELIMINAR PERFIL",
+      "profileSaved": "Perfil guardado",
+      "profileDeleted": "Perfil Eliminado",
+      "language": "Lenguaje",
+      "english": "Inglés",
+      "spanish": "Español",
+      "system": "Tema",
+      "dark": "Oscuro",
+      "light": "Claro"
+    },
+    "ProfileView": {
+      "name": "Nombre",
+      "username": "Nombre de usuario",
+      "userType": "Tipo de usuario",
+      "user": "Usuario",
+      "emailAccount": "Cuenta de correo electrónico",
+      "mobileNumber": "Número de teléfono",
+      "password": "Contraseña",
+      "edit": "Editar"
+    },
+    "Sensor": {
+      "addSensor": "Agregar sensor",
+      "assignSensor": "Asignar sensor a los puertos disponibles",
+      "port": "Puerto",
+      "sensorType": "Tipo de sensor",
+      "port1": "Puerto 1",
+      "port2": "Puerto 2",
+      "port3": "Puerto 3",
+      "port4": "Puerto 4",
+      "port5": "Puerto 5",
+      "port6": "Puerto 6",
+      "selectSensor": "Seleccionar sensor",
+      "humidity": "Humedad",
+      "temperature": "Temperatura",
+      "soilMoisture": "Humedad del suelo",
+      "solarLight": "Luz solar",
+      "phLevel": "Nivel de pH",
+      "saveChanges": "Guardar cambios",
+      "sensorsSummary": "Resumen de sensores",
+      "sensorsConnected": "Sensores conectados",
+      "sensor": "Sensor",
+      "working": "Funcionando",
+      "connected": "Conectado",
+      "disconnected": "Desconectado",
+      "modifySensorStatus": "Modificar estado del sensor",
+      "updateSensorStatus": "Actualizar sensor",
+      "status": "Estado",
+      "notAvailable": "No disponible",
+      "deleteSensors": "Eliminar sensores",
+      "delete": "Eliminar"
+    },
+    "VentanaConfirmacion": {
+      "confirmDeleteProfile": "¿Estás seguro de que deseas eliminar este perfil?",
+      "yes": "Sí",
+      "no": "No"
+    }
+  }
+  

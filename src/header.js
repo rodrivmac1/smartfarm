@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import "./header.css";
 
 const Header = () => {
   const location = useLocation();
+  const { t } = useTranslation();
   const [alerts, setAlerts] = useState([]); // Estado para almacenar las alertas
   const [hasNewAlerts, setHasNewAlerts] = useState(false); // Estado para determinar si hay nuevas alertas
   const [isNotificationOpen, setIsNotificationOpen] = useState(false); // Estado para manejar el despliegue del menú
@@ -12,14 +14,14 @@ const Header = () => {
   const getPageTitle = () => {
     switch (location.pathname) {
       case "/dashboard":
-        return "Dashboard";
+        return t('Header.dashboardRoute');
       case "/add-sensor":
-        return "Sensors";
-      case "/profile-view": // Ruta para ProfileView
-      case "/profile-edit": // Ruta para ProfileEdit
-        return "Profile";
+        return t('Header.addSensorRoute');
+      case "/profile-view":
+      case "/profile-edit":
+        return t('Header.profileRoute');
       default:
-        return "Unknown Page"; // En caso de que la ruta no coincida
+        return t('Header.unknownPageRoute');
     }
   };
 
@@ -28,7 +30,7 @@ const Header = () => {
     try {
       const response = await fetch("http://localhost:8080/api/alerts", {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`, // Suponiendo que se necesita un token
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
       if (response.ok) {
@@ -55,7 +57,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-left">
-        <span>Dashboards /</span> <strong>{getPageTitle()}</strong>
+        <span>{t('Header.dashboardRoute')} /</span> <strong>{getPageTitle()}</strong>
       </div>
       <div className="header-right">
         <i className="notification-icon" onClick={toggleNotifications}>
@@ -66,7 +68,7 @@ const Header = () => {
         {/* Mostrar el menú de notificaciones si está abierto */}
         {isNotificationOpen && (
           <div className="notification-dropdown">
-            <h4>Notifications</h4>
+            <h4>{t('Header.notifications')}</h4>
             {alerts.length > 0 ? (
               <ul>
                 {alerts.map((alert, index) => (
@@ -74,7 +76,7 @@ const Header = () => {
                 ))}
               </ul>
             ) : (
-              <p>No new alerts</p>
+              <p>{t('Header.noNewAlerts')}</p>
             )}
           </div>
         )}

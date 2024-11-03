@@ -157,7 +157,7 @@ const Sensor = () => {
             <tr>
               <th>{t('Sensor.sensor')}</th>
               <th>{t('Sensor.port')}</th>
-              <th>{t('Sensor.action')}</th>
+              <th>{t('Sensor.delete')}</th>
             </tr>
           </thead>
           <tbody>
@@ -181,7 +181,7 @@ const Sensor = () => {
   const renderUpdateSection = () => {
     return (
       <div key="update">
-        <h2 className="sensor-title">{t('Sensor.modifyStatus')}</h2>
+        <h2 className="sensor-title">{t('Sensor.modifySensorStatus')}</h2>
         <table className="sensor-table">
           <thead>
             <tr>
@@ -319,19 +319,19 @@ const Sensor = () => {
           className={`sensor-tab ${activeSection === 'summary' ? 'active' : ''}`}
           onClick={() => setActiveSection('summary')}
         >
-          {t('Sensor.summary')}
+          {t('Sensor.sensorsSummary')}
         </button>
         <button
           className={`sensor-tab ${activeSection === 'create' ? 'active' : ''}`}
           onClick={() => setActiveSection('create')}
         >
-          {t('Sensor.create')}
+          {t('Sensor.addSensor')}
         </button>
         <button
           className={`sensor-tab ${activeSection === 'update' ? 'active' : ''}`}
           onClick={() => setActiveSection('update')}
         >
-          {t('Sensor.update')}
+          {t('Sensor.updateSensorStatus')}
         </button>
         <button
           className={`sensor-tab ${activeSection === 'delete' ? 'active' : ''}`}

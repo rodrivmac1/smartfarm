@@ -16,7 +16,7 @@ function Login() {
     setLoading(true); // Activar el estado de carga
 
     try {
-      const response = await fetch('http://localhost:8080/api/auth/login', { 
+      const response = await fetch('http://3.14.69.183:8080/api/auth/login', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

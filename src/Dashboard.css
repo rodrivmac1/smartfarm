@@ -161,3 +161,36 @@ html, body {
     height: 250px; /* Ajusta la altura de los gráficos en pantallas pequeñas */
   }
 }
+
+/* Estilo para el filtro de fecha */
+.date-filter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.date-filter label {
+  margin-right: 10px;
+  font-size: 14px;
+  color: white;
+}
+
+.date-filter select {
+  padding: 8px 12px;
+  background-color: #333;
+  color: white;
+  border: 1px solid #2E8B57;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.date-filter select:hover {
+  background-color: #2E8B57;
+}
+
+.date-filter select:focus {
+  box-shadow: 0px 0px 5px #2E8B57;
+}

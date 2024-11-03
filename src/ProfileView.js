@@ -23,19 +23,36 @@ const Profile = () => {
     email: "example@mail.com",
   });
 
-  const [showCredential, setShowCredential] = useState(false);
-  const [isModalVisible, setModalVisible] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const toggleShowCredential = () => {
-    setShowCredential(!showCredential);
-  };
+  // Función para obtener los datos del perfil desde la API
+  const fetchProfileData = async () => {
+    try {
+      const response = await fetch("http://3.14.69.183:8080/api/users/profile", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setProfileData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+      if (response.ok) {
+        const data = await response.json();
+
+        // Asegúrate de que los campos necesarios están presentes en la respuesta
+        setProfileData({
+          name: data.name || "User",
+          email: data.email || "example@mail.com",
+          contact: data.contact || "2222222222",
+        });
+        setLoading(false);
+      } else {
+        setError("Error fetching profile data");
+        setLoading(false);
+      }
+    } catch (err) {
+      setError("Error fetching profile data");
+      setLoading(false);
+    }
   };
 
   const handleRoleChange = (e) => {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next'; // Importa useTranslation
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './Backup.css';
 
@@ -13,6 +14,7 @@ function formatDate(dateString) {
 }
 
 function Backup() {
+  const { t } = useTranslation(); // Usa useTranslation para acceder a t
   const [backupList, setBackupList] = useState([
     { id: 1, date: '2024-10-01T14:35:11' },
     { id: 2, date: '2024-09-28T10:15:22' },
@@ -23,7 +25,7 @@ function Backup() {
   const [showAllBackups, setShowAllBackups] = useState(false);
 
   const handleBackup = () => {
-    if (window.confirm('Are you sure you want to perform a backup?')) {
+    if (window.confirm(t('backup.confirm_backup'))) { // Traducción
       setLoading(true);
       setTimeout(() => {
         const newBackup = {
@@ -33,16 +35,16 @@ function Backup() {
         setBackupList([newBackup, ...backupList]);
         setLastBackupDate(newBackup.date);
         setLoading(false);
-        alert('Backup completed successfully.');
+        alert(t('backup.backup_success')); // Traducción
       }, 2000);
     }
   };
 
   const handleRestore = (backupId) => {
-    if (window.confirm('Are you sure you want to restore this backup?')) {
+    if (window.confirm(t('backup.confirm_restore'))) { // Traducción
       setLoading(true);
       setTimeout(() => {
-        alert(`Backup with ID ${backupId} restored successfully.`);
+        alert(t('backup.restore_success', { id: backupId })); // Traducción con parámetro
         setLoading(false);
       }, 2000);
     }
@@ -50,14 +52,16 @@ function Backup() {
 
   return (
     <div className="backup-view">
-      <h2>Backup</h2>
-      <p>Last backup: {lastBackupDate ? formatDate(lastBackupDate) : 'Not available'}</p>
+      <h2>{t('backup.title')}</h2> {/* Traducción */}
+      <p>
+        {t('backup.last_backup')}: {lastBackupDate ? formatDate(lastBackupDate) : t('backup.not_available')}
+      </p>
       
       <button className="backup-button" onClick={handleBackup} disabled={loading}>
-        {loading ? 'Backing up...' : 'Perform Backup'}
+        {loading ? t('backup.backing_up') : t('backup.perform_backup')} {/* Traducción */}
       </button>
 
-      <h3>Backup Versions</h3>
+      <h3>{t('backup.versions')}</h3> {/* Traducción */}
       <ul>
         <TransitionGroup>
           {backupList.slice(0, showAllBackups ? backupList.length : 3).map((backup) => (
@@ -69,7 +73,7 @@ function Backup() {
                   onClick={() => handleRestore(backup.id)} 
                   disabled={loading}
                 >
-                  {loading ? 'Restoring...' : 'Restore'}
+                  {loading ? t('backup.restoring') : t('backup.restore')} {/* Traducción */}
                 </button>
               </li>
             </CSSTransition>
@@ -81,7 +85,7 @@ function Backup() {
           className="show-more-button" 
           onClick={() => setShowAllBackups(!showAllBackups)}
         >
-          {showAllBackups ? 'Show less ▲' : 'Show more ▼'}
+          {showAllBackups ? t('backup.show_less') : t('backup.show_more')} {/* Traducción */}
         </button>
       )}
     </div>

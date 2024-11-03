@@ -20,9 +20,8 @@ const Header = () => {
       case "/profile-view":
       case "/profile-edit":
         return t('Header.profileRoute');
-        return "Sensors";
       case "/Backup":
-        return "Backup";
+        return t('Header.backupRoute'); // Traducción para Backup
       default:
         return t('Header.unknownPageRoute');
     }

@@ -19,9 +19,12 @@
     margin-bottom: 20px;
 }
   
-/* Botón de realizar copia de seguridad con ancho ajustado */
+/* Botón de realizar copia de seguridad con ancho ajustado y responsivo */
 .backup-button {
-    padding: 8px 16px;
+    padding: 10px 20px;
+    min-width: 250px; /* Ancho mínimo ampliado */
+    width: 100%; /* Ancho completo en el contenedor */
+    max-width: 350px; /* Limita el ancho máximo para que no sea demasiado ancho en pantallas grandes */
     background-color: #2E8B57;
     border: none;
     color: white;
@@ -30,6 +33,7 @@
     border-radius: 8px;
     transition: background-color 0.3s, box-shadow 0.3s;
     margin-bottom: 20px;
+    text-align: center;
 }
   
 .backup-button:hover {
@@ -71,7 +75,7 @@
   
 /* Botón de restaurar copia de seguridad con ancho ajustado */
 .restore-button {
-    padding: 5px 10px;
+    padding: 5px 12px;
     background-color: #2E8B57;
     border: none;
     color: white;

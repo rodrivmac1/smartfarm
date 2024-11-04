@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next"; // Importa useTranslation
 import "./ProfileEdit.css";
 
 const ProfileView = () => {
+  const { t } = useTranslation(); // Inicializa la función de traducción
   const navigate = useNavigate();
   const [profileData, setProfileData] = useState({
     name: "",
@@ -32,11 +34,11 @@ const ProfileView = () => {
         });
         setLoading(false);
       } else {
-        setError("Error fetching profile data");
+        setError(t('ProfileView.error'));
         setLoading(false);
       }
     } catch (err) {
-      setError("Error fetching profile data");
+      setError(t('ProfileView.error'));
       setLoading(false);
     }
   };
@@ -50,11 +52,11 @@ const ProfileView = () => {
   };
 
   if (loading) {
-    return <div>Loading profile...</div>;
+    return <div>{t('ProfileView.Loading')}</div>; // Traducción para carga
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div>{error}</div>; // Traducción del error
   }
 
   return (
@@ -73,23 +75,23 @@ const ProfileView = () => {
 
       <div className="profile-info">
         <div className="info-field">
-          <label>Name</label>
+          <label>{t('ProfileView.name')}</label> {/* Traducción para "Name" */}
           <p>{profileData.name}</p>
         </div>
 
         <div className="info-field">
-          <label>Email account</label>
+          <label>{t('ProfileView.emailAccount')}</label> {/* Traducción para "Email account" */}
           <p>{profileData.email}</p>
         </div>
 
         <div className="info-field">
-          <label>Mobile number</label>
+          <label>{t('ProfileView.mobileNumber')}</label> {/* Traducción para "Mobile number" */}
           <p>{profileData.contact}</p>
         </div>
       </div>
 
       <button className="edit-button" onClick={handleEditClick}>
-        Edit
+        {t('ProfileView.edit')} {/* Traducción para "Edit" */}
       </button>
     </div>
   );

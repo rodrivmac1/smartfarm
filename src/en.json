@@ -1,0 +1,148 @@
+{
+    "Login": {
+      "login": "Login",
+      "usernameLabel": "Username",
+      "usernamePlaceholder": "Enter your username",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "loginButton": "Sign in",
+      "rememberMe": "Remember me",
+      "needHelp": "Need help?",
+      "createAccount": "Create account"
+    },
+    "CrearCuenta": {
+      "FullName": "Full name",
+      "FullNamePlaceholder": "Enter your full name",
+      "Username": "Username",
+      "UsernamePlaceholder": "Enter your username",
+      "Password": "Password",
+      "PasswordPlaceholder": "Enter your password",
+      "Email": "Email account",
+      "EmailPlaceholder": "Enter your email",
+      "Mobile": "Mobile number",
+      "MobilePlaceholder": "Enter your mobile number",
+      "Save": "Save",
+      "profileSaved": "Profile saved"
+    },
+    "Loading": {
+      "loading": "Loading..."
+    },
+    "ChartComponent": {
+      "Dates":"Dates",
+      "Value": "Value"
+    },
+    "Dashboard": {
+      "activeSensors": "Active Sensors",
+      "temperature": "Temperature",
+      "airHumidity": "Air Humidity",
+      "phLevel": "PH Level",
+      "soilMoisture": "Soil Moisture",
+      "solarLight": "Solar Light",
+      "sunlight": "Sunlight",
+      "errorFetchingDailyStatsData": "Error fetching daily stats data",
+      "errorFetchingDailyStats": "Error fetching daily stats",
+      "noDataFoundForSpecifiedDateRange": "No data found for the specified date range",
+      "errorFetchingSensorStatsData": "Error fetching sensor stats data",
+      "errorFetchingSensorStats": "Error fetching sensor stats",
+      "n/a": "N/A"
+    }
+    ,
+    "Footer": {
+      "about": "About",
+      "support": "Support",
+      "contactUs": "Contact Us"
+    },
+    "Header": {
+      "dashboard": "Dashboard",
+      "sensors": "Sensors",
+      "profile": "Profile",
+      "unknown": "Unknown Page",
+      "noti": "Notifications",
+      "no new": "No new alerts"
+    },
+    "Layout": {
+      "smartFarm": "SmartFarm",
+      "summary": "Summary",
+      "sensors": "Sensors",
+      "profile": "Profile",
+      "logout": "Logout"
+    },
+    "ProfileEdit": {
+      "profileSaved": "Profile saved successfully!",
+      "name": "Name",
+      "username": "Username",
+      "credential": "Credential",
+      "hide": "HIDE",
+      "show": "SHOW",
+      "contact": "Contact",
+      "language": "Language",
+      "english": "English",
+      "spanish": "Spanish",
+      "system": "System",
+      "dark": "Dark",
+      "light": "Light",
+      "role": "Role",
+      "user": "User",
+      "admin": "Admin",
+      "superAdmin": "Super Admin",
+      "email": "Email",
+      "saveChanges": "Save Changes"
+    },
+    "ProfileView": {
+      "name": "Name",
+      "emailAccount": "Email account",
+      "mobileNumber": "Mobile number",
+      "edit": "Edit",
+      "error": "Error fetching profile data",
+      "Loading": "Loading profile..."
+    },
+    "Sensor": {
+      "title": "Sensor Management",
+    "summary": "Summary",
+    "summary1": {
+      "title": "Add New Sensor",
+      "sensorType": "Sensor Type",
+      "field": "Field",
+      "status": "Status",
+      "selectSensor": "Select Sensor Type",
+      "button": "Add Sensor"
+    },
+    "update": {
+      "title": "Update Sensor Status",
+      "button": "Save Changes"
+    },
+    "delete": {
+      "title": "Delete Sensor",
+      "button": "Delete Sensor"
+    },
+    "table": {
+      "sensor": "Sensor",
+      "port": "Port",
+      "status": "Status",
+      "action": "Action"
+    },
+    "status": {
+      "connected": "Connected",
+      "disconnected": "Disconnected"
+    },
+    "error": {
+      "fetch": "Failed to fetch sensors.",
+      "delete": "Failed to delete sensor.",
+      "add": "Failed to add sensor.",
+      "update": "Failed to update sensor statuses.",
+      "general": "An error occurred: "
+    },
+    "confirmDelete": "Are you sure you want to delete this sensor?",
+    "success": {
+      "delete": "Sensor deleted successfully.",
+      "add": "Sensor added successfully.",
+      "update": "Sensor statuses updated successfully."
+    }
+    },
+    "VentanaConfirmacion": {
+      "confirmDeleteProfile": "Are you sure you want to delete this profile?",
+      "yes": "Yes",
+      "no": "No"
+    }
+  }
+  

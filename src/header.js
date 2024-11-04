@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./header.css";
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
   const location = useLocation();
+  const { t } = useTranslation();
+
   const [alerts, setAlerts] = useState([]); // Estado para almacenar las alertas
   const [hasNewAlerts, setHasNewAlerts] = useState(false); // Estado para determinar si hay nuevas alertas
   const [isNotificationOpen, setIsNotificationOpen] = useState(false); // Estado para manejar el despliegue del menú
@@ -12,14 +15,14 @@ const Header = () => {
   const getPageTitle = () => {
     switch (location.pathname) {
       case "/dashboard":
-        return "Dashboard";
+        return t('Header.dashboard');
       case "/add-sensor":
-        return "Sensors";
+        return t('Header.sensors');
       case "/profile-view": // Ruta para ProfileView
       case "/profile-edit": // Ruta para ProfileEdit
-        return "Profile";
+        return t('Header.profile');
       default:
-        return "Unknown Page"; // En caso de que la ruta no coincida
+        return t('Header.unknown'); // En caso de que la ruta no coincida
     }
   };
 
@@ -66,7 +69,7 @@ const Header = () => {
         {/* Mostrar el menú de notificaciones si está abierto */}
         {isNotificationOpen && (
           <div className="notification-dropdown">
-            <h4>Notifications</h4>
+            <h4>{t('Header.noti')}</h4>
             {alerts.length > 0 ? (
               <ul>
                 {alerts.map((alert, index) => (
@@ -74,7 +77,7 @@ const Header = () => {
                 ))}
               </ul>
             ) : (
-              <p>No new alerts</p>
+              <p>{t('Header.no new')}</p>
             )}
           </div>
         )}

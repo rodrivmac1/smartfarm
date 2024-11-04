@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next"; // Importar useTranslation
 import "./ProfileEdit.css"; // Asegúrate de tener los estilos necesarios
 
 const Profile = () => {
+  const { t } = useTranslation(); // Usar useTranslation
+
   // Estado inicial con los valores del perfil
   const [profileData, setProfileData] = useState({
     name: "user",
@@ -44,7 +47,7 @@ const Profile = () => {
 
   // Función para manejar el guardado de los datos
   const handleSave = () => {
-    alert("Profile saved successfully!");
+    alert(t('ProfileEdit.profileSaved')); // Usar traducción
   };
 
   return (
@@ -63,7 +66,7 @@ const Profile = () => {
 
       <div className="profile-info">
         <div className="info-field">
-          <label>Name</label>
+          <label>{t('ProfileEdit.name')}</label> {/* Usar traducción */}
           <input
             type="text"
             name="name"
@@ -73,7 +76,7 @@ const Profile = () => {
         </div>
 
         <div className="info-field">
-          <label>Username</label>
+          <label>{t('ProfileEdit.username')}</label> {/* Usar traducción */}
           <input
             type="text"
             name="username"
@@ -83,7 +86,7 @@ const Profile = () => {
         </div>
 
         <div className="info-field">
-          <label>Credential</label>
+          <label>{t('ProfileEdit.credential')}</label> {/* Usar traducción */}
           <input
             type={showCredential ? "text" : "password"}
             name="credential"
@@ -91,12 +94,12 @@ const Profile = () => {
             onChange={handleInputChange}
           />
           <button className="toggle-password" onClick={toggleShowCredential}>
-            {showCredential ? "HIDE" : "SHOW"}
+            {showCredential ? t('ProfileEdit.hide') : t('ProfileEdit.show')} {/* Usar traducción */}
           </button>
         </div>
 
         <div className="info-field">
-          <label>Contact</label>
+          <label>{t('ProfileEdit.contact')}</label> {/* Usar traducción */}
           <input
             type="text"
             name="contact"
@@ -106,44 +109,44 @@ const Profile = () => {
         </div>
 
         <div className="info-field">
-          <label>Language</label>
+          <label>{t('ProfileEdit.language')}</label> {/* Usar traducción */}
           <select
             name="language"
             value={profileData.language}
             onChange={handleInputChange}
           >
-            <option value="ENGLISH">English</option>
-            <option value="SPANISH">Spanish</option>
+            <option value="ENGLISH">{t('ProfileEdit.english')}</option> {/* Usar traducción */}
+            <option value="SPANISH">{t('ProfileEdit.spanish')}</option> {/* Usar traducción */}
           </select>
         </div>
 
         <div className="info-field">
-          <label>System</label>
+          <label>{t('ProfileEdit.system')}</label> {/* Usar traducción */}
           <select
             name="system"
             value={profileData.system}
             onChange={handleInputChange}
           >
-            <option value="dark">Dark</option>
-            <option value="light">Light</option>
+            <option value="dark">{t('ProfileEdit.dark')}</option> {/* Usar traducción */}
+            <option value="light">{t('ProfileEdit.light')}</option> {/* Usar traducción */}
           </select>
         </div>
 
         <div className="info-field">
-          <label>Role</label>
+          <label>{t('ProfileEdit.role')}</label> {/* Usar traducción */}
           <select
             name="role"
             value={profileData.role.name}
             onChange={handleRoleChange}
           >
-            <option value="USER">User</option>
-            <option value="ADMIN">Admin</option>
-            <option value="SUPERADMIN">Super Admin</option>
+            <option value="USER">{t('ProfileEdit.user')}</option> {/* Usar traducción */}
+            <option value="ADMIN">{t('ProfileEdit.admin')}</option> {/* Usar traducción */}
+            <option value="SUPERADMIN">{t('ProfileEdit.superAdmin')}</option> {/* Usar traducción */}
           </select>
         </div>
 
         <div className="info-field">
-          <label>Email</label>
+          <label>{t('ProfileEdit.email')}</label> {/* Usar traducción */}
           <input
             type="email"
             name="email"
@@ -154,7 +157,7 @@ const Profile = () => {
       </div>
 
       <button className="save-button" onClick={handleSave}>
-        Save Changes
+        {t('ProfileEdit.saveChanges')} {/* Usar traducción */}
       </button>
     </div>
   );

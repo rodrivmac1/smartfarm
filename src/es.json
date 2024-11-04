@@ -1,0 +1,151 @@
+{
+    "Login": {
+      "login": "Iniciar sesión",
+      "usernameLabel": "Nombre de usuario",
+      "usernamePlaceholder": "Ingresa tu nombre de usuario",
+      "passwordLabel": "Contraseña",
+      "passwordPlaceholder": "Ingresa tu contraseña",
+      "loginButton": "Iniciar sesión",
+      "rememberMe": "Recuérdame",
+      "needHelp": "¿Necesitas ayuda?",
+      "createAccount": "Crear cuenta"
+    }
+    ,
+    "Crearcuenta": {
+      "FullName": "Nombre completo",
+      "FullNamePlaceholder": "Ingresa tu nombre completo",
+      "Username": "Nombre de usuario",
+      "UsernamePlaceholder": "Ingresa tu nombre de usuario",
+      "Password": "Contraseña",
+      "PasswordPlaceholder": "Ingresa tu contraseña",
+      "Email": "Correo electrónico",
+      "EmailPlaceholder": "Ingresa tu correo electrónico",
+      "Mobile": "Número de teléfono",
+      "MobilePlaceholder": "Ingresa tu número de teléfono",
+      "Save": "Guardar",
+      "profileSaved": "Perfil guardado"
+    }
+    ,
+    "Loading": {
+      "loading": "Cargando..."
+    },
+    "ChartComponent": {
+      "Dates":"Tiempo",
+      "Value": "Valores"
+    },
+    "Dashboard": {
+      "activeSensors": "Sensores Activos",
+      "temperature": "Temperatura",
+      "airHumidity": "Humedad del Aire",
+      "phLevel": "Nivel de PH",
+      "soilMoisture": "Humedad del Suelo",
+      "solarLight": "Luz Solar",
+      "sunlight": "Luz Solar",
+      "errorFetchingDailyStatsData": "Error al obtener los datos diarios",
+      "errorFetchingDailyStats": "Error al obtener los datos diarios",
+      "noDataFoundForSpecifiedDateRange": "No se encontraron datos para el rango de fechas especificado",
+      "errorFetchingSensorStatsData": "Error al obtener los datos de los sensores",
+      "errorFetchingSensorStats": "Error al obtener los datos de los sensores",
+      "n/a": "N/A"
+    }
+    ,
+    "Footer": {
+      "about": "Acerca de",
+      "support": "Soporte",
+      "contactUs": "Contáctanos"
+    },
+    "Header": {
+      "dashboard": "Dashboard",
+      "sensors": "Sensores",
+      "profile": "Perfil",
+      "unknown": "Página Desconocida",
+      "noti": "Notificaciones",
+      "no new": "No hay nuevas alertas"
+    },
+    "Layout": {
+      "smartFarm": "SmartFarm",
+      "summary": "Resumen",
+      "sensors": "Sensores",
+      "profile": "Perfil",
+      "logout": "Cerrar Sesión"
+    },
+      "ProfileEdit": {
+        "profileSaved": "¡Perfil guardado con éxito!",
+        "name": "Nombre",
+        "username": "Nombre de usuario",
+        "credential": "Credencial",
+        "hide": "OCULTAR",
+        "show": "MOSTRAR",
+        "contact": "Contacto",
+        "language": "Idioma",
+        "english": "Inglés",
+        "spanish": "Español",
+        "system": "Sistema",
+        "dark": "Oscuro",
+        "light": "Claro",
+        "role": "Rol",
+        "user": "Usuario",
+        "admin": "Admin",
+        "superAdmin": "Super Admin",
+        "email": "Correo electrónico",
+        "saveChanges": "Guardar Cambios"
+      }
+    ,
+    "ProfileView": {
+     "name": "Nombre",
+      "emailAccount": "Correo electrónico",
+      "mobileNumber": "Número telefónico",
+      "edit": "Editar",
+      "error": "Error al obtener los datos del perfil",
+      "Loading": "Cargando perfil..."
+    },
+    "Sensor": {
+      "title": "Gestión de Sensores",
+      "summary": "Resumen",
+      "summary1": {
+        "title": "Agregar Nuevo Sensor",
+        "sensorType": "Tipo de Sensor",
+        "field": "Campo",
+        "status": "Estado",
+        "selectSensor": "Seleccionar Tipo de Sensor",
+        "button": "Agregar Sensor"
+      },
+      "update": {
+        "title": "Actualizar Estado del Sensor",
+        "button": "Guardar Cambios"
+      },
+      "delete": {
+        "title": "Eliminar Sensor",
+        "button": "Eliminar Sensor"
+      },
+      "table": {
+        "sensor": "Sensor",
+        "port": "Puerto",
+        "status": "Estado",
+        "action": "Acción"
+      },
+      "status": {
+        "connected": "Conectado",
+        "disconnected": "Desconectado"
+      },
+      "error": {
+        "fetch": "Error al obtener los sensores.",
+        "delete": "Error al eliminar el sensor.",
+        "add": "Error al agregar el sensor.",
+        "update": "Error al actualizar los estados de los sensores.",
+        "general": "Ocurrió un error: "
+      },
+      "confirmDelete": "¿Estás seguro de que deseas eliminar este sensor?",
+      "success": {
+        "delete": "Sensor eliminado con éxito.",
+        "add": "Sensor agregado con éxito.",
+        "update": "Estados de los sensores actualizados con éxito."
+      }
+    },
+    "VentanaConfirmacion": {
+      "confirmDeleteProfile": "¿Estás seguro de que deseas eliminar este perfil?",
+      "yes": "Sí",
+      "no": "No"
+    }
+  }
+  

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from "react-i18next"; // Importar useTranslation
 import ChartComponent from './ChartComponent';
 import Widget from "./components/Widget";
 import './Dashboard.css';
 
 function Dashboard() {
+  const { t } = useTranslation(); // Usar useTranslation
   const [dailyStatsData, setDailyStatsData] = useState([]);
   const [sensorStatsData, setSensorStatsData] = useState([]);
   const [error, setError] = useState(null);
@@ -24,11 +26,11 @@ function Dashboard() {
           const data = await response.json();
           setDailyStatsData(data);
         } else {
-          setError('Error fetching daily stats data');
+          setError(t('Dashboard.errorFetchingDailyStatsData')); // Usar traducción
         }
       } catch (error) {
         console.error('Error fetching daily stats:', error);
-        setError('Error fetching daily stats');
+        setError(t('Dashboard.errorFetchingDailyStats')); // Usar traducción
       }
     };
 
@@ -52,25 +54,25 @@ function Dashboard() {
           if (filteredData.length > 0) {
             setSensorStatsData(filteredData);
           } else {
-            setError('No data found for the specified date range');
+            setError(t('Dashboard.noDataFoundForSpecifiedDateRange')); // Usar traducción
           }
         } else {
-          setError('Error fetching sensor stats data');
+          setError(t('Dashboard.errorFetchingSensorStatsData')); // Usar traducción
         }
       } catch (error) {
         console.error('Error fetching sensor stats:', error);
-        setError('Error fetching sensor stats');
+        setError(t('Dashboard.errorFetchingSensorStats')); // Usar traducción
       }
     };
 
     fetchDailyStatsData();
     fetchSensorStatsData();
-  }, [token]);
+  }, [token, t]);
 
   // Función para obtener el valor 'stats' de un tipo específico de sensor
   const getStatByType = (type) => {
     const sensor = sensorStatsData.find(item => item.type === type);
-    return sensor ? sensor.stats : "N/A";
+    return sensor ? sensor.stats : t('Dashboard.n/a'); // Usar traducción
   };
 
   // Preparar los datos para cada tipo de gráfico
@@ -90,9 +92,9 @@ function Dashboard() {
 
       {/* Fila de 3 Widgets con datos dinámicos */}
       <div className="dashboard-grid">
-        <Widget title="Active Sensors" value="5" change="0" isPositive={true} unit="" color="#454545" />
-        <Widget title="Temperature" value={getStatByType("Temperature")} change="0" isPositive={true} unit="°C" color="#2E8B57" />
-        <Widget title="Air Humidity" value={getStatByType("Air Humidity")} change="0" isPositive={true} unit="%" color="#454545" />
+        <Widget title={t('Dashboard.activeSensors')} value="5" change="0" isPositive={true} unit="" color="#454545" />
+        <Widget title={t('Dashboard.temperature')} value={getStatByType("Temperature")} change="0" isPositive={true} unit="°C" color="#2E8B57" />
+        <Widget title={t('Dashboard.airHumidity')} value={getStatByType("Air Humidity")} change="0" isPositive={true} unit="%" color="#454545" />
       </div>
 
       {/* Fila de 2 Gráficos */}
@@ -101,23 +103,23 @@ function Dashboard() {
           <ChartComponent 
             data={prepareChartData("Soil Moisture")} 
             labels={dateLabels} 
-            label="Soil Moisture (%)" 
+            label={t('Dashboard.soilMoisture')} // Usar traducción
           />
         </div>
         <div className="chart-container">
           <ChartComponent 
             data={prepareChartData("Air Humidity")} 
             labels={dateLabels} 
-            label="Air Humidity (%)" 
+            label={t('Dashboard.airHumidity')} // Usar traducción
           />
         </div>
       </div>
 
       {/* Otra Fila de 3 Widgets con datos dinámicos */}
       <div className="dashboard-grid">
-        <Widget title="PH Level" value={getStatByType("PH Sensor")} change="0" isPositive={true} unit="" color="#2E8B57" />
-        <Widget title="Soil Moisture" value={getStatByType("Soil Moisture")} change="0" isPositive={true} unit="%" color="#2E8B57" />
-        <Widget title="Solar Light" value={getStatByType("Sunlight")} change="0" isPositive={true} unit="" color="#454545" />
+        <Widget title={t('Dashboard.phLevel')} value={getStatByType("PH Sensor")} change="0" isPositive={true} unit="" color="#2E8B57" />
+        <Widget title={t('Dashboard.soilMoisture')} value={getStatByType("Soil Moisture")} change="0" isPositive={true} unit="%" color="#2E8B57" />
+        <Widget title={t('Dashboard.solarLight')} value={getStatByType("Sunlight")} change="0" isPositive={true} unit="" color="#454545" />
       </div>
 
       {/* Segunda Fila de 2 Gráficos */}
@@ -126,14 +128,14 @@ function Dashboard() {
           <ChartComponent 
             data={prepareChartData("Sunlight")} 
             labels={dateLabels} 
-            label="Sunlight (lux)" 
+            label={t('Dashboard.sunlight')} // Usar traducción
           />
         </div>
         <div className="chart-container">
           <ChartComponent 
             data={prepareChartData("PH Sensor")} 
             labels={dateLabels} 
-            label="PH Level" 
+            label={t('Dashboard.phLevel')} // Usar traducción
           />
         </div>
       </div>

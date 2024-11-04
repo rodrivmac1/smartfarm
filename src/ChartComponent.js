@@ -1,10 +1,13 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart, registerables } from 'chart.js';
+import { useTranslation } from 'react-i18next';
 
 Chart.register(...registerables);
 
 const ChartComponent = ({ data, labels, label }) => {
+    const { t } = useTranslation(); 
+
     const chartData = {
         labels: labels, // Fechas dinámicas
         datasets: [
@@ -60,7 +63,7 @@ const ChartComponent = ({ data, labels, label }) => {
             x: {
                 title: {
                     display: true,
-                    text: 'Dates',
+                    text: t('ChartComponent.Dates'),
                     color: 'white', 
                     font: {
                         family: 'Poppins',
@@ -76,7 +79,7 @@ const ChartComponent = ({ data, labels, label }) => {
             y: {
                 title: {
                     display: true,
-                    text: 'Value',
+                    text: t('ChartComponent.Value'),
                     color: 'white', 
                     font: {
                         family: 'Poppins',

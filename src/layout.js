@@ -7,11 +7,13 @@ import Vector from './images/dashboard.svg';
 import boton from './images/add.svg';
 import usuario from './images/profile.svg';
 import logOut from './images/out.svg';
+import { useTranslation } from 'react-i18next';
 
 const Layout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado para controlar la visibilidad de la barra lateral
   const navigate = useNavigate();
   const location = useLocation(); // Obtener la ruta actual
+  const { t } = useTranslation(); 
 
   // Función para verificar si la ruta actual coincide
   const isActive = (path) => location.pathname === path;
@@ -44,7 +46,7 @@ const Layout = () => {
         >
           <div className="button-content">
             <img src={Vector} alt="Icon" className="icon" />
-            Summary
+            {t('Layout.summary')}
           </div>
         </button>
 
@@ -55,7 +57,7 @@ const Layout = () => {
         >
           <div className="button-content">
             <img src={boton} alt="Add Sensor" className="icon" />
-            Sensors
+            {t('Layout.sensors')}
           </div>
         </button>
 
@@ -66,7 +68,7 @@ const Layout = () => {
         >
           <div className="button-content">
             <img src={usuario} alt="Profile" className="icon" />
-            Profile
+            {t('Layout.profile')}
           </div>
         </button>
 
@@ -77,7 +79,7 @@ const Layout = () => {
         >
           <div className="button-content">
             <img src={logOut} alt="Logout" className="icon" />
-            Logout
+            {t('Layout.logout')}
           </div>
         </button>
       </div>

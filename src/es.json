@@ -54,6 +54,7 @@
       "dashboardRoute": "Paneles / Panel",
       "addSensorRoute": "Paneles / Sensores",
       "profileRoute": "Paneles / Perfil",
+      "backupRoute": "Copia de Seguridad",
       "unknownPageRoute": "Paneles / Página desconocida"
     },
     "Layout": {
@@ -130,6 +131,22 @@
       "confirmDeleteProfile": "¿Estás seguro de que deseas eliminar este perfil?",
       "yes": "Sí",
       "no": "No"
-    }
+    },
+    "backup": {
+    "title": "Copia de Seguridad",
+    "last_backup": "Última copia de seguridad",
+    "not_available": "No disponible",
+    "confirm_backup": "¿Estás seguro de que deseas realizar una copia de seguridad?",
+    "confirm_restore": "¿Estás seguro de que deseas restaurar esta copia de seguridad?",
+    "backup_success": "Copia de seguridad completada con éxito.",
+    "restore_success": "Copia de seguridad con ID {{id}} restaurada con éxito.",
+    "backing_up": "Realizando copia de seguridad...",
+    "perform_backup": "Realizar Copia de Seguridad",
+    "versions": "Versiones de Copia de Seguridad",
+    "restoring": "Restaurando...",
+    "restore": "Restaurar",
+    "show_more": "Mostrar más ▼",
+    "show_less": "Mostrar menos ▲"
+  }
   }
   

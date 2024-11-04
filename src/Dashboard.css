@@ -73,8 +73,9 @@ html, body {
   border-radius: 20px;
   margin-bottom: 15px;
   display: flex;
-  align-items: center;
+  align-items: center; /* Alinea verticalmente el ícono y el texto */
   justify-content: flex-start;
+  text-align: left; /* Asegura que el texto esté alineado a la izquierda */
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
@@ -86,10 +87,17 @@ html, body {
   background-color: #2E8B57;
 }
 
-.icon {
+/* Estilo del contenido del botón (icono y texto) */
+.button-content {
+  display: flex;
+  align-items: center; /* Alinea el icono y el texto en una misma línea */
+}
+
+/* Estilo del icono en el botón */
+.sidebar button .icon {
   width: 20px;
   height: 20px;
-  margin-right: 10px;
+  margin-right: 10px; /* Espacio entre el icono y el texto */
   fill: white;
 }
 

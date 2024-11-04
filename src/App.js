@@ -7,6 +7,7 @@ import Login from './Login';
 import ProfileView from './ProfileView';
 import ProfileEdit from './ProfileEdit';
 import Sensor from './Sensor';
+import Backup from './Backup'; // Importa el componente Backup
 import Layout from './layout'; // Importamos el layout
 import CrearCuenta from './CrearCuenta';
 import './transitions.css'; // Importar el archivo de estilos para las transiciones
@@ -31,6 +32,7 @@ function AnimatedRoutes() {
             <Route path="/profile-view" element={<ProfileView />} />
             <Route path="/profile-edit" element={<ProfileEdit />} />
             <Route path="/add-sensor" element={<Sensor />} />
+            <Route path="/backup" element={<Backup />} />
           </Route>
         </Routes>
       </CSSTransition>

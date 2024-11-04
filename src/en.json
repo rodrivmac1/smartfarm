@@ -97,10 +97,16 @@
       "Loading": "Loading profile..."
     },
     "Sensor": {
-      "title": "Sensor Management",
+    "title": "Sensor Management",
     "summary": "Summary",
+    "humidity": "Humidity",
+    "temperature": "Temperature",
+    "soilMoisture": "Soil Moisture",
+    "solarLight": "Solar Light",
+    "phLevel": "pH Level",
+    "sum": "Sensors Connected",
     "summary1": {
-      "title": "Add New Sensor",
+      "title": "Assign a New Sensor",
       "sensorType": "Sensor Type",
       "field": "Field",
       "status": "Status",
@@ -112,14 +118,15 @@
       "button": "Save Changes"
     },
     "delete": {
-      "title": "Delete Sensor",
+      "title": "Delete Sensors",
       "button": "Delete Sensor"
     },
     "table": {
       "sensor": "Sensor",
       "port": "Port",
       "status": "Status",
-      "action": "Action"
+      "action": "Action",
+      "working": "Working"
     },
     "status": {
       "connected": "Connected",
@@ -130,13 +137,19 @@
       "delete": "Failed to delete sensor.",
       "add": "Failed to add sensor.",
       "update": "Failed to update sensor statuses.",
-      "general": "An error occurred: "
+      "type": "Please select a sensor type. "
     },
     "confirmDelete": "Are you sure you want to delete this sensor?",
     "success": {
       "delete": "Sensor deleted successfully.",
       "add": "Sensor added successfully.",
       "update": "Sensor statuses updated successfully."
+    },
+    "btn": {
+      "add": "Add Sensor",
+      "sum": "Sensors Summary",
+      "modify": "Modify Sensors Status",
+      "delete": "Delete Sensors"
     }
     },
     "VentanaConfirmacion": {

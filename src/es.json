@@ -102,6 +102,12 @@
     "Sensor": {
       "title": "Gestión de Sensores",
       "summary": "Resumen",
+      "humidity": "Humedad del suelo",
+      "temperature": "Temperatura",
+      "soilMoisture": "Humedad del Suelo",
+      "solarLight": "Luz Solar",
+      "phLevel": "Nivel de PH",
+      "sum": "Sensores Conectados",
       "summary1": {
         "title": "Agregar Nuevo Sensor",
         "sensorType": "Tipo de Sensor",
@@ -115,14 +121,15 @@
         "button": "Guardar Cambios"
       },
       "delete": {
-        "title": "Eliminar Sensor",
+        "title": "Eliminar Sensores",
         "button": "Eliminar Sensor"
       },
       "table": {
         "sensor": "Sensor",
         "port": "Puerto",
         "status": "Estado",
-        "action": "Acción"
+        "action": "Acción",
+        "working": "Trabajando"
       },
       "status": {
         "connected": "Conectado",
@@ -133,13 +140,19 @@
         "delete": "Error al eliminar el sensor.",
         "add": "Error al agregar el sensor.",
         "update": "Error al actualizar los estados de los sensores.",
-        "general": "Ocurrió un error: "
+        "type": "Por favor, selecciona un tipo de sensor. "
       },
       "confirmDelete": "¿Estás seguro de que deseas eliminar este sensor?",
       "success": {
         "delete": "Sensor eliminado con éxito.",
         "add": "Sensor agregado con éxito.",
         "update": "Estados de los sensores actualizados con éxito."
+      },
+      "btn": {
+        "add": "Agregar Sensor",
+        "sum": "Resumen de Sensores",
+        "modify": "Modificar Sensores",
+        "delete": "Eliminar Sensores"
       }
     },
     "VentanaConfirmacion": {

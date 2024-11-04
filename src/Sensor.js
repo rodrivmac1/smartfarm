@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { useTranslation } from 'react-i18next';
 import "./Sensor.css";
 import "./Dashboard.css"; 
 
 const Sensor = () => {
+  const { t } = useTranslation(); 
   const [sensors, setSensors] = useState([]);
   const [activeSection, setActiveSection] = useState('summary');
   const [selectedSensorType, setSelectedSensorType] = useState(""); 
@@ -13,7 +15,13 @@ const Sensor = () => {
   const [error, setError] = useState(null);
   const token = localStorage.getItem('token'); 
 
-  const sensorTypes = ["Humidity", "Temperature", "Soil Moisture", "Solar Light", "pH Level"];
+  const sensorTypes = [
+    t('Sensor.humidity'),
+    t('Sensor.temperature'),
+    t('Sensor.soilMoisture'),
+    t('Sensor.solarLight'),
+    t('Sensor.phLevel')
+  ];
 
   const fetchSensors = async () => {
     try {
@@ -32,11 +40,11 @@ const Sensor = () => {
         }, {});
         setSensorStatuses(initialStatuses);
       } else {
-        setError('Error fetching sensors');
+        setError(t('Sensor.error.fetch'));
       }
     } catch (error) {
-      console.error('Error fetching sensors:', error);
-      setError('Error fetching sensors');
+      console.error(t('Sensor.error.fetch')+':', error);
+      setError(t('Sensor.error.fetch'));
     }
   };
 
@@ -46,7 +54,7 @@ const Sensor = () => {
 
   // Eliminar sensor (DELETE) con confirmación
   const handleDeleteSensor = async (sensorId) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this sensor?");
+    const confirmDelete = window.confirm(t('Sensor.confirmDelete'));
     if (!confirmDelete) return; // Si el usuario cancela, no hacemos nada
 
     try {
@@ -58,23 +66,23 @@ const Sensor = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to delete sensor');
+        throw new Error(t('Sensor.error.delete'));
       }
 
-      alert('Sensor deleted successfully!');
+      alert(t('Sensor.success.delete'));
       const updatedSensors = sensors.filter(sensor => sensor.id !== sensorId);
       setSensors(updatedSensors); // Actualizar la lista de sensores sin el que fue eliminado
 
     } catch (error) {
-      console.error('Error deleting sensor:', error);
-      alert('Error deleting sensor.');
+      console.error(t('Sensor.error.delete')+':', error);
+      alert(t('Sensor.error.delete'));
     }
   };
 
   // Guardar nuevos sensores (CREATE)
   const handleSaveNewSensors = async () => {
     if (!selectedSensorType) {
-      alert('Please select a sensor type.');
+      alert(t('Sensor.error.type'));
       return;
     }
 
@@ -97,14 +105,14 @@ const Sensor = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to add sensor');
+        throw new Error(t('Sensor.error.add'));
       }
 
-      alert('Sensor added successfully!');
+      alert(t('Sensor.success.add'));
       fetchSensors(); 
     } catch (error) {
-      console.error('Error adding sensor:', error);
-      alert('Error adding sensor.');
+      console.error(t('Sensor.error.add')+':', error);
+      alert(t('Sensor.error.delete'));
     }
   };
 
@@ -134,15 +142,15 @@ const Sensor = () => {
         });
   
         if (!response.ok) {
-          throw new Error('Failed to update sensor status');
+          throw new Error(t('Sensor.error.update'));
         }
       }
       
-      alert('Sensor statuses updated successfully!');
+      alert(t('Sensor.success.update'));
       // No es necesario hacer fetchSensors() a menos que quieras sincronizar cambios del servidor
     } catch (error) {
-      console.error('Error updating sensor statuses:', error);
-      alert('Sensor statuses updated successfully!');
+      console.error(t('Sensor.error.update')+':', error);
+      alert(t('Sensor.error.update'));
     }
   };
   
@@ -151,13 +159,13 @@ const Sensor = () => {
   const renderDeleteSection = () => {
     return (
       <div key="delete">
-        <h2 className="sensor-title">Delete Sensors</h2>
+        <h2 className="sensor-title">{t('Sensor.delete.title')}</h2>
         <table className="sensor-table">
           <thead>
             <tr>
-              <th>Sensor</th>
-              <th>Port</th>
-              <th>Action</th>
+              <th>{t('Sensor.table.sensor')}</th>
+              <th>{t('Sensor.table.port')}</th>
+              <th>{t('Sensor.table.action')}</th>
             </tr>
           </thead>
           <tbody>
@@ -167,7 +175,7 @@ const Sensor = () => {
                 <td>{sensor.id}</td>
                 <td>
                   <button className="delete-button" onClick={() => handleDeleteSensor(sensor.id)}>
-                    Delete Sensor
+                    {t('Sensor.delete.button')}
                   </button>
                 </td>
               </tr>
@@ -182,13 +190,13 @@ const Sensor = () => {
   const renderUpdateSection = () => {
     return (
       <div key="update">
-        <h2 className="sensor-title">Modify Sensor Status</h2>
+        <h2 className="sensor-title">{t('Sensor.update.title')}</h2>
         <table className="sensor-table">
           <thead>
             <tr>
-              <th>Sensor</th>
-              <th>Port</th>
-              <th>Status</th>
+              <th>{t('Sensor.table.sensor')}</th>
+              <th>{t('Sensor.table.port')}</th>
+              <th>{t('Sensor.table.status')}</th>
             </tr>
           </thead>
           <tbody>
@@ -204,8 +212,8 @@ const Sensor = () => {
                     [sensor.id]: e.target.value === "true" // Convierte el valor a booleano
                   })}
                 >
-                  <option value="true">CONNECTED</option>
-                  <option value="false">DISCONNECTED</option>
+                  <option value="true">{t('Sensor.status.connected')}</option>
+                  <option value="false">{t('Sensor.status.disconnected')}</option>
                 </select>
                 </td>
               </tr>
@@ -213,7 +221,7 @@ const Sensor = () => {
           </tbody>
         </table>
         <button className="save-button" onClick={handleSaveStatusChanges}>
-          Save Changes
+        {t('Sensor.update.button')}
         </button>
       </div>
     );
@@ -223,13 +231,13 @@ const Sensor = () => {
   const renderCreateSection = () => {
     return (
       <div key="create">
-        <h2 className="sensor-title">Assign a New Sensor</h2>
+        <h2 className="sensor-title">{t('Sensor.summary1.title')}</h2>
         <table className="sensor-table">
           <thead>
             <tr>
-              <th>Sensor Type</th>
-              <th>Field</th>
-              <th>Status</th>
+              <th>{t('Sensor.summary1.sensorType')}</th>
+              <th>{t('Sensor.summary1.field')}</th>
+              <th>{t('Sensor.summary1.status')}</th>
             </tr>
           </thead>
           <tbody>
@@ -239,7 +247,7 @@ const Sensor = () => {
                   onChange={(e) => setSelectedSensorType(e.target.value)}
                   value={selectedSensorType || ""}
                 >
-                  <option value="" disabled>Select Sensor</option>
+                  <option value="" disabled>{t('Sensor.summary1.selectSensor')}</option>
                   {sensorTypes.map((type, idx) => (
                     <option key={idx} value={type}>
                       {type}
@@ -261,15 +269,15 @@ const Sensor = () => {
                   onChange={(e) => setStatus(e.target.value === "true")}
                   value={status ? "true" : "false"}
                 >
-                  <option value="true">CONNECTED</option>
-                  <option value="false">DISCONNECTED</option>
+                  <option value="true">{t('Sensor.status.connected')}</option>
+                  <option value="false">{t('Sensor.status.disconnected')}</option>
                 </select>
               </td>
             </tr>
           </tbody>
         </table>
         <button className="save-button" onClick={handleSaveNewSensors}>
-          Save Changes
+        {t('Sensor.summary1.button')}
         </button>
       </div>
     );
@@ -281,13 +289,13 @@ const Sensor = () => {
       case 'summary':
         return (
           <div key="summary">
-            <h2 className="sensor-title">Sensors Connected</h2>
+            <h2 className="sensor-title"> {t('Sensor.sum')}</h2>
             <table className="sensor-table">
               <thead>
                 <tr>
-                  <th>Sensor</th>
-                  <th>Port</th>
-                  <th>Working</th>
+                  <th>{t('Sensor.table.sensor')}</th>
+                  <th>{t('Sensor.table.port')}</th>
+                  <th>{t('Sensor.table.working')}</th>
                 </tr>
               </thead>
               <tbody>
@@ -302,7 +310,7 @@ const Sensor = () => {
                           : "status-not-available"
                       }
                     >
-                      {sensor.status ? 'CONNECTED' : 'DISCONNECTED'}
+                      {sensor.status ? t('Sensor.status.connected') : t('Sensor.status.disconnected')}
                     </td>
                   </tr>
                 ))}
@@ -328,28 +336,28 @@ const Sensor = () => {
           className={`create-btn ${activeSection === 'create' ? 'active' : ''}`}
           onClick={() => setActiveSection('create')}
         >
-          <div className="button-content">Add Sensor</div>
+          <div className="button-content">{t('Sensor.btn.add')}</div>
         </button>
 
         <button
           className={`summary-btn ${activeSection === 'summary' ? 'active' : ''}`}
           onClick={() => setActiveSection('summary')}
         >
-          <div className="button-content">Sensors Summary</div>
+          <div className="button-content">{t('Sensor.btn.sum')}</div>
         </button>
 
         <button
           className={`update-btn ${activeSection === 'update' ? 'active' : ''}`}
           onClick={() => setActiveSection('update')}
         >
-          <div className="button-content">Modify Sensors Status</div>
+          <div className="button-content">{t('Sensor.btn.modify')}</div>
         </button>
 
         <button
           className={`delete-btn ${activeSection === 'delete' ? 'active' : ''}`}
           onClick={() => setActiveSection('delete')}
         >
-          <div className="button-content">Delete Sensors</div>
+          <div className="button-content">{t('Sensor.btn.delete')}</div>
         </button>
       </div>
 

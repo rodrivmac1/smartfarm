@@ -23,7 +23,11 @@
       "loginButton": "Iniciar sesión",
       "rememberMe": "Recuérdame",
       "needHelp": "¿Necesitas ayuda?",
-      "createAccount": "Crear cuenta"
+      "createAccount": "Crear cuenta",
+      "tokenNotFound": "Token no Encontrado",
+      "incorrectCredentials": "Credenciales incorrectas, pro favor intenta nuevamente.",
+      "invalidRequest": "Solicitud inválida.",
+      "unexpectedError": "Un error inesperado ha ocurrido. Intenta de nuevo más tarde."
     }
     ,
     "Crearcuenta": {

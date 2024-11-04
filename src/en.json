@@ -23,7 +23,11 @@
       "loginButton": "Sign in",
       "rememberMe": "Remember me",
       "needHelp": "Need help?",
-      "createAccount": "Create account"
+      "createAccount": "Create account",
+      "tokenNotFound": "Token not Found",
+      "incorrectCredentials": "Wrong credentials, please try again.",
+      "invalidRequest": "Invalid Request.",
+      "unexpectedError": "An unexpected error has ocurred, pleae try again later."
     },
     "CrearCuenta": {
       "FullName": "Full name",

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import './Loading.css'; // Crear un archivo CSS para estilizar la pantalla de carga
+import './Loading.css'; 
 
 const Loading = () => {
   const { t } = useTranslation(); 

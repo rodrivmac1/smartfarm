@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import "./header.css";
 import { useTranslation } from 'react-i18next';
 
@@ -31,7 +32,7 @@ const Header = () => {
     try {
       const response = await fetch("http://localhost:8080/api/alerts", {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`, // Suponiendo que se necesita un token
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
       if (response.ok) {
@@ -58,7 +59,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-left">
-        <span>Dashboards /</span> <strong>{getPageTitle()}</strong>
+        <span>{t('Header.dashboardRoute')} /</span> <strong>{getPageTitle()}</strong>
       </div>
       <div className="header-right">
         <i className="notification-icon" onClick={toggleNotifications}>

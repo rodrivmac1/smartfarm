@@ -3,20 +3,23 @@ import { useTranslation } from "react-i18next"; // Importar useTranslation
 import ChartComponent from './ChartComponent';
 import Widget from "./components/Widget";
 import './Dashboard.css';
+import { useTranslation } from 'react-i18next';
 
 function Dashboard() {
-  const { t } = useTranslation(); // Usar useTranslation
+  const { t } = useTranslation(); // Para traducción
   const [dailyStatsData, setDailyStatsData] = useState([]);
   const [sensorStatsData, setSensorStatsData] = useState([]);
+  const [availableDates, setAvailableDates] = useState([]);
+  const [selectedDate, setSelectedDate] = useState('');
   const [error, setError] = useState(null);
+  const [activeSensorCount, setActiveSensorCount] = useState(0); // Estado para contar los sensores activos
 
-  // Obtener el token del localStorage
   const token = localStorage.getItem('token');
 
   useEffect(() => {
     const fetchDailyStatsData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/stats/daily-stats', {
+        const response = await fetch('http://3.14.69.183:8080/api/stats/daily-stats', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -36,7 +39,7 @@ function Dashboard() {
 
     const fetchSensorStatsData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/stats', {
+        const response = await fetch('http://3.14.69.183:8080/api/stats', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -44,18 +47,11 @@ function Dashboard() {
 
         if (response.ok) {
           const data = await response.json();
-          console.log("Data received from API:", data);  // Verificar los datos en la consola
+          setSensorStatsData(data);
 
-          // Filtrar los datos para obtener solo las fechas específicas "2024-09-28" y "2024-09-29"
-          const filteredData = data.filter(item => 
-            item.date === "2024-09-28T06:00:00.000+00:00" || item.date === "2024-09-29T06:00:00.000+00:00"
-          );
-          
-          if (filteredData.length > 0) {
-            setSensorStatsData(filteredData);
-          } else {
-            setError(t('Dashboard.noDataFoundForSpecifiedDateRange')); // Usar traducción
-          }
+          // Extraer y establecer las fechas únicas disponibles
+          const dates = [...new Set(data.map(item => item.date.split("T")[0]))];
+          setAvailableDates(dates);
         } else {
           setError(t('Dashboard.errorFetchingSensorStatsData')); // Usar traducción
         }
@@ -65,52 +61,107 @@ function Dashboard() {
       }
     };
 
+    // Fetch active sensors count
+    const fetchActiveSensors = async () => {
+      try {
+        const response = await fetch('http://3.14.69.183:8080/api/sensors', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          // Filtrar sensores con status: true
+          const activeSensors = data.filter(sensor => sensor.status === true);
+          setActiveSensorCount(activeSensors.length); // Actualizar el conteo de sensores activos
+        } else {
+          setError('Error fetching sensors');
+        }
+      } catch (error) {
+        console.error('Error fetching sensors:', error);
+        setError('Error fetching sensors');
+      }
+    };
+
     fetchDailyStatsData();
     fetchSensorStatsData();
-  }, [token, t]);
+    fetchActiveSensors();
+  }, [token]);
 
-  // Función para obtener el valor 'stats' de un tipo específico de sensor
-  const getStatByType = (type) => {
-    const sensor = sensorStatsData.find(item => item.type === type);
-    return sensor ? sensor.stats : t('Dashboard.n/a'); // Usar traducción
+  // Filtrar los datos para los widgets según la fecha seleccionada
+  const filteredData = selectedDate 
+    ? sensorStatsData.filter(item => item.date.startsWith(selectedDate))
+    : sensorStatsData;
+
+  // Calcular el promedio para cada tipo de sensor solo cuando hay datos
+  const calculateAverageByType = (type) => {
+    if (!sensorStatsData.length) return "N/A"; // Retorna N/A si no hay datos
+
+    const data = sensorStatsData.filter(item => item.type === type);
+    const sum = data.reduce((acc, item) => acc + item.stats, 0);
+    return data.length > 0 ? (sum / data.length).toFixed(2) : "N/A";
   };
 
-  // Preparar los datos para cada tipo de gráfico
+  // Obtener el valor de un tipo de sensor, o el promedio si no hay fecha seleccionada
+  const getStatByType = (type) => {
+    if (selectedDate) {
+      const sensor = filteredData.find(item => item.type === type);
+      return sensor ? sensor.stats : t('Dashboard.n/a');
+    } else {
+      return calculateAverageByType(type);
+    }
+  };
+
   const prepareChartData = (type) => {
     return sensorStatsData
       .filter(item => item.type === type)
       .map(item => item.stats);
   };
 
-  // Fechas (etiquetas) para los gráficos
   const dateLabels = [...new Set(sensorStatsData.map(item => 
-    new Date(item.date).toLocaleDateString()))];  // Usar Set para evitar duplicados
+    new Date(item.date).toLocaleDateString()))];
 
   return (
     <div className="main-content">
       {error && <p>{error}</p>}
 
+      {/* Selector de fecha */}
+      <div className="date-filter">
+        <label htmlFor="dateSelect">Selecciona una fecha:</label>
+        <select 
+          id="dateSelect" 
+          value={selectedDate} 
+          onChange={(e) => setSelectedDate(e.target.value)}
+        >
+          <option value="">Todas las fechas</option>
+          {availableDates.map(date => (
+            <option key={date} value={date}>{date}</option>
+          ))}
+        </select>
+      </div>
+
       {/* Fila de 3 Widgets con datos dinámicos */}
       <div className="dashboard-grid">
-        <Widget title={t('Dashboard.activeSensors')} value="5" change="0" isPositive={true} unit="" color="#454545" />
+        <Widget title={t('Dashboard.activeSensors')} value={activeSensorCount} change="0" isPositive={true} unit="" color="#454545" />
         <Widget title={t('Dashboard.temperature')} value={getStatByType("Temperature")} change="0" isPositive={true} unit="°C" color="#2E8B57" />
         <Widget title={t('Dashboard.airHumidity')} value={getStatByType("Air Humidity")} change="0" isPositive={true} unit="%" color="#454545" />
       </div>
 
-      {/* Fila de 2 Gráficos */}
+      {/* Fila de 2 Gráficos (sin filtrar) */}
       <div className="dashboard-grid-large">
         <div className="chart-container">
           <ChartComponent 
             data={prepareChartData("Soil Moisture")} 
             labels={dateLabels} 
-            label={t('Dashboard.soilMoisture')} // Usar traducción
+            label={t('Dashboard.soilMoisture')}
           />
         </div>
         <div className="chart-container">
           <ChartComponent 
             data={prepareChartData("Air Humidity")} 
             labels={dateLabels} 
-            label={t('Dashboard.airHumidity')} // Usar traducción
+            label={t('Dashboard.airHumidity')}
           />
         </div>
       </div>
@@ -122,20 +173,20 @@ function Dashboard() {
         <Widget title={t('Dashboard.solarLight')} value={getStatByType("Sunlight")} change="0" isPositive={true} unit="" color="#454545" />
       </div>
 
-      {/* Segunda Fila de 2 Gráficos */}
+      {/* Segunda Fila de 2 Gráficos (sin filtrar) */}
       <div className="dashboard-grid-large">
         <div className="chart-container">
           <ChartComponent 
             data={prepareChartData("Sunlight")} 
             labels={dateLabels} 
-            label={t('Dashboard.sunlight')} // Usar traducción
+            label={t('Dashboard.solarLight')}
           />
         </div>
         <div className="chart-container">
           <ChartComponent 
             data={prepareChartData("PH Sensor")} 
             labels={dateLabels} 
-            label={t('Dashboard.phLevel')} // Usar traducción
+            label={t('Dashboard.phLevel')}
           />
         </div>
       </div>

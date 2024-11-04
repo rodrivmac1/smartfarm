@@ -7,6 +7,7 @@ import Vector from './images/dashboard.svg';
 import boton from './images/add.svg';
 import usuario from './images/profile.svg';
 import logOut from './images/out.svg';
+import backup from './images/backup.svg';
 import { useTranslation } from 'react-i18next';
 
 const Layout = () => {
@@ -68,6 +69,17 @@ const Layout = () => {
         >
           <div className="button-content">
             <img src={usuario} alt="Profile" className="icon" />
+            {t('Layout.profile')}
+          </div>
+        </button>
+
+        {/* Botón de Backup */}
+        <button
+          className={`backup-btn ${isActive('/Backup') ? 'active' : ''}`} // Añadir clase "active" cuando sea la ruta activa
+          onClick={() => navigate('/Backup')}  // Navegar a la vista BackupView
+        >
+          <div className="button-content">
+            <img src={backup} alt="Backup" className="icon" />
             {t('Layout.profile')}
           </div>
         </button>

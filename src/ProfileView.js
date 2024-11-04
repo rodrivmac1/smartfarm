@@ -1,36 +1,56 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next"; // Importa useTranslation
-import "./ProfileEdit.css";
+import { useTranslation } from 'react-i18next';
+import "./ProfileEdit.css"; 
+import VentanaConfirmacion from './VentanaConfirmacion';
+import "./VentanaConfirmacion.css";
 
 const ProfileView = () => {
-  const { t } = useTranslation(); // Inicializa la función de traducción
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
   const [profileData, setProfileData] = useState({
-    name: "",
-    email: "",
-    contact: "",
+    name: "user",
+    username: "user",
+    credential: "user",
+    contact: "2222222222",
+    language: "ENGLISH",
+    system: "dark",
+    role: { id: 1, name: "SUPERADMIN" },
+    email: "example@mail.com",
   });
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Función para obtener los datos del perfil desde la API
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("userId");
+
   const fetchProfileData = async () => {
+    if (!userId || !token) {
+      setError("User ID o token no encontrado. Por favor, inicia sesión.");
+      setLoading(false);
+      return;
+    }
+
     try {
-      const response = await fetch("http://localhost:8080/api/users/profile", {
+      const response = await fetch(`http://3.14.69.183:8080/api/users/${userId}`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
       if (response.ok) {
         const data = await response.json();
-
-        // Asegúrate de que los campos necesarios están presentes en la respuesta
         setProfileData({
-          name: data.name || "User",
-          email: data.email || "example@mail.com",
-          contact: data.contact || "2222222222",
+          name: data.name || "",
+          username: data.username || "",
+          credential: data.credential || "",
+          contact: data.contact || "",
+          language: data.language || "ENGLISH",
+          system: data.system || "dark",
+          role: data.role || { id: 1, name: "SUPERADMIN" },
+          email: data.email || "",
         });
         setLoading(false);
       } else {
@@ -48,7 +68,7 @@ const ProfileView = () => {
   }, []);
 
   const handleEditClick = () => {
-    navigate("/profile-edit");
+    navigate("/profile-edit"); // Redirige al archivo ProfileEdit.js
   };
 
   if (loading) {
@@ -88,6 +108,26 @@ const ProfileView = () => {
           <label>{t('ProfileView.mobileNumber')}</label> {/* Traducción para "Mobile number" */}
           <p>{profileData.contact}</p>
         </div>
+
+        <div className="info-field">
+          <label>{t('ProfileEdit.language')}</label>
+          <p>{profileData.language}</p>
+        </div>
+
+        <div className="info-field">
+          <label>{t('ProfileEdit.system')}</label>
+          <p>{profileData.system}</p>
+        </div>
+
+        <div className="info-field">
+          <label>{t('ProfileEdit.role')}</label>
+          <p>{profileData.role.name}</p>
+        </div>
+
+        <div className="info-field">
+          <label>{t('ProfileEdit.emailAccount')}</label>
+          <p>{profileData.email}</p>
+        </div>
       </div>
 
       <button className="edit-button" onClick={handleEditClick}>
@@ -97,4 +137,4 @@ const ProfileView = () => {
   );
 };
 
-export default ProfileView;
+export default Profile;

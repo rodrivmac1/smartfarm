@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import "./Sensor.css";
 import "./Dashboard.css"; 
 
@@ -25,7 +26,7 @@ const Sensor = () => {
 
   const fetchSensors = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/sensors', {
+      const response = await fetch('http://3.14.69.183:8080/api/sensors', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -47,18 +48,16 @@ const Sensor = () => {
       setError(t('Sensor.error.fetch'));
     }
   };
-
   useEffect(() => {
     fetchSensors();
   }, [token]);
 
-  // Eliminar sensor (DELETE) con confirmación
   const handleDeleteSensor = async (sensorId) => {
     const confirmDelete = window.confirm(t('Sensor.confirmDelete'));
     if (!confirmDelete) return; // Si el usuario cancela, no hacemos nada
 
     try {
-      const response = await fetch(`http://localhost:8080/api/sensors/delete/${sensorId}`, {
+      const response = await fetch(`http://3.14.69.183:8080/api/sensors/delete/${sensorId}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -71,7 +70,7 @@ const Sensor = () => {
 
       alert(t('Sensor.success.delete'));
       const updatedSensors = sensors.filter(sensor => sensor.id !== sensorId);
-      setSensors(updatedSensors); // Actualizar la lista de sensores sin el que fue eliminado
+      setSensors(updatedSensors);
 
     } catch (error) {
       console.error(t('Sensor.error.delete')+':', error);
@@ -79,7 +78,6 @@ const Sensor = () => {
     }
   };
 
-  // Guardar nuevos sensores (CREATE)
   const handleSaveNewSensors = async () => {
     if (!selectedSensorType) {
       alert(t('Sensor.error.type'));
@@ -87,7 +85,7 @@ const Sensor = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:8080/api/sensors/add', {
+      const response = await fetch('http://3.14.69.183:8080/api/sensors/add', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -116,21 +114,18 @@ const Sensor = () => {
     }
   };
 
-  // Modificar el estado de los sensores (UPDATE)
   const handleSaveStatusChanges = async () => {
     try {
-      // Actualiza el estado local de los sensores inmediatamente en la interfaz
       setSensors(prevSensors => 
         prevSensors.map(sensor => ({
           ...sensor,
-          status: sensorStatuses[sensor.id] // Aplica el nuevo estado seleccionado
+          status: sensorStatuses[sensor.id] 
         }))
       );
   
-      // Actualiza el estado en el servidor
       for (const sensorId in sensorStatuses) {
         const status = sensorStatuses[sensorId];
-        const response = await fetch(`http://localhost:8080/api/sensors/${sensorId}`, {
+        const response = await fetch(`http://3.14.69.183:8080/api/sensors/${sensorId}`, {
           method: 'PUT',
           headers: {
             Authorization: `Bearer ${token}`,
@@ -155,7 +150,6 @@ const Sensor = () => {
   };
   
 
-  // Sección para eliminar sensores
   const renderDeleteSection = () => {
     return (
       <div key="delete">
@@ -186,7 +180,6 @@ const Sensor = () => {
     );
   };
 
-  // Renderizar la sección para modificar el estado de los sensores
   const renderUpdateSection = () => {
     return (
       <div key="update">
@@ -227,7 +220,6 @@ const Sensor = () => {
     );
   };
 
-  // Renderizar la sección para añadir un nuevo sensor
   const renderCreateSection = () => {
     return (
       <div key="create">
@@ -283,7 +275,6 @@ const Sensor = () => {
     );
   };
 
-  // Renderizar contenido
   const renderContent = () => {
     switch (activeSection) {
       case 'summary':
@@ -330,48 +321,40 @@ const Sensor = () => {
   };
 
   return (
-    <div className="sensor-content">
-      <div className="button-row">
+    <div>
+      <div className="sensor-tab-container">
         <button
-          className={`create-btn ${activeSection === 'create' ? 'active' : ''}`}
-          onClick={() => setActiveSection('create')}
+          className={`sensor-tab ${activeSection === 'summary' ? 'active' : ''}`}
+          onClick={() => setActiveSection('summary')}
         >
           <div className="button-content">{t('Sensor.btn.add')}</div>
         </button>
-
         <button
-          className={`summary-btn ${activeSection === 'summary' ? 'active' : ''}`}
-          onClick={() => setActiveSection('summary')}
+          className={`sensor-tab ${activeSection === 'create' ? 'active' : ''}`}
+          onClick={() => setActiveSection('create')}
         >
           <div className="button-content">{t('Sensor.btn.sum')}</div>
         </button>
-
         <button
-          className={`update-btn ${activeSection === 'update' ? 'active' : ''}`}
+          className={`sensor-tab ${activeSection === 'update' ? 'active' : ''}`}
           onClick={() => setActiveSection('update')}
         >
           <div className="button-content">{t('Sensor.btn.modify')}</div>
         </button>
-
         <button
-          className={`delete-btn ${activeSection === 'delete' ? 'active' : ''}`}
+          className={`sensor-tab ${activeSection === 'delete' ? 'active' : ''}`}
           onClick={() => setActiveSection('delete')}
         >
           <div className="button-content">{t('Sensor.btn.delete')}</div>
         </button>
       </div>
 
-      <TransitionGroup className="content-section">
-        <CSSTransition
-          key={activeSection} 
-          timeout={300}
-          classNames="fade"
-        >
+      <TransitionGroup component={null}>
+        <CSSTransition key={activeSection} classNames="fade" timeout={300}>
           {renderContent()}
         </CSSTransition>
       </TransitionGroup>
     </div>
   );
 };
-
 export default Sensor;

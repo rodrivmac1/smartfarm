@@ -16,7 +16,7 @@ function Login() {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8080/api/auth/login', { 
+      const loginResponse = await fetch('http://3.14.69.183:8080/api/auth/login', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -26,29 +26,50 @@ function Login() {
           credential: credential,
         }),
       });
-    
-      console.log('Response Headers:', response.headers);
-      
-      if (response.ok) {
-        const token = response.headers.get('Authorization');
+
+      if (loginResponse.ok) {
+        const token = loginResponse.headers.get('Authorization'); // Recuperar el token del encabezado 'Authorization'
+
         if (token) {
-          localStorage.setItem('token', token);
-          navigate('/dashboard');
+          localStorage.setItem('token', token); // Guardar el token en localStorage
+
+          // Solicitud para obtener el userId usando el token
+          const userResponse = await fetch('http://3.14.69.183:8080/api/users', {
+            headers: {
+              'Authorization': `Bearer ${token}`, // Usar el token para autenticar
+              'Content-Type': 'application/json',
+            },
+          });
+
+          if (userResponse.ok) {
+            const usersData = await userResponse.json();
+            const loggedInUser = usersData.find(user => user.username === username); // Encontrar el usuario correspondiente
+
+            if (loggedInUser) {
+              localStorage.setItem('userId', loggedInUser.id); // Guardar el userId en localStorage
+              navigate('/dashboard');
+            } else {
+              alert('User ID no encontrado en la respuesta del servidor.');
+            }
+          } else {
+            alert('Error al obtener el user ID.');
+          }
         } else {
-          alert('Token no encontrado en la respuesta del servidor.');
+          alert(t('Login.tokenNotFound'));
         }
       } else {
-        if (response.status === 401) {
-          alert('Nombre de usuario o contraseña incorrectos.');
-        } else if (response.status === 400) {
-          alert('Solicitud inválida. Por favor, verifica tus datos.');
+        // Manejar diferentes estados de error según el código de respuesta
+        if (loginResponse.status === 401) {
+          alert(t('Login.incorrectCredentials'));
+        } else if (loginResponse.status === 400) {
+          alert(t('Login.invalidRequest'));
         } else {
-          alert('Error inesperado. Por favor, intenta nuevamente más tarde.');
+          alert(t('Login.unexpectedError'));
         }
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('Ocurrió un error. Por favor, intenta nuevamente más tarde.');
+      alert(t('Login.unexpectedError'));
     } finally {
       setLoading(false);
     }

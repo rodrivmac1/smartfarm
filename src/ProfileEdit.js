@@ -73,14 +73,6 @@ const ProfileEdit = () => {
     }));
   };
 
-  // Función para manejar cambios en el campo del rol (User/Admin/Superadmin)
-  const handleRoleChange = (e) => {
-    setProfileData((prevState) => ({
-      ...prevState,
-      role: { ...prevState.role, name: e.target.value },
-    }));
-  };
-
   // Función para manejar el guardado de los datos
   const handleSave = async () => {
     try {
@@ -158,12 +150,10 @@ const ProfileEdit = () => {
           <input
             type={showCredential ? "text" : "password"}
             name="credential"
-            value={profileData.credential}
+            value={showCredential ? profileData.credential : "*".repeat(profileData.credential.length)}
             onChange={handleInputChange}
+            readOnly={!showCredential} 
           />
-          <button className="toggle-password" onClick={toggleShowCredential}>
-            {showCredential ? "HIDE" : "SHOW"}
-          </button>
         </div>
 
         <div className="info-field">

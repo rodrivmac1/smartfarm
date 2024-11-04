@@ -1,4 +1,19 @@
 {
+  "backup": {
+      "confirm_backup": "Are you sure that you want to create a new backup archive?",
+      "backup_success": "The backup has been done successfully.",
+      "confirm_restore": "Are you sure that you want to restore this version?",
+      "restore_success": "The system has been restored succesfully.",
+      "title": "Backup",
+      "last_backup": "Last Backup",
+      "backing_up": "Backing Up ...",
+      "perform_backup": "Perform Backup",
+      "versions": "Versions",
+      "restoring": "Restoring",
+      "restore": "Restore",
+      "show_less": "Show Less",
+      "show_more": "Show More"
+  },
     "Login": {
       "login": "Login",
       "usernameLabel": "Username",
@@ -32,6 +47,8 @@
       "Value": "Value"
     },
     "Dashboard": {
+      "selectDate": "Select a date: ",
+      "allDates": "All Dates",
       "activeSensors": "Active Sensors",
       "temperature": "Temperature",
       "airHumidity": "Air Humidity",
@@ -56,6 +73,7 @@
       "dashboard": "Dashboard",
       "sensors": "Sensors",
       "profile": "Profile",
+      "backup": "Backup",
       "unknown": "Unknown Page",
       "noti": "Notifications",
       "no new": "No new alerts"
@@ -65,6 +83,7 @@
       "summary": "Summary",
       "sensors": "Sensors",
       "profile": "Profile",
+      "backup": "Backup",
       "logout": "Logout"
     },
     "ProfileEdit": {
@@ -94,7 +113,8 @@
       "mobileNumber": "Mobile number",
       "edit": "Edit",
       "error": "Error fetching profile data",
-      "Loading": "Loading profile..."
+      "Loading": "Loading profile...",
+      "errorID": "User ID or token not found. Please, log in."
     },
     "Sensor": {
     "title": "Sensor Management",

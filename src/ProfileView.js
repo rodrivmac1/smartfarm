@@ -28,7 +28,7 @@ const ProfileView = () => {
 
   const fetchProfileData = async () => {
     if (!userId || !token) {
-      setError("User ID o token no encontrado. Por favor, inicia sesión.");
+      setError(t('ProfileView.errorID'));
       setLoading(false);
       return;
     }
@@ -137,4 +137,4 @@ const ProfileView = () => {
   );
 };
 
-export default Profile;
+export default ProfileView;

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useTranslation } from 'react-i18next';
-import { useTranslation } from 'react-i18next';
 import "./Sensor.css";
 import "./Dashboard.css"; 
 
@@ -323,6 +322,7 @@ const Sensor = () => {
   return (
     <div>
       <div className="sensor-tab-container">
+      <div className="button-row">
         <button
           className={`sensor-tab ${activeSection === 'summary' ? 'active' : ''}`}
           onClick={() => setActiveSection('summary')}
@@ -347,6 +347,7 @@ const Sensor = () => {
         >
           <div className="button-content">{t('Sensor.btn.delete')}</div>
         </button>
+        </div>
       </div>
 
       <TransitionGroup component={null}>

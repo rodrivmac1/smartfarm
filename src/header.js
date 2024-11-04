@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import "./header.css";
-import { useTranslation } from 'react-i18next';
 
 const Header = () => {
   const location = useLocation();
@@ -22,6 +21,8 @@ const Header = () => {
       case "/profile-view": // Ruta para ProfileView
       case "/profile-edit": // Ruta para ProfileEdit
         return t('Header.profile');
+      case "/Backup": // Ruta para ProfileEdit
+        return t('Header.backup');
       default:
         return t('Header.unknown'); // En caso de que la ruta no coincida
     }
@@ -59,7 +60,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-left">
-        <span>{t('Header.dashboardRoute')} /</span> <strong>{getPageTitle()}</strong>
+        <span>{t('Header.dashboard')} /</span> <strong>{getPageTitle()}</strong>
       </div>
       <div className="header-right">
         <i className="notification-icon" onClick={toggleNotifications}>

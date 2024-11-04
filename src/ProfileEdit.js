@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // Asegúrate de incluir useEffect
 import { useTranslation } from "react-i18next"; // Importar useTranslation
 import "./ProfileEdit.css"; // Asegúrate de tener los estilos necesarios
 
-const Profile = () => {
+const ProfileEdit = () => { // Cambié el nombre del componente a ProfileEdit
   const { t } = useTranslation(); // Usar useTranslation
 
   // Estado inicial con los valores del perfil
@@ -74,6 +74,15 @@ const Profile = () => {
     setProfileData((prevState) => ({
       ...prevState,
       [name]: value,
+    }));
+  };
+
+  // Función para manejar el cambio de rol
+  const handleRoleChange = (e) => {
+    const { value } = e.target;
+    setProfileData((prevState) => ({
+      ...prevState,
+      role: { ...prevState.role, name: value },
     }));
   };
 
@@ -202,7 +211,7 @@ const Profile = () => {
           <select
             name="role"
             value={profileData.role.name}
-            onChange={handleRoleChange}
+            onChange={handleRoleChange} // Se agregó esta línea
           >
             <option value="USER">{t('ProfileEdit.user')}</option> {/* Usar traducción */}
             <option value="ADMIN">{t('ProfileEdit.admin')}</option> {/* Usar traducción */}
@@ -228,4 +237,4 @@ const Profile = () => {
   );
 };
 
-export default ProfileEdit;
+export default ProfileEdit; // Asegúrate de exportar correctamente

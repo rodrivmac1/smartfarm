@@ -80,7 +80,7 @@ const Layout = () => {
         >
           <div className="button-content">
             <img src={backup} alt="Backup" className="icon" />
-            {t('Layout.profile')}
+            {t('Layout.backup')}
           </div>
         </button>
 

@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next"; // Importar useTranslation
 import ChartComponent from './ChartComponent';
 import Widget from "./components/Widget";
 import './Dashboard.css';
-import { useTranslation } from 'react-i18next';
 
 function Dashboard() {
   const { t } = useTranslation(); // Para traducción
@@ -76,11 +75,11 @@ function Dashboard() {
           const activeSensors = data.filter(sensor => sensor.status === true);
           setActiveSensorCount(activeSensors.length); // Actualizar el conteo de sensores activos
         } else {
-          setError('Error fetching sensors');
+          setError(t('Dashboard.errorFetchingSensorStats'));
         }
       } catch (error) {
         console.error('Error fetching sensors:', error);
-        setError('Error fetching sensors');
+        setError(t('Dashboard.errorFetchingSensorStats'));
       }
     };
 
@@ -128,13 +127,13 @@ function Dashboard() {
 
       {/* Selector de fecha */}
       <div className="date-filter">
-        <label htmlFor="dateSelect">Selecciona una fecha:</label>
+        <label htmlFor="dateSelect">{t('Dashboard.selectDate')}</label>
         <select 
           id="dateSelect" 
           value={selectedDate} 
           onChange={(e) => setSelectedDate(e.target.value)}
         >
-          <option value="">Todas las fechas</option>
+          <option value="">{t('Dashboard.allDates')}</option>
           {availableDates.map(date => (
             <option key={date} value={date}>{date}</option>
           ))}

@@ -1,4 +1,19 @@
 {
+    "backup": {
+      "confirm_backup": "Estás seguro que quieres crear un nuevo archivo de respaldo?",
+      "backup_success": "El archivo de respaldo ha sido creado correctamente.",
+      "confirm_restore": "Seguro que quieres reestablecer esta versión?",
+      "restore_success": "El sistema ha sido restaurado correctamente.",
+      "title": "Respaldo",
+      "last_backup": "Último Respaldo",
+      "backing_up": "Respaldando ...",
+      "perform_backup": "Respaldar",
+      "versions": "Versiones",
+      "restoring": "Restaurando ...",
+      "restore": "Restaurar",
+      "show_less": "Mostrar Menos",
+      "show_more": "Mostrar Más"
+    },
     "Login": {
       "login": "Iniciar sesión",
       "usernameLabel": "Nombre de usuario",
@@ -34,6 +49,8 @@
       "Value": "Valores"
     },
     "Dashboard": {
+      "selectDate": "Selecciona una fecha: ",
+      "allDates": "Todas las fechas",
       "activeSensors": "Sensores Activos",
       "temperature": "Temperatura",
       "airHumidity": "Humedad del Aire",
@@ -58,6 +75,7 @@
       "dashboard": "Dashboard",
       "sensors": "Sensores",
       "profile": "Perfil",
+      "backup": "Respaldo",
       "unknown": "Página Desconocida",
       "noti": "Notificaciones",
       "no new": "No hay nuevas alertas"
@@ -67,6 +85,7 @@
       "summary": "Resumen",
       "sensors": "Sensores",
       "profile": "Perfil",
+      "backup": "Respaldo",
       "logout": "Cerrar Sesión"
     },
       "ProfileEdit": {
@@ -97,7 +116,8 @@
       "mobileNumber": "Número telefónico",
       "edit": "Editar",
       "error": "Error al obtener los datos del perfil",
-      "Loading": "Cargando perfil..."
+      "Loading": "Cargando perfil...",
+      "errorID": "User ID o token no encontrado. Por favor, inicia sesión."
     },
     "Sensor": {
       "title": "Gestión de Sensores",

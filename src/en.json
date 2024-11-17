@@ -55,9 +55,9 @@
       "allDates": "All Dates",
       "activeSensors": "Active Sensors",
       "temperature": "Temperature",
-      "airHumidity": "Air Humidity",
+      "air humidity": "Air Humidity",
       "phLevel": "PH Level",
-      "soilMoisture": "Soil Moisture",
+      "soil moisture": "Soil Moisture",
       "solarLight": "Solar Light",
       "sunlight": "Sunlight",
       "errorFetchingDailyStatsData": "Error fetching daily stats data",
@@ -65,7 +65,9 @@
       "noDataFoundForSpecifiedDateRange": "No data found for the specified date range",
       "errorFetchingSensorStatsData": "Error fetching sensor stats data",
       "errorFetchingSensorStats": "Error fetching sensor stats",
-      "n/a": "N/A"
+      "n/a": "N/A",
+      "ph sensor": "PH Level",
+    "humidity": "Humidity"
     }
     ,
     "Footer": {

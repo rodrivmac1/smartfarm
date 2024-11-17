@@ -57,9 +57,9 @@
       "allDates": "Todas las fechas",
       "activeSensors": "Sensores Activos",
       "temperature": "Temperatura",
-      "airHumidity": "Humedad del Aire",
+      "air humidity": "Humedad del Aire",
       "phLevel": "Nivel de PH",
-      "soilMoisture": "Humedad del Suelo",
+      "soil moisture": "Humedad del Suelo",
       "solarLight": "Luz Solar",
       "sunlight": "Luz Solar",
       "errorFetchingDailyStatsData": "Error al obtener los datos diarios",
@@ -67,7 +67,9 @@
       "noDataFoundForSpecifiedDateRange": "No se encontraron datos para el rango de fechas especificado",
       "errorFetchingSensorStatsData": "Error al obtener los datos de los sensores",
       "errorFetchingSensorStats": "Error al obtener los datos de los sensores",
-      "n/a": "N/A"
+      "n/a": "N/A",
+    "ph sensor": "Nivel de PH",
+    "humidity": "Humedad"
     }
     ,
     "Footer": {

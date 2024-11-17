@@ -327,13 +327,13 @@ const Sensor = () => {
           className={`sensor-tab ${activeSection === 'summary' ? 'active' : ''}`}
           onClick={() => setActiveSection('summary')}
         >
-          <div className="button-content">{t('Sensor.btn.add')}</div>
+          <div className="button-content">{t('Sensor.btn.sum')}</div>
         </button>
         <button
           className={`sensor-tab ${activeSection === 'create' ? 'active' : ''}`}
           onClick={() => setActiveSection('create')}
         >
-          <div className="button-content">{t('Sensor.btn.sum')}</div>
+          <div className="button-content">{t('Sensor.btn.add')}</div>
         </button>
         <button
           className={`sensor-tab ${activeSection === 'update' ? 'active' : ''}`}

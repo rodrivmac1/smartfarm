@@ -34,7 +34,7 @@ const ProfileView = () => {
     }
 
     try {
-      const response = await fetch(`http://3.14.69.183:8080/api/users/${userId}`, {
+      const response = await fetch(`http://54.193.209.249:8080/api/users/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

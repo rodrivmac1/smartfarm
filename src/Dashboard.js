@@ -19,7 +19,7 @@ function Dashboard() {
    
     const fetchSensorStatsData = async () => {
       try {
-        const response = await fetch("http://3.14.69.183:8080/api/stats", {
+        const response = await fetch("http://54.193.209.249:8080/api/stats", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -46,7 +46,7 @@ function Dashboard() {
 
     const fetchActiveSensors = async () => {
       try {
-        const response = await fetch("http://3.14.69.183:8080/api/sensors", {
+        const response = await fetch("http://54.193.209.249:8080/api/sensors", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

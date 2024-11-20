@@ -30,7 +30,7 @@ const ProfileEdit = () => { // Cambié el nombre del componente a ProfileEdit
   // Función para obtener los datos actuales del usuario
   const fetchUserData = async () => {
     try {
-      const response = await fetch(`http://3.14.69.183:8080/api/users/${userId}`, {
+      const response = await fetch(`http://54.193.209.249:8080/api/users/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -89,7 +89,7 @@ const ProfileEdit = () => { // Cambié el nombre del componente a ProfileEdit
   // Función para manejar el guardado de los datos
   const handleSave = async () => {
     try {
-      const response = await fetch("http://3.14.69.183:8080/api/users/update", {
+      const response = await fetch("http://54.193.209.249:8080/api/users/update", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

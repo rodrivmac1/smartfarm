@@ -16,7 +16,7 @@ function Login() {
     setLoading(true);
 
     try {
-      const loginResponse = await fetch('http://3.14.69.183:8080/api/auth/login', { 
+      const loginResponse = await fetch('http://54.193.209.249:8080/api/auth/login', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ function Login() {
           localStorage.setItem('token', token); // Guardar el token en localStorage
 
           // Solicitud para obtener el userId usando el token
-          const userResponse = await fetch('http://3.14.69.183:8080/api/users', {
+          const userResponse = await fetch('http://54.193.209.249:8080/api/users', {
             headers: {
               'Authorization': `Bearer ${token}`, // Usar el token para autenticar
               'Content-Type': 'application/json',

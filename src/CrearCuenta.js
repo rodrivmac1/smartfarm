@@ -21,7 +21,7 @@ const CrearCuenta = () => {
     alert("Profile created successfully!"); // Mensaje de confirmación sin traducción
 
     try {
-      const response = await fetch("http://3.14.69.183:8080/api/users/signup", {
+      const response = await fetch("http://54.193.209.249:8080/api/users/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
